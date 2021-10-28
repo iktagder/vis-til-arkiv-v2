@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/vtfk/vis-til-arkiv#readme",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.24.0",
     "birthdate-from-id": "^2.0.2",
     "dotenv": "^10.0.0",
     "jsonwebtoken": "^8.5.1",
