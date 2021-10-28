@@ -1,0 +1,17 @@
+{
+    "Færder videregående skole": {
+        "name": "Færder videregående skole",
+        "orgnr": "974575086",
+        "accessGroup": "Elev Færder vgs"
+    },
+    "Bamble videregående skole": {
+        "name": "Bamble videregående skole",
+        "orgnr": "974568098",
+        "accessGroup": "Elev Bamble vgs"
+    },
+    "Sande videregående skole": {
+        "name": "Sande videregående skole",
+        "orgnr": "974575116",
+        "accessGroup": "Elev Sande vgs"
+    }
+}
