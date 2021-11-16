@@ -29,6 +29,8 @@
     "pdfjs-dist": "^2.8.335",
     "vtfk-schools-info": "^3.0.2",
     "webpack": "^5.40.0",
-    "worker-loader": "^3.0.8"
+    "worker-loader": "^3.0.8",
+    "node-cache": "5.1.2",
+    "client-oauth2": "4.3.3"
   }
 }

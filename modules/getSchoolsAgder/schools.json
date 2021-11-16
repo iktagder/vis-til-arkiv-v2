@@ -1,0 +1,39 @@
+[
+    {
+      "schoolId": "",
+      "organizationNumber": "",
+      "organizationNumber360": "200263",
+      "name": "",
+      "fullName": "Dahlske videregående skole",
+      "shortName": "",
+      "officialName": "Dahlske videregående skole",
+      "accessGroup": "Elev - LAO",
+      "phoneNumber": "",
+      "mail": "",
+      "address": "",
+      "geocoded": {
+        "lat": "59.02786",
+        "lon": "9.70322"
+      },
+      "yff": true
+    },
+    {
+      "schoolId": "",
+      "organizationNumber": "",
+      "organizationNumber360": "200263",
+      "name": "",
+      "fullName": "Dahlske videregående skole2",
+      "shortName": "",
+      "officialName": "Dahlske videregående skole2",
+      "accessGroup": "Elev - LAO",
+      "phoneNumber": "",
+      "mail": "",
+      "address": "",
+      "geocoded": {
+        "lat": "59.02786",
+        "lon": "9.70322"
+      },
+      "yff": true
+    }
+  ]
+  

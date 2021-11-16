@@ -13,18 +13,27 @@ const tilretteleggingEksamen = require("./archiveMethods/soknader/tilretteleggin
 const tilretteleggingPrivatistEksamen = require("./archiveMethods/soknader/tilretteleggingPrivatistEksamen");
 const VOgodkjenningTidligereFag = require("./archiveMethods/soknader/VOgodkjenningTidligereFag");
 const varselVO = require("./archiveMethods/varselVO");
+const karakterutskrift = require("./archiveMethods/soknader/karakterutskrift");
 
 //run main program
 (async () => {
     // Dispatch documents
     writeLog(" - - - STARTING SCRIPT - - - ");
-    /*
-    try {
+    
+    /*try {
         await dispatchDocuments(options.DISPATCH_FOLDER, options.TYPE_FOLDERS);
     } catch (error) {
         writeLog("Error when dispatching documents: "+error)
         await twhError("Error when dispatching documents", error, options.DISPATCH_FOLDER)
     }*/
+
+    try {
+        await karakterutskrift(options, test=true);
+    } catch (error) {
+        writeLog("Error when running karakterutskrift: "+error);
+        await twhError("Error when running karakterutskrift", error, options.DISPATCH_FOLDER)
+    }
+
     /*
     try {
         await svarUTtest(options, test=true);
@@ -81,11 +90,11 @@ const varselVO = require("./archiveMethods/varselVO");
         writeLog("Error when running VOgodkjenningTidligereFag: "+error);
         await twhError("Error when running VOgodkjenningTidligereFag", error, options.DISPATCH_FOLDER)
     }
-    */
+    
     try {
         await varselVO(options, test=true);
     } catch (error) {
         writeLog("Error when running varselVO: "+error);
         await twhError("Error when running varselVO", error, options.DISPATCH_FOLDER)
-    }
+    }*/
 })();

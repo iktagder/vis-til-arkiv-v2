@@ -20,10 +20,10 @@ module.exports = async (student, options) => {
     // :(
     let vtfkRobotRecno
     if (options.url.includes("test")) {
-        vtfkRobotRecno = 200336
+        vtfkRobotRecno = 200148
     }
     else {
-        vtfkRobotRecno = 200326
+        vtfkRobotRecno = 200326 // TODO: Denne må settes for PROD!!!
     }
 
 
@@ -34,12 +34,12 @@ module.exports = async (student, options) => {
         method: "CreateCase"
     }
     const payload = {
-        "CaseType": "Elev",
+        "CaseType": "Sak",
         "Title": "Elevmappe",
         "UnofficialTitle": "Elevmappe - "+student.firstName+" "+student.lastName,
         "Status": "B",
-        "JournalUnit": "Sentralarkiv",
-        "SubArchive":"4",
+        "JournalUnit": "Agder fk",
+        "SubArchive":"Elev 2020 -",
         "ArchiveCodes":[
             {
                 "ArchiveCode": student.birthnr,
@@ -55,11 +55,11 @@ module.exports = async (student, options) => {
             }
         ],
         "FiledOnPaper":false,
-        "AccessCode":"13",
+        "AccessCode":"UO",
         "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-        "AccessGroup": "VTFK Robot",
+        "AccessGroup": "Elev - LAO", // TODO: Må denne enres i prod?
         "ResponsibleEnterpriseRecno": 506,
-        "ResponsiblePersonRecno": vtfkRobotRecno, //test is: 200336, prod is: 200326 VTFK Robot
+        "ResponsiblePersonRecno": vtfkRobotRecno,
         "Contacts":[
             {
                 "Role": "Sakspart",

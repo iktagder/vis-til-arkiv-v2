@@ -14,6 +14,7 @@ const twhError = require("../../modules/teamsWebhook/twhError");
 const twhInfo = require("../../modules/teamsWebhook/twhInfo"); // FOR MANUALLY DISPATCHING
 const dsfGetElev = require("../../modules/dsf/dsfGetElev");
 const getEmailFromFile = require("../../modules/getEmailFromFile/getEmailFromFile");
+const getElevinfo = require("../fint/getElevinfo");
 
 module.exports = async (archiveMethod, options, test=false) => {
     let p360url;
@@ -70,34 +71,16 @@ module.exports = async (archiveMethod, options, test=false) => {
             continue; // moves to next pdf in listOfPdfs
         }
 
-        // Get student and parent data from DSF
-        let dsfStudent;
+        // Finn student i VIS
+        let visStudent  
         try {
-            dsfStudent = await dsfGetElev(documentData.studentBirthnr, archiveMethod.sendToParents)
-            writeLog("  Found student in DSF, birthnr: "+documentData.studentBirthnr)
-            documentData.studentName = dsfStudent.studentName
-            documentData.streetAddress = dsfStudent.streetAddress
-            documentData.zipCode = dsfStudent.zipCode
-            documentData.zipPlace = dsfStudent.zipPlace
-            if (dsfStudent.age < 18) {
-                writeLog("  Student is under 18")
-                if (dsfStudent.parents.length < 1) {
-                    missingDsfParents = true
-                    writeLog("  No parents on same address found in DSF (or archiveMethod.sendToParents is off)")
-                }
-                sendToParentsBool = true
-                documentData.parents = dsfStudent.parents
-            }
-            if (dsfStudent.blockedAddress) {
-                writeLog("  Student has blocked address")
-                blockedAddress = true
-                documentData.parents = []
-            }
+            visStudent = await getElevinfo(documentData.studentBirthnr);
+            writeLog("  Fant elev i VIS: " + visStudent.data.navn.fornavn + " " + visStudent.data.navn.etternavn);
         } catch (error) {
-            writeLog("  Error when trying to get student from DSF, filed moved to "+archiveMethod.errorFolder+": "+error);
+            writeLog("  Error when trying to get student from VIS/FINT, filed moved to "+archiveMethod.errorFolder+": "+error);
             moveToFolder(pdf, archiveMethod.errorFolder);
             stats.error++
-            await twhError("Error when trying to get student from DSF", error, pdf);
+            await twhError("Error when trying to get student from VIS/FINT", error, pdf);
             continue;
         }
 
@@ -110,16 +93,17 @@ module.exports = async (archiveMethod, options, test=false) => {
             authkey: p360authkey
         }
         let studentData = {}
-        let nameList = dsfStudent.studentName.split(" ");
-        studentData.lastName = nameList.pop();
-        studentData.firstName = nameList.join(" ");
-        studentData.streetAddress = dsfStudent.streetAddress;
-        studentData.zipCode = dsfStudent.zipCode;
-        studentData.zipPlace = dsfStudent.zipPlace;
+        //let nameList = dsfStudent.studentName.split(" ");
+        studentData.lastName = visStudent.data.navn.etternavn;
+        studentData.firstName = visStudent.data.navn.fornavn;
+        studentData.streetAddress = visStudent.data.bostedsadresse.adresselinje[0];
+        studentData.zipCode = visStudent.data.bostedsadresse.postnummer;
+        studentData.zipPlace = visStudent.data.bostedsadresse.poststed;
         studentData.birthnr = documentData.studentBirthnr;
 
         try {
             privatePersonRecno = await syncPrivatePerson(studentData, syncPrivatePersonOptions);
+            // TODO: Bruker vi blokkerte adresser i P360?
             if (privatePersonRecno == "hemmelig") { // Check if address is blocked in 360
                 blockedAddress = true
                 documentData.parents = []
@@ -192,12 +176,11 @@ module.exports = async (archiveMethod, options, test=false) => {
         if (createElevmappeBool) {
             writeLog("  Trying to create new elevmappe for student: "+documentData.studentBirthnr);
             let studentData = {}
-            let nameList = dsfStudent.studentName.split(" ");
-            studentData.lastName = nameList.pop();
-            studentData.firstName = nameList.join(" ");
-            studentData.streetAddress = dsfStudent.streetAddress;
-            studentData.zipCode = dsfStudent.zipCode;
-            studentData.zipPlace = dsfStudent.zipPlace;
+            studentData.lastName = visStudent.data.navn.etternavn;
+            studentData.firstName = visStudent.data.navn.fornavn;
+            //studentData.streetAddress = visStudent.data.bostedsadresse.adresselinje[0];
+            //studentData.zipCode = visStudent.data.bostedsadresse.postnummer;
+            //studentData.zipPlace = visStudent.data.bostedsadresse.poststed;
             studentData.birthnr = documentData.studentBirthnr;
 
             const createElevmappeOptions = {
@@ -221,7 +204,7 @@ module.exports = async (archiveMethod, options, test=false) => {
         const base64Pdf = getBase64(pdf);
         //console.log(base64Pdf.substring(50,200));
         documentData.pdfFileBase64 = base64Pdf;
-
+        documentData.studentName = visStudent.data.navn.fornavn + " " + visStudent.data.navn.etternavn
         // Create 360 metadata object
         let p360metadata;
         try {

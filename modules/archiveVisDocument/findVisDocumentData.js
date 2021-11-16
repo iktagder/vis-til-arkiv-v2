@@ -1,4 +1,5 @@
-const getSchools = require('vtfk-schools-info');
+const getSchools = require('../getSchoolsAgder/getSchoolsAgder');
+
 
 module.exports = (archiveMethod, pdfContent) => {
     let documentData = {
@@ -10,7 +11,15 @@ module.exports = (archiveMethod, pdfContent) => {
         "Dato": "documentDate"
     };
     // TIP: chek out pdfContent to see the structure of the pdf content
-    let pdfStrings = pdfContent.textContent.map(ele => ele.str);
+    let pdfStringsX = pdfContent.textContent.map(ele => ele.str);
+    
+    // Fiks for mal som inneholder "Description: Value" i forskjellige tekstelement som ligger etterhverandre.
+    let pdfStrings = pdfStringsX.map(function (value, index, elements) {
+        if (value.endsWith(": ")) {
+            return '' + value + elements[index+1];
+        }else 
+            return value;
+    })
 
     for (let i=0; i<pdfStrings.length; i++) { // Note that field description and value is found in the same element (str) in this documentType, where the description field and values are found is dependent on the structure of the pdf
         if (pdfStrings[i].split(":").length === 2) {

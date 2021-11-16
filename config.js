@@ -24,5 +24,16 @@ module.exports = {
     P360_INTERNAL_NOTES: {
         "BLOCKED_ADDRESS": "C:/gitRepositories/vis-til-arkiv/data/internalNote/blockedAddress.pdf",
         "VARSEL_BLOCKED_ADDRESS": "C:/gitRepositories/vis-til-arkiv/data/internalNote/varselBlockedAddress.pdf"
+    },
+
+    OAUTH: {
+        clientId: process.env.FINT_CLIENTID,
+        clientSecret: process.env.FINT_OPENIDSECRET,
+        accessTokenUri: process.env.OAUTH_IDP_URL,
+        scopes: process.env.FINT_SCOPE 
+    },
+    TOKEN_PARAMS: {
+        username: process.env.FINT_USERNAME,
+        password: process.env.FINT_PASSWORD
     }
 }

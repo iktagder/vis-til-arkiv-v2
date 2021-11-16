@@ -1,4 +1,46 @@
 {
+
+    "KARAKTERUTSKRIFT": {
+        "name": "Karakterutskrift",
+        "owner": "oleanders",
+        "author": "oleanders",
+        "p360metadata": {
+            "Title": "Karakterutskrift",
+            "UnofficialTitle": "Karakterutskrift - <<<studentName>>>",
+            "DocumentDate": "<<<documentDate>>>",
+            "Archive": "Saksdokument",
+            "Category": "Dokument ut",
+            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+            "Status": "J",
+            "CaseNumber": "<<<elevmappeCaseNumber>>>",
+            "AccessGroup": "<<<schoolAccessGroup>>>",
+            "AccessCode": "UO",
+            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "Contacts": [
+                {
+                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+                    "Role": "Avsender",
+                    "IsUnofficial": false
+                },
+                {
+                    "ReferenceNumber": "<<<studentBirthnr>>>",
+                    "Role": "Mottaker",
+                    "IsUnofficial": true
+                }
+            ],
+            "Files": [
+                {
+                    "Base64Data": "<<<pdfFileBase64>>>",
+                    "Category": "1",
+                    "Format": "pdf",
+                    "Status": "F",
+                    "Title": "Karakterutskrift",
+                    "VersionFormat": "A"
+                }
+            ]
+        }
+    },
     "VISFOTBALL": {
         "name": "Fotball EM",
         "owner": "Jørgen T",
