@@ -19,3 +19,9 @@ steps:
   inputs:
     command: 'install'
   displayName: 'npm install'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '/'
+    Contents: '**'
+    TargetFolder: 'E:/pdf-til-elevmappe-app/'
