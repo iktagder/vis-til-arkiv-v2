@@ -22,6 +22,5 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '/'
     Contents: '**'
-    TargetFolder: 'E:/pdf-til-elevmappe-app/'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
