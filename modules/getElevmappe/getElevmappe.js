@@ -9,8 +9,8 @@ module.exports = async (birthnr, options) => {
         method: "GetCases"
     }
     const payload = {
-        "Title": "Elevmappe%", // TODO: Slik gjør vi det ikke i RIM/DIB!!
-        "ArchiveCode": String(birthnr)
+        "ArchiveCode": "B31",
+        "ContactReferenceNumber": String(birthnr)
     }
     const elevmappeRes = await p360(payload, elevmappeOptions); // Returns false if elevmappe does not exist
     if (elevmappeRes.Successful) {
@@ -20,7 +20,7 @@ module.exports = async (birthnr, options) => {
         else {
             let activeCases = [];
             for (elevmappe of elevmappeRes.Cases) {
-                if (elevmappe.Status !== "Utgår") {
+                if (elevmappe.Status !== "Utgår") { // TODO: Hva er poenget med denne koden egentlig? Har vi et status som heter Utgår?
                     activeCases.push(elevmappe);
                 }
             }
