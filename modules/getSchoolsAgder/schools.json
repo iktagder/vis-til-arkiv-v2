@@ -1,39 +1,33 @@
 [
     {
-      "schoolId": "",
-      "organizationNumber": "",
       "organizationNumber360": "200263",
-      "name": "",
       "fullName": "Dahlske videregående skole",
-      "shortName": "",
-      "officialName": "Dahlske videregående skole",
-      "accessGroup": "Elev - LAO",
-      "phoneNumber": "",
-      "mail": "",
-      "address": "",
-      "geocoded": {
-        "lat": "59.02786",
-        "lon": "9.70322"
-      },
-      "yff": true
+      "accessGroup": "Elev - Dahlske videregående skole - LAO"
     },
     {
-      "schoolId": "",
-      "organizationNumber": "",
-      "organizationNumber360": "200263",
-      "name": "",
-      "fullName": "Dahlske videregående skole2",
-      "shortName": "",
-      "officialName": "Dahlske videregående skole2",
-      "accessGroup": "Elev - LAO",
-      "phoneNumber": "",
-      "mail": "",
-      "address": "",
-      "geocoded": {
-        "lat": "59.02786",
-        "lon": "9.70322"
-      },
-      "yff": true
+      "organizationNumber360": "200259",
+      "fullName": "Byremo videregående skole",
+      "accessGroup": "Elev - Byremo videregående skole - LAO"
+    },
+    {
+      "organizationNumber360": "200304",
+      "fullName": "Kvadraturen videregående skole",
+      "accessGroup": "Elev - Kvadraturen videregående skole - LAO"
+    },
+    {
+      "organizationNumber360": "200339",
+      "fullName": "Sam Eyde videregående skole",
+      "accessGroup": "Elev - Sam Eyde videregående skole - LAO"
+    },
+    {
+      "organizationNumber360": "200380",
+      "fullName": "Tvedestrand videregående skole",
+      "accessGroup": "Elev - Tvedestrand videregående skole - LAO"
+    },
+    {
+      "organizationNumber360": "0",
+      "fullName": "Dummy",
+      "accessGroup": "Elev - LAO"
     }
   ]
   
