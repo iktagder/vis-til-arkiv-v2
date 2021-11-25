@@ -200,77 +200,80 @@ module.exports = async (archiveMethod, options, test=false) => {
             }
         }
 
-        // convert file to base64 and add to metadata
-        const base64Pdf = getBase64(pdf);
-        //console.log(base64Pdf.substring(50,200));
-        documentData.pdfFileBase64 = base64Pdf;
-        documentData.studentName = visStudent.data.navn.fornavn + " " + visStudent.data.navn.etternavn
-        // Create 360 metadata object
-        let p360metadata;
-        try {
-            p360metadata = await createMetadata(documentData);
-            if (archiveMethod.sendToParents && sendToParentsBool) { // Add parents to metadata
-                if (!missingDsfParents && !blockedAddress) {
-                    for (parent of documentData.parents) {
-                        p360metadata.Contacts.push(
-                            {
-                                "ReferenceNumber": parent.birthnr,
-                                "Role": "Mottaker",
-                                "IsUnofficial": true
-                            }
-                        )
+        if (archiveMethod.createDocument){
+            // convert file to base64 and add to metadata
+            const base64Pdf = getBase64(pdf);
+            //console.log(base64Pdf.substring(50,200));
+            documentData.pdfFileBase64 = base64Pdf;
+            documentData.studentName = visStudent.data.navn.fornavn + " " + visStudent.data.navn.etternavn
+            // Create 360 metadata object
+            let p360metadata;
+            try {
+                p360metadata = await createMetadata(documentData);
+                if (archiveMethod.sendToParents && sendToParentsBool) { // Add parents to metadata
+                    if (!missingDsfParents && !blockedAddress) {
+                        for (parent of documentData.parents) {
+                            p360metadata.Contacts.push(
+                                {
+                                    "ReferenceNumber": parent.birthnr,
+                                    "Role": "Mottaker",
+                                    "IsUnofficial": true
+                                }
+                            )
+                        }
+                    }
+                    p360metadata.Status = "R"
+                }
+                if (archiveMethod.sendToStudent) {
+                    p360metadata.Status = "R"
+                    //p360metadata.ResponsibleEnterpriseNumber = "15340"; // FOR TESTING
+                }
+                if (blockedAddress) {
+                    p360metadata.Status = "J"
+                    p360metadata.Contacts[1].DispatchChannel = "recno:2"
+                }
+            } catch (error) {
+                writeLog("  Error when trying create metadata, file moved to "+archiveMethod.errorFolder+": "+error);
+                await twhError("Error when trying to create metadata for archiving", error, pdf);
+                moveToFolder(pdf, archiveMethod.errorFolder);
+                stats.error++
+                continue; // moves to next pdf in listOfPdfs
+            }
+
+            //archive document to p360
+            let archiveRes;
+            const archiveOptions = {
+                url: p360url,
+                authkey: p360authkey,
+                service: "DocumentService",
+                method: "CreateDocument"
+            }
+
+            try {
+                archiveRes = await p360(p360metadata, archiveOptions); // FEILIER IKKE NØDVENDIGVIS MED FEIL METADATA
+                if (archiveRes.Successful) {
+                    documentNumber = archiveRes.DocumentNumber;
+                    writeLog("  Document archived with documentNumber "+archiveRes.DocumentNumber);
+                    //writeLog(JSON.stringify(p360metadata)); // uncomment when you need to see metadata, spams the log with base64 (maybe just delete base64 if this becomes a problem)
+                    if (!archiveMethod.sendToStudent) {
+                        moveToFolder(pdf, archiveMethod.importedFolder);
+                        stats.imported++
                     }
                 }
-                p360metadata.Status = "R"
-            }
-            if (archiveMethod.sendToStudent) {
-                p360metadata.Status = "R"
-                //p360metadata.ResponsibleEnterpriseNumber = "15340"; // FOR TESTING
-            }
-            if (blockedAddress) {
-                p360metadata.Status = "J"
-                p360metadata.Contacts[1].DispatchChannel = "recno:2"
-            }
-        } catch (error) {
-            writeLog("  Error when trying create metadata, file moved to "+archiveMethod.errorFolder+": "+error);
-            await twhError("Error when trying to create metadata for archiving", error, pdf);
-            moveToFolder(pdf, archiveMethod.errorFolder);
-            stats.error++
-            continue; // moves to next pdf in listOfPdfs
-        }
-
-        //archive document to p360
-        let archiveRes;
-        const archiveOptions = {
-            url: p360url,
-            authkey: p360authkey,
-            service: "DocumentService",
-            method: "CreateDocument"
-        }
-
-        try {
-            archiveRes = await p360(p360metadata, archiveOptions); // FEILIER IKKE NØDVENDIGVIS MED FEIL METADATA
-            if (archiveRes.Successful) {
-                documentNumber = archiveRes.DocumentNumber;
-                writeLog("  Document archived with documentNumber "+archiveRes.DocumentNumber);
-                //writeLog(JSON.stringify(p360metadata)); // uncomment when you need to see metadata, spams the log with base64 (maybe just delete base64 if this becomes a problem)
-                if (!archiveMethod.sendToStudent) {
-                    moveToFolder(pdf, archiveMethod.importedFolder);
-                    stats.imported++
+                else {
+                    throw Error(archiveRes.ErrorMessage)
                 }
+            } catch (error) {
+                writeLog("  Error when trying to archive document to P360, file moved to "+archiveMethod.errorFolder+": "+error);
+                moveToFolder(pdf, archiveMethod.errorFolder); // MAYBE RETRY HERE?
+                stats.error++
+                await twhError("Error when trying to archive document to p360", error, pdf);
+                //await twhError("Error when trying to archive document to p360", error, pdf);
+                continue; // moves to next pdf in listOfPdfs
             }
-            else {
-                throw Error(archiveRes.ErrorMessage)
-            }
-        } catch (error) {
-            writeLog("  Error when trying to archive document to P360, file moved to "+archiveMethod.errorFolder+": "+error);
-            moveToFolder(pdf, archiveMethod.errorFolder); // MAYBE RETRY HERE?
-            stats.error++
-            await twhError("Error when trying to archive document to p360", error, pdf);
-            //await twhError("Error when trying to archive document to p360", error, pdf);
-            continue; // moves to next pdf in listOfPdfs
+        }else if (!archiveMethod.sendToStudent){
+            moveToFolder(pdf, archiveMethod.importedFolder);
         }
-
 
         // Send document to student with SvarUT
         if (archiveMethod.sendToStudent && !blockedAddress && !archiveMethod.manualSendToStudent) {

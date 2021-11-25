@@ -3,6 +3,7 @@ const writeLog = require("./modules/writeLog/writeLog");
 const twhError = require("./modules/teamsWebhook/twhError");
 
 const dispatchDocuments = require("./modules/dispatchDocuments/dispatchDocuments");
+const createPdfFromCsv = require("./modules/createPdfFromCsv/createPdfFromCsv");
 //const svarUTtest = require("./archiveMethods/example/svarUTtest");
 const fritakKarakterKroppsoving = require("./archiveMethods/soknader/fritakKarakterKroppsoving");
 const fritakOpplaringKroppsoving = require("./archiveMethods/soknader/fritakOpplaringKroppsoving");
@@ -13,7 +14,10 @@ const tilretteleggingEksamen = require("./archiveMethods/soknader/tilretteleggin
 const tilretteleggingPrivatistEksamen = require("./archiveMethods/soknader/tilretteleggingPrivatistEksamen");
 const VOgodkjenningTidligereFag = require("./archiveMethods/soknader/VOgodkjenningTidligereFag");
 const varselVO = require("./archiveMethods/varselVO");
-const karakterutskrift = require("./archiveMethods/soknader/karakterutskrift");
+const karakterutskrift = require("./archiveMethods/karakterutskrift");
+const opprettElevmapper = require("./archiveMethods/opprettElevmapper");
+const { ROOT_FOLDER } = require("./config");
+
 
 //run main program
 (async () => {
@@ -26,6 +30,21 @@ const karakterutskrift = require("./archiveMethods/soknader/karakterutskrift");
         writeLog("Error when dispatching documents: "+error)
         await twhError("Error when dispatching documents", error, options.DISPATCH_FOLDER)
     }*/
+
+    try { // CSV-fil med fodselsnummer i mappa, synkroniserer kontakt/elevmappe
+        const folder = ROOT_FOLDER + '/_ElevmappeSync'
+        await createPdfFromCsv(folder);
+    } catch (error) {
+        writeLog("Error when createPdfFromCsv: "+error)
+        await twhError("Error when createPdfFromCsv", error, folder)
+    }
+
+    try { // Synkroniserer kun kontakt og elevmappe. Arkiverer ikke dokument.
+        await opprettElevmapper(options, test=true);
+    } catch (error) {
+        writeLog("Error when running opprettElevmapper: "+error);
+        await twhError("Error when running opprettElevmapper", error, options.DISPATCH_FOLDER)
+    } 
 
     try {
         await karakterutskrift(options, test=true);

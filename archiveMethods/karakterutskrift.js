@@ -1,14 +1,17 @@
-const archiveVisDocument = require("../../modules/archiveVisDocument/archiveVisDocument");
+const { ROOT_FOLDER } = require("../config");
+const archiveVisDocument = require("../modules/archiveVisDocument/archiveVisDocument");
 
 const archiveMethod = { // Variables for this archive method - fill in all fields
     "name": "Karakterutskrift",
     "createdBy": "oleanders",
     "metadataSchema": "KARAKTERUTSKRIFT", // Remember to create a metadata schema for this archive method
-    "inputFolder": "C:/VIS-P360/Karakterutskrift",
-    "importedFolder": "C:/VIS-P360/Karakterutskrift/Imported",
-    "unregFolder": "C:/VIS-P360/Karakterutskrift/Error",
-    "errorFolder": "C:/VIS-P360/Karakterutskrift/Error",
+    "inputFolder": ROOT_FOLDER + "/Karakterutskrift",
+    "importedFolder": ROOT_FOLDER + "/Karakterutskrift/Imported",
+    "unregFolder": ROOT_FOLDER + "/Karakterutskrift/Error",
+    "errorFolder": ROOT_FOLDER + "/Karakterutskrift/Error",
+    "splitPdfPagesIntoSeperateFiles": true,
     "createElevmappe": true,
+    "createDocument": true,
     "sendToStudent": false,
     "manualSendToStudent": false,
     "sendToParents": false,

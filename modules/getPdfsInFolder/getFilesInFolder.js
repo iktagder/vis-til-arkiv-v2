@@ -1,10 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 
-module.exports = (dir) => {
+module.exports = (dir, extension) => {
     let listOfPdfs = [];
     fs.readdirSync(dir).forEach(file => {
-        if (path.extname(file).toLowerCase() === ".pdf") {
+        if (path.extname(file).toLowerCase() === "."+extension) {
             listOfPdfs.push(dir+"/"+file);
         }
     });

@@ -22,6 +22,6 @@ module.exports = async (accessToken, url) => {
     //if (isNetworkTimeout(error.message)) {
     //  return new HTTPError(500, networkTimeoutMessage(timeout)).toJSON()
     //} else return new HTTPError(404, error.message).toJSON()
-    return "error"
+    return "Error" + error
   }
 }

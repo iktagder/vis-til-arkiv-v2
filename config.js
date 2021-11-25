@@ -19,8 +19,9 @@ module.exports = {
         "UNKNOWN": "path",
         "DELETE": "C:/samplePdfs/VIS/delete"
     },
-    LOG_FILE: "C:/tempBackups/SamplePDF/test/testLog.txt",
-    STAT_FILE: "C:/tempBackups/SamplePDF/test/testStat.json",
+    ROOT_FOLDER: process.env.ROOT_FOLDER,
+    LOG_FILE: process.env.LOG_FILE,
+    STAT_FILE: process.env.STAT_FILE,
     P360_INTERNAL_NOTES: {
         "BLOCKED_ADDRESS": "C:/gitRepositories/vis-til-arkiv/data/internalNote/blockedAddress.pdf",
         "VARSEL_BLOCKED_ADDRESS": "C:/gitRepositories/vis-til-arkiv/data/internalNote/varselBlockedAddress.pdf"
@@ -35,5 +36,6 @@ module.exports = {
     TOKEN_PARAMS: {
         username: process.env.FINT_USERNAME,
         password: process.env.FINT_PASSWORD
-    }
+    },
+    FINT_DOMAIN: "https://api.felleskomponent.no"
 }

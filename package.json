@@ -23,14 +23,15 @@
   "dependencies": {
     "axios": "^0.24.0",
     "birthdate-from-id": "^2.0.2",
+    "client-oauth2": "4.3.3",
     "dotenv": "^10.0.0",
     "jsonwebtoken": "^8.5.1",
+    "node-cache": "5.1.2",
     "nodemailer": "^6.6.3",
     "pdfjs-dist": "^2.8.335",
+    "pdfmake": "^0.2.4",
     "vtfk-schools-info": "^3.0.2",
     "webpack": "^5.40.0",
-    "worker-loader": "^3.0.8",
-    "node-cache": "5.1.2",
-    "client-oauth2": "4.3.3"
+    "worker-loader": "^3.0.8"
   }
 }
