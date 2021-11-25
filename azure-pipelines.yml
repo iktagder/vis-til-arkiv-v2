@@ -28,6 +28,6 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
+    ArtifactName: 'test'
     publishLocation: 'FilePath'
     TargetPath: '\\localhost\pdf-til-elevmappe-app'
