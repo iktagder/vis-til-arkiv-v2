@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 module.exports = {
+    TEST_ENV: process.env.TEST_ENV === "true",
     P360_URL: process.env.P360_URL,
     P360_AUTHKEY: process.env.P360_AUTHKEY,
     P360TEST_URL: process.env.P360TEST_URL,
@@ -37,5 +38,5 @@ module.exports = {
         username: process.env.FINT_USERNAME,
         password: process.env.FINT_PASSWORD
     },
-    FINT_DOMAIN: "https://api.felleskomponent.no"
+    FINT_DOMAIN: process.env.FINT_DOMAIN
 }
