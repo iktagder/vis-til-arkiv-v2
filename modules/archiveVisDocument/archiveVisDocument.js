@@ -161,6 +161,7 @@ module.exports = async (archiveMethod, options, test=false) => {
             }
             else {
                 documentData.elevmappeCaseNumber = studentFolderRes.CaseNumber; // Found elevmappe for student
+                documentData.elevmappeAccessGroup = studentFolderRes.AccessGroup
                 writeLog("  Found elevmappe with case number: "+studentFolderRes.CaseNumber);
             }
         } catch (error) {
@@ -250,6 +251,10 @@ module.exports = async (archiveMethod, options, test=false) => {
             }
 
             try {
+                // Alle dokumenter til elever med hemmelig adresse arver tilgangsgruppe fra elevmappen
+                if (documentData.elevmappeAccessGroup ?? documentData.elevmappeAccessGroup.startsWith("SPERRET")){
+                    p360metadata.AccessGroup = documentData.elevmappeAccessGroup
+                }
                 archiveRes = await p360(p360metadata, archiveOptions); // FEILIER IKKE NØDVENDIGVIS MED FEIL METADATA
                 if (archiveRes.Successful) {
                     documentNumber = archiveRes.DocumentNumber;

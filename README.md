@@ -15,6 +15,8 @@ node script for reading pdfs, extracting student data, and archiving in p360 ele
 
 For hvert dokument det oppstår feil med å arkivere, sendes det en melding til en Teams-kanal.
 
+Elever med hemmelig adresse løses på følgende måte: Hvis tilgangsgruppe på sak starter med teksten "SPERRET", så arver dokument tilgangsgruppe på saken.
+
 ## Dispatch
 Mulig å samle alle dokumentene i en innboks, slik at det er en dispatch-jobb som videreformidler filene til riktig mal-mappe.
 
