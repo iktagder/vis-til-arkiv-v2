@@ -64,7 +64,7 @@ module.exports = async (student, options) => {
             {
                 "Role": "Sakspart",
                 "ReferenceNumber": student.birthnr,
-                "IsUnofficial": true
+                "IsUnofficial": false
             }
         ]
     }
