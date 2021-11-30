@@ -252,7 +252,7 @@ module.exports = async (archiveMethod, options, test=false) => {
 
             try {
                 // Alle dokumenter til elever med hemmelig adresse arver tilgangsgruppe fra elevmappen
-                if (documentData.elevmappeAccessGroup ?? documentData.elevmappeAccessGroup.startsWith("SPERRET")){
+                if (documentData.elevmappeAccessGroup && documentData.elevmappeAccessGroup.startsWith("SPERRET")){
                     p360metadata.AccessGroup = documentData.elevmappeAccessGroup
                 }
                 archiveRes = await p360(p360metadata, archiveOptions); // FEILIER IKKE NØDVENDIGVIS MED FEIL METADATA
