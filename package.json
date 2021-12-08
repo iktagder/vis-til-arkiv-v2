@@ -4,6 +4,7 @@
   "description": "archiving pdfs created in VIS",
   "main": "index.js",
   "scripts": {
+    "start": "node ./index.js",
     "test": "-test"
   },
   "repository": {

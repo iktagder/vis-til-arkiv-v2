@@ -11,7 +11,6 @@ const archiveMethod = { // Variables for this archive method - fill in all field
     "errorFolder": ROOT_FOLDER + "/OpprettElevmapper/Error",
     "createElevmappe": true,
     "createDocument": false,
-    "splitPdfPagesIntoSeperateFiles": false,
     "sendToStudent": false,
     "manualSendToStudent": false,
     "sendToParents": false,

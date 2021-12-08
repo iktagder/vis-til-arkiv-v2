@@ -9,7 +9,6 @@ const archiveMethod = { // Variables for this archive method - fill in all field
     "importedFolder": ROOT_FOLDER + "/Karakterutskrift/Imported",
     "unregFolder": ROOT_FOLDER + "/Karakterutskrift/Error",
     "errorFolder": ROOT_FOLDER + "/Karakterutskrift/Error",
-    "splitPdfPagesIntoSeperateFiles": true,
     "createElevmappe": true,
     "createDocument": true,
     "sendToStudent": false,

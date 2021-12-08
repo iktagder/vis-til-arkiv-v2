@@ -29,7 +29,6 @@ Mulig å samle alle dokumentene i en innboks, slik at det er en dispatch-jobb so
 Maler kan konfigureres med følgende:   
 * "createElevmappe": true, - *Opprette elevmappe om den ikke eksisterer?*
 * "createDocument": true, - *Arkivere dokument til P360?*
-* "splitPdfPagesIntoSeperateFiles": true, - *Deler pdf med flere sider, inn i en fil per side*
 * "sendToStudent": false, (NB! ikke satt opp for Agder)
 * "manualSendToStudent": false, (NB! ikke satt opp for Agder)
 * "sendToParents": false, (NB! ikke satt opp for Agder)

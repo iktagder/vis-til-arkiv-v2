@@ -12,7 +12,6 @@ const writeLog = require("../../modules/writeLog/writeLog");
 const writeStat = require("../../modules/writeLog/writeStat");
 const twhError = require("../../modules/teamsWebhook/twhError");
 const twhInfo = require("../../modules/teamsWebhook/twhInfo"); // FOR MANUALLY DISPATCHING
-const dsfGetElev = require("../../modules/dsf/dsfGetElev");
 const getEmailFromFile = require("../../modules/getEmailFromFile/getEmailFromFile");
 const getElevinfo = require("../fint/getElevinfo");
 
@@ -162,6 +161,7 @@ module.exports = async (archiveMethod, options, test=false) => {
             else {
                 documentData.elevmappeCaseNumber = studentFolderRes.CaseNumber; // Found elevmappe for student
                 documentData.elevmappeAccessGroup = studentFolderRes.AccessGroup
+                documentData.elevmappeStatus = studentFolderRes.Status
                 writeLog("  Found elevmappe with case number: "+studentFolderRes.CaseNumber);
             }
         } catch (error) {
@@ -202,6 +202,12 @@ module.exports = async (archiveMethod, options, test=false) => {
         }
 
         if (archiveMethod.createDocument){
+            if (documentData.elevmappeStatus === 'Avsluttet') {
+                writeLog("  Kan ikke arkivere dokument til avsluttet elevmappe: " + documentData.elevmappeCaseNumber);
+                moveToFolder(pdf, archiveMethod.errorFolder);
+                await twhError("Kan ikke arkivere dokument til avsluttet elevmappe", "Elevmappe: " + documentData.elevmappeCaseNumber, pdf);
+                continue;
+            }
             // convert file to base64 and add to metadata
             const base64Pdf = getBase64(pdf);
             //console.log(base64Pdf.substring(50,200));
