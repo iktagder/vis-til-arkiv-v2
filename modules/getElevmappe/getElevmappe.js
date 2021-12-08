@@ -20,7 +20,7 @@ module.exports = async (birthnr, options) => {
         else {
             let activeCases = [];
             for (elevmappe of elevmappeRes.Cases) {
-                if (elevmappe.Status !== "Utgår") { // TODO: Hva er poenget med denne koden egentlig? Har vi et status som heter Utgår?
+                if (elevmappe.Status !== "Utgår") {
                     activeCases.push(elevmappe);
                 }
             }

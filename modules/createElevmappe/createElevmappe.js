@@ -1,3 +1,4 @@
+const { P360_CASE_ACCESS_GROUP } = require("../../config");
 const p360 = require("../nodep360/p360");
 
 module.exports = async (student, options) => {
@@ -16,16 +17,6 @@ module.exports = async (student, options) => {
     if (!options.authkey) {
         throw Error("Missing required parameter: options.authkey");
     }
-
-    // :(
-    let vtfkRobotRecno
-    if (options.url.includes("test")) {
-        vtfkRobotRecno = 200148 // test
-    }
-    else {
-        vtfkRobotRecno = 200148 // prod
-    }
-
 
     const createElevmappeOptions = {
         url: options.url,
@@ -57,9 +48,9 @@ module.exports = async (student, options) => {
         "FiledOnPaper":false,
         "AccessCode":"UO",
         "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-        "AccessGroup": "Elev - LAO", // TODO: Må denne enres i prod?
-        "ResponsibleEnterpriseRecno": 506,
-        "ResponsiblePersonRecno": vtfkRobotRecno,
+        "AccessGroup": P360_CASE_ACCESS_GROUP,
+        "ResponsibleEnterpriseRecno": 506, // Agder fylkeskommune
+        "ResponsiblePersonRecno": 200148, // RIM RIM - lik recno i test og prod
         "Contacts":[
             {
                 "Role": "Sakspart",

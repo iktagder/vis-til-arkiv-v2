@@ -16,17 +16,10 @@ const getEmailFromFile = require("../../modules/getEmailFromFile/getEmailFromFil
 const getElevinfo = require("../fint/getElevinfo");
 
 module.exports = async (archiveMethod, options, test=false) => {
-    let p360url;
-    let p360authkey;
-    if (test) {
-        p360url = options.P360TEST_URL;
-        p360authkey = options.P360TEST_AUTHKEY;
-    }
-    else {
-        p360url = options.P360_URL;
-        p360authkey = options.P360_AUTHKEY;
-    }
-
+    
+    let p360url = options.P360_URL;
+    let p360authkey = options.P360_AUTHKEY;
+    
     const stats = {
         imported: 0,
         addressBlock: 0,
