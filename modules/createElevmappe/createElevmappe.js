@@ -20,10 +20,10 @@ module.exports = async (student, options) => {
     // :(
     let vtfkRobotRecno
     if (options.url.includes("test")) {
-        vtfkRobotRecno = 200148
+        vtfkRobotRecno = 200148 // test
     }
     else {
-        vtfkRobotRecno = 200326 // TODO: Denne må settes for PROD!!!
+        vtfkRobotRecno = 200148 // prod
     }
 
 
