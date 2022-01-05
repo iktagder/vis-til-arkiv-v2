@@ -1,5 +1,5 @@
 const { ROOT_FOLDER } = require("../config");
-const archiveVisDocument = require("../modules/archiveVisDocument/archiveVisDocument");
+const archiveOpprettElevmapper = require("../modules/archiveVisDocument/archiveOpprettElevmapper");
 
 const archiveMethod = { // Variables for this archive method - fill in all fields
     "name": "OpprettElevmapper",
@@ -20,5 +20,5 @@ const archiveMethod = { // Variables for this archive method - fill in all field
 
 // archiving method
 module.exports = async (options, test=false) => {
-    await archiveVisDocument(archiveMethod, options, test);
+    await archiveOpprettElevmapper(archiveMethod, options);
 }

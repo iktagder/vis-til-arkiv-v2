@@ -31,6 +31,7 @@ const { ROOT_FOLDER, TEST_ENV } = require("./config");
         await twhError("Error when dispatching documents", error, options.DISPATCH_FOLDER)
     }*/
 
+    /*
     try { // CSV-fil med fodselsnummer i mappa, synkroniserer kontakt/elevmappe
         const folder = ROOT_FOLDER + '/_ElevmappeSync'
         await createPdfFromCsv(folder);
@@ -38,8 +39,9 @@ const { ROOT_FOLDER, TEST_ENV } = require("./config");
         writeLog("Error when createPdfFromCsv: "+error)
         await twhError("Error when createPdfFromCsv", error, folder)
     }
+    */
 
-    try { // Synkroniserer kun kontakt og elevmappe. Arkiverer ikke dokument.
+    try { // Synkroniserer kun kontakt og elevmappe. Arkiverer ikke dokument. Leser fnr, navn, adresse fra CSV-fil.
         await opprettElevmapper(options, TEST_ENV);
     } catch (error) {
         writeLog("Error when running opprettElevmapper: "+error);
