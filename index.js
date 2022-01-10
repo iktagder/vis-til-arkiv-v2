@@ -5,6 +5,7 @@ const twhError = require("./modules/teamsWebhook/twhError");
 const karakterutskrift = require("./archiveMethods/karakterutskrift");
 const opprettElevmapper = require("./archiveMethods/opprettElevmapper");
 const { TEST_ENV } = require("./config");
+const vigoDocuments = require("./archiveMethods/vigoDocuments");
 
 
 //run main program
@@ -12,7 +13,13 @@ const { TEST_ENV } = require("./config");
     // Dispatch documents
     writeLog(" - - - STARTING SCRIPT - - - ");
 
-    try { // Synkroniserer kun kontakt og elevmappe. Arkiverer ikke dokument. Leser fnr, navn, adresse fra CSV-fil.
+    try {
+        await vigoDocuments(options, TEST_ENV);
+    } catch (error) {
+        writeLog("Error when running vigoDocuments: "+error);
+        await twhError("Error when running vigoDocuments", error, options.DISPATCH_FOLDER)
+    }
+    /*try { // Synkroniserer kun kontakt og elevmappe. Arkiverer ikke dokument. Leser fnr, navn, adresse fra CSV-fil.
         await opprettElevmapper(options, TEST_ENV);
     } catch (error) {
         writeLog("Error when running opprettElevmapper: "+error);
@@ -24,5 +31,5 @@ const { TEST_ENV } = require("./config");
     } catch (error) {
         writeLog("Error when running karakterutskrift: "+error);
         await twhError("Error when running karakterutskrift", error, options.DISPATCH_FOLDER)
-    }
+    }*/
 })();
