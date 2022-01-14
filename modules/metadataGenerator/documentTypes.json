@@ -1,5 +1,45 @@
 {
-
+    "OPPNEMND": {
+        "name": "Oppnemnd",
+        "owner": "",
+        "author": "",
+        "p360metadata": {
+            "Title": "Elektronisk prøveoppmelding sendt til prøvenemnd",
+            "UnofficialTitle": "Elektronisk prøveoppmelding sendt til prøvenemnd",
+            "DocumentDate": "<<<documentDate>>>",
+            "Archive": "Saksdokument",
+            "Category": "Dokument ut",
+            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+            "Status": "J",
+            "CaseNumber": "<<<elevmappeCaseNumber>>>",
+            "AccessGroup": "<<<schoolAccessGroup>>>",
+            "AccessCode": "UO",
+            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "Contacts": [
+                {
+                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+                    "Role": "Avsender",
+                    "IsUnofficial": false
+                },
+                {
+                    "ReferenceNumber": "<<<studentBirthnr>>>",
+                    "Role": "Mottaker",
+                    "IsUnofficial": true
+                }
+            ],
+            "Files": [
+                {
+                    "Base64Data": "<<<pdfFileBase64>>>",
+                    "Category": "1",
+                    "Format": "pdf",
+                    "Status": "F",
+                    "Title": "Elektronisk proveoppmelding sendt til provenemnd",
+                    "VersionFormat": "A"
+                }
+            ]
+        }
+    },
     "KARAKTERUTSKRIFT": {
         "name": "Karakterutskrift",
         "owner": "oleanders",
