@@ -1,15 +1,16 @@
 const writeLog = require("../modules/writeLog/writeLog");
 const soap = require('strong-soap').soap;
+const archiveVigoDocument = require("../modules/archiveVigoDocument/archiveVigoDocument");
 
 module.exports = async (options, test = false) => {
 
     // wsdl of the web service this client is going to invoke. For local wsdl you can use, url = './wsdls/stockquote.wsdl'
     const url = options.VIGO_URL;
-
+    
     var requestArgs = {
         HentDataForArkiveringRequestElm: {
-            AntallElevDokument: 1,
-            Fylke: 42
+            AntallElevDokument: 20,
+            Fylke: options.VIGO_FYLKESKODE
         }
     };
 
@@ -22,9 +23,7 @@ module.exports = async (options, test = false) => {
         var method = client['HentDataForArkivering'];
         method(requestArgs, function (err, result, envelope, soapHeader) {
             if (err) { throw Error(err) }
-            
-            console.log('Response Envelope: \n' + envelope);
-            console.log('Result: \n' + JSON.stringify(result));
+            archiveVigoDocument(result.HentDataForArkiveringResponseElm.Elevelement, options)
         });
     });
 }
