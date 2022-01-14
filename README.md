@@ -1,7 +1,7 @@
 # pdf-til-elevmappe
 node script for reading pdfs, extracting student data, and archiving in p360 elevmappa
 
-Start script med `npm start -- -?` for å velge operasjon.
+Start script med `npm start -- -?` eller `node index.js -?`  for å velge operasjon.
 
 * `-v` kjører skript for å hente dokumenter fra vigo-køen
 * `-o` kjører skript for å opprette kontakt og mappe i P360 gitt csv-fil med fødselsnummer
