@@ -39,6 +39,7 @@ module.exports = {
     },
     FINT_DOMAIN: process.env.FINT_DOMAIN,
     VIGO_URL: process.env.VIGO_URL,
+    VIDO_FYLKESKODE: process.env.VIGO_FYLKESKODE,
     VIGO_AUTH: {
         uname: process.env.VIGO_WSSECURITY_UNAME,
         pwd: process.env.VIGO_WSSECURITY_PWD
