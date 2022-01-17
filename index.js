@@ -17,7 +17,7 @@ const vigoDocuments = require("./archiveMethods/vigoDocuments");
         return;
     }
 
-    if (argumenter.includes('-v')) {
+    if (argumenter.includes('-v') || argumenter.includes('--vigo')) {
         console.log("Kjører arkivering av dokumenter fra vigo-kø");
         try {
             await vigoDocuments(options, TEST_ENV);
@@ -26,7 +26,7 @@ const vigoDocuments = require("./archiveMethods/vigoDocuments");
             await twhError("Error when running vigoDocuments", error, options.DISPATCH_FOLDER)
         }
     }
-    if (argumenter.includes('-k')) {
+    if (argumenter.includes('-k' || argumenter.includes('--karakterutskrift'))) {
         writeLog("Kjører karakterutskrift");
         try {
             await karakterutskrift(options, TEST_ENV);
@@ -35,7 +35,7 @@ const vigoDocuments = require("./archiveMethods/vigoDocuments");
             await twhError("Error when running karakterutskrift", error, options.DISPATCH_FOLDER)
         }
     }
-    if (argumenter.includes('-o')) {
+    if (argumenter.includes('-o') || argumenter.includes('--opprettElevmapper')) {
         console.log("Oppretter kontakt og elevmappe");
         try { // Synkroniserer kun kontakt og elevmappe. Arkiverer ikke dokument. Leser fnr, navn, adresse fra CSV-fil.
             await opprettElevmapper(options, TEST_ENV);
