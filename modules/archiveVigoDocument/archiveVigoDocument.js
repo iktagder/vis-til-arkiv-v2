@@ -120,7 +120,7 @@ module.exports = async (vigoData, options) => {
             }
         }
 
-        if (vigoMelding.Dokumentelement.Dokumenttype !== "SOKER_N") {
+        if (vigoMelding.Dokumentelement.Dokumenttype !== "SOKERE_N") {
             if (documentData.elevmappeStatus === 'Avsluttet') {
                 const feilmelding = `  Kan ikke arkivere dokument til avsluttet elevmappe: ${documentData.elevmappeCaseNumber}`;
                 const feil = `Elevmappe: ${documentData.elevmappeCaseNumber}`;
@@ -179,7 +179,6 @@ module.exports = async (vigoData, options) => {
                 registrerFeilVedArkivering(statusData, arkiveringsresultat, feilmelding, error, stats)
                 continue; // gå til neste melding fra vigokøen
             }
-            
         }
     };
     return arkiveringsresultat;
