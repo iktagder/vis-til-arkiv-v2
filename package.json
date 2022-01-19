@@ -36,5 +36,8 @@
     "vtfk-schools-info": "^3.0.2",
     "webpack": "^5.40.0",
     "worker-loader": "^3.0.8"
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0"
   }
 }
