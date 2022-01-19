@@ -25,19 +25,20 @@ module.exports = async (vigoData, options) => {
         let createElevmappeBool = false; // For control of creating elevmappe
         let blockedAddress = false; // For control of students blocked address
 
-        writeLog("--- Ny melding: " + vigoMelding.Dokumentelement.DokumentId + " " + vigoMelding.Dokumentelement.Dokumenttype + " ---");
         const statusData = {
             vigoMelding: vigoMelding,
             arkiveringUtfort: false,
-            feilmelding: ""
+            melding: ""
         }
+
+        writeLog("--- Ny melding: " + vigoMelding.Dokumentelement.DokumentId + " " + vigoMelding.Dokumentelement.Dokumenttype + " ---");
 
         const documentData = {
             studentBirthnr: vigoMelding.Fodselsnummer,
             documentType: vigoMelding.Dokumentelement.Dokumenttype,
             documentDate: formaterDokumentDato(vigoMelding.Dokumentelement.Dokumentdato),
             schoolAccessGroup: options.P360_CASE_ACCESS_GROUP,
-            schoolOrgNr: "506"
+            schoolOrgNr: "506" // Agder
         };
 
         // TODO: Dersom adresse ikke er med i vigo-dokument, finn i vis
@@ -46,7 +47,8 @@ module.exports = async (vigoData, options) => {
             visStudent = await getElevinfo(documentData.studentBirthnr);
             writeLog("  Fant elev i VIS: " + visStudent.data.navn.fornavn + " " + visStudent.data.navn.etternavn);
         } catch (error) {
-            registrerFeilVedArkivering(statusData, `   Error when trying to get student from VIS/FINT for documentid ${vigoMelding.Dokumentelement.DokumentId}`, error, stats);
+            const feilmelding = `   Error when trying to get student from VIS/FINT for documentid ${vigoMelding.Dokumentelement.DokumentId}`;
+            registrerFeilVedArkivering(statusData, arkiveringsresultat, feilmelding, error, stats);
             continue;
         }*/
 
@@ -68,12 +70,13 @@ module.exports = async (vigoData, options) => {
             privatePersonRecno = await syncPrivatePerson(studentData, syncPrivatePersonOptions);
             // TODO: Bruker vi blokkerte adresser i P360?
             if (privatePersonRecno == "hemmelig") { // Check if address is blocked in 360
-                blockedAddress = true
-                documentData.parents = []
+                blockedAddress = true;
+                documentData.parents = [];
             }
-            writeLog("  Updated or created privatePerson in 360 with fnr: " + documentData.studentBirthnr)
+            writeLog(`  Updated or created privatePerson in 360 with fnr: ${documentData.studentBirthnr}`);
         } catch (error) {
-            registrerFeilVedArkivering(statusData, `   Error when trying create or update private person for student for documentid ${vigoMelding.Dokumentelement.DokumentId}`, error, stats);
+            const feilmelding = `   Error when trying create or update private person for student for documentid ${vigoMelding.Dokumentelement.DokumentId}`;
+            registrerFeilVedArkivering(statusData, arkiveringsresultat, feilmelding, error, stats);
             continue; // gå til neste melding fra vigokøen
         }
 
@@ -96,7 +99,8 @@ module.exports = async (vigoData, options) => {
             }
         } catch (error) {
             // maybe implement retry function or something here
-            registrerFeilVedArkivering(statusData, `   Error when trying to find elevmappe for documentid ${vigoMelding.Dokumentelement.DokumentId}`, error, stats);
+            const feilmelding = `   Error when trying to find elevmappe for documentid ${vigoMelding.Dokumentelement.DokumentId}`;
+            registrerFeilVedArkivering(statusData, arkiveringsresultat, feilmelding, error, stats);
             continue; // gå til neste melding fra vigokøen
         }
 
@@ -107,24 +111,20 @@ module.exports = async (vigoData, options) => {
                 url: p360url,
                 authkey: p360authkey
             }
-
-            let elevmappe;
             try {
-                elevmappe = await createElevmappe(studentData, createElevmappeOptions);
-                documentData.elevmappeCaseNumber = elevmappe;
+                documentData.elevmappeCaseNumber = await createElevmappe(studentData, createElevmappeOptions);
             } catch (error) {
-                registrerFeilVedArkivering(statusData, ` Error when trying create elevmappe for documentid ${vigoMelding.Dokumentelement.DokumentId}`, error, stats);
+                const feilmelding = ` Error when trying create elevmappe for documentid ${vigoMelding.Dokumentelement.DokumentId}`;
+                registrerFeilVedArkivering(statusData, arkiveringsresultat, feilmelding, error, stats);
                 continue; // gå til neste melding fra vigokøen
             }
         }
 
         if (vigoMelding.Dokumentelement.Dokumenttype !== "SOKER_N") {
             if (documentData.elevmappeStatus === 'Avsluttet') {
-                registrerFeilVedArkivering(statusData,
-                    `  Kan ikke arkivere dokument til avsluttet elevmappe: ${documentData.elevmappeCaseNumber}`,
-                    `Elevmappe: ${documentData.elevmappeCaseNumber}`,
-                    stats
-                );
+                const feilmelding = `  Kan ikke arkivere dokument til avsluttet elevmappe: ${documentData.elevmappeCaseNumber}`;
+                const feil = `Elevmappe: ${documentData.elevmappeCaseNumber}`;
+                registrerFeilVedArkivering(statusData, arkiveringsresultat, feilmelding, feil, stats);
                 continue; // gå til neste melding fra vigokøen
             }
 
@@ -140,7 +140,8 @@ module.exports = async (vigoData, options) => {
                     p360metadata.Contacts[1].DispatchChannel = "recno:2"
                 }
             } catch (error) {
-                registrerFeilVedArkivering(statusData, `Error when trying create metadata for documentid ${vigoMelding.Dokumentelement.DokumentId}`, error, stats);
+                const feilmelding = `Error when trying create metadata for documentid ${vigoMelding.Dokumentelement.DokumentId}`;
+                registrerFeilVedArkivering(statusData, arkiveringsresultat, feilmelding, error, stats);
                 continue; // gå til neste melding fra vigokøen
             }
 
@@ -158,21 +159,27 @@ module.exports = async (vigoData, options) => {
                 if (documentData.elevmappeAccessGroup && documentData.elevmappeAccessGroup.startsWith("SPERRET")) {
                     p360metadata.AccessGroup = documentData.elevmappeAccessGroup
                 }
+
                 archiveRes = await p360(p360metadata, archiveOptions); // FEILIER IKKE NØDVENDIGVIS MED FEIL METADATA
+                
                 if (archiveRes.Successful) {
-                    documentNumber = archiveRes.DocumentNumber;
                     writeLog(`  Document archived with documentNumber ${archiveRes.DocumentNumber}`);
                     statusData.arkiveringUtfort = true;
-                    stats.imported++
+                    statusData.melding = `ARKIV-${archiveRes.DocumentNumber}`; // referanse til P360 arkiv slik at det kan verifiseres manuelt om nødvendig
+                    stats.imported++;
+                    arkiveringsresultat.push(statusData);
                 }
                 else {
+                    const feilmelding = `   Error returned from archive for dockumentid ${vigomelding.Dokumentelement.DokumentId}`;
+                    registrerFeilVedArkivering(statusData, arkiveringsresultat, feilmelding, archiveRes.ErrorMessage, stats);
                     throw Error(archiveRes.ErrorMessage) // TODO, ikke kast feil, men håndter det slik at vi kan melde fra til teams/vigo
                 }
             } catch (error) {
-                registrerFeilVedArkivering(statusData, `  Error when trying to archive Vigo documentid ${vigoMelding.Dokumentelement.DokumentId}  to P360`, error, stats)
+                const feilmelding = `  Error when trying to archive Vigo documentid ${vigoMelding.Dokumentelement.DokumentId}  to P360`;
+                registrerFeilVedArkivering(statusData, arkiveringsresultat, feilmelding, error, stats)
                 continue; // gå til neste melding fra vigokøen
             }
-            arkiveringsresultat.push(statusData);
+            
         }
     };
     return arkiveringsresultat;
@@ -184,10 +191,12 @@ function formaterDokumentDato(datostreng) {
     return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
 }
 
-function registrerFeilVedArkivering(statusData, feilBeskrivelse, error, stats) {
-    writeLog(`${feilBeskrivelse} ${error}`);
+async function registrerFeilVedArkivering(statusData, arkiveringsresultat, feilBeskrivelse, error, stats) {
     stats.error++;
-    statusData.feilmelding = error;
-    await twhError(feilBeskrivelse, error);
+    statusData.melding = error;
+
     arkiveringsresultat.push(statusData);
+
+    writeLog(`${feilBeskrivelse} ${error}`);
+    await twhError(feilBeskrivelse, error); // TODO: sjekke resultat? Hvis ikke trenger vi ikke await
 }

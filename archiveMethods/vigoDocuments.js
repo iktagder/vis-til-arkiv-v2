@@ -22,7 +22,7 @@ module.exports = async (options, test = false) => {
         client.setSecurity(wsSecurity);
 
         const hentData = client['HentDataForArkivering'];
-        const oppdaterStatus = client['LagreStatusArkiverteData '];
+        const oppdaterStatus = client['LagreStatusArkiverteData'];
 
         hentData(hentDataArgumenter, function (err, result, envelope, soapHeader) {
             if (err) { throw Error(err) }
@@ -30,7 +30,7 @@ module.exports = async (options, test = false) => {
                 .then((arkiveringsresultat) => {
                     oppdaterVigoArkiveringsstatus(arkiveringsresultat, oppdaterStatus);
                 }
-                ).catch((error)
+                ).catch((error) => console.error(error)
                     // TODO full kræsj, hva gjør vi da?
                 )
         });
@@ -41,17 +41,15 @@ module.exports = async (options, test = false) => {
 function oppdaterVigoArkiveringsstatus(arkiveringsresultat, oppdaterStatus) {
     for (melding of arkiveringsresultat) {
         const oppdaterStatusArgumenter = {
-            LagreStatusArkiverteDataRequestElm: {
-                Fagsystemnavn: melding.vigoMelding.Fagsystemnavn,
-                DokumentId: melding.vigoMelding.DokumentId,
-                Fodselsnummer: melding.vigoMelding.Fodselsnummer,
-                ArkiveringUtfort: melding.arkiveringUtfort
-            }
+            Fagsystemnavn: melding.melding, // Lagrer arkiv-referanse ved vellykket arkivering
+            DokumentId: melding.vigoMelding.Dokumentelement.DokumentId,
+            Fodselsnummer: melding.vigoMelding.Fodselsnummer,
+            ArkiveringUtfort: melding.arkiveringUtfort
         }
-        // oppdater vigo ws med «ARKIVERT»
         oppdaterStatus(oppdaterStatusArgumenter, (err, result, envelop, soapHeader) => {
             // TODO: valider oppdatert status og informer teams-kanal med dokument-id dersom noe går galt
             if (err) { throw Error(err) }
+            console.log(result);
         })
     }
 }
