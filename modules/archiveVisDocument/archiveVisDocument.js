@@ -19,7 +19,7 @@ module.exports = async (archiveMethod, options, test=false) => {
     
     let p360url = options.P360_URL;
     let p360authkey = options.P360_AUTHKEY;
-    
+
     const stats = {
         imported: 0,
         addressBlock: 0,
@@ -31,7 +31,7 @@ module.exports = async (archiveMethod, options, test=false) => {
 
     const listOfPdfs = getPdfsInFolder(archiveMethod.inputFolder)
 
-    for (pdf of listOfPdfs) {
+    for (const pdf of listOfPdfs) {
         let createElevmappeBool = false; // For control of creating elevmappe
         let sendToParentsBool = false;  // For control of student under 18 years
         let blockedAddress = false; // For control of students blocked address
@@ -45,7 +45,7 @@ module.exports = async (archiveMethod, options, test=false) => {
         } catch (error) {
             writeLog("  Error when trying to read pdf, file moved to "+archiveMethod.errorFolder+": "+error);
             moveToFolder(pdf, archiveMethod.errorFolder);
-            stats.error++
+            stats.error++;
             await twhError("Error when trying to read pdf", error, pdf);
             continue; // moves to next pdf in listOfPdfs
         }
@@ -58,7 +58,7 @@ module.exports = async (archiveMethod, options, test=false) => {
             await twhError("Error when trying to find data in pdf", error, pdf);
             writeLog("Error when trying to find data in pdf, file moved to "+archiveMethod.errorFolder+": "+error);
             moveToFolder(pdf, archiveMethod.errorFolder);
-            stats.error++
+            stats.error++;
             await twhError("Error when trying to find data in pdf", error, pdf);
             continue; // moves to next pdf in listOfPdfs
         }
@@ -71,7 +71,7 @@ module.exports = async (archiveMethod, options, test=false) => {
         } catch (error) {
             writeLog("  Error when trying to get student from VIS/FINT, filed moved to "+archiveMethod.errorFolder+": "+error);
             moveToFolder(pdf, archiveMethod.errorFolder);
-            stats.error++
+            stats.error++;
             await twhError("Error when trying to get student from VIS/FINT", error, pdf);
             continue;
         }
@@ -104,7 +104,7 @@ module.exports = async (archiveMethod, options, test=false) => {
         } catch (error) {
             writeLog("  Error when trying create or update private person for student, file moved to "+archiveMethod.errorFolder+": "+error);
             moveToFolder(pdf, archiveMethod.errorFolder);
-            stats.error++
+            stats.error++;
             await twhError("Error when trying create or update privatePerson for student i p360", error, pdf);
             continue; // moves to next pdf in listOfPdfs
         }
@@ -113,7 +113,7 @@ module.exports = async (archiveMethod, options, test=false) => {
         if (archiveMethod.sendToParents && sendToParentsBool && !blockedAddress && !missingDsfParents) {
             // for parent in parents: Create or update privateperson for parent :)
             try {
-                for (parent of documentData.parents) {
+                for (const parent of documentData.parents) {
                     let parentData = {}
                     let pNameList = parent.personName.split(" ");
                     parentData.lastName = pNameList.pop();
@@ -122,13 +122,13 @@ module.exports = async (archiveMethod, options, test=false) => {
                     parentData.zipCode = parent.zipCode;
                     parentData.zipPlace = parent.zipPlace;
                     parentData.birthnr = parent.birthnr;
-                    let parentRecno = await syncPrivatePerson(parentData, syncPrivatePersonOptions);
+                    /*let parentRecno = */await syncPrivatePerson(parentData, syncPrivatePersonOptions);
                     writeLog("  Updated or created privatePerson in 360 for parent with fnr: "+parent.birthnr)
                 }
             } catch (error) {
                 writeLog("  Error when trying create or update private person for parents, file moved to "+archiveMethod.errorFolder+": "+error);
                 moveToFolder(pdf, archiveMethod.errorFolder);
-                stats.error++
+                stats.error++;
                 await twhError("Error when trying create or update private person for parents in p360", error, pdf);
                 continue; // moves to next pdf in listOfPdfs
             }
@@ -161,7 +161,7 @@ module.exports = async (archiveMethod, options, test=false) => {
             // maybe implement retry function or something here
             writeLog("  Error when trying to find elevmappe, file moved to "+archiveMethod.errorFolder+": "+error);
             moveToFolder(pdf, archiveMethod.errorFolder);
-            stats.error++
+            stats.error++;
             await twhError("Error when trying to find elevmappe in p360", error, pdf);
             continue; // moves to next pdf in listOfPdfs
         }
@@ -188,7 +188,7 @@ module.exports = async (archiveMethod, options, test=false) => {
             } catch (error) {
                 writeLog("  Error when trying create elevmappe, file moved to "+archiveMethod.errorFolder+": "+error);
                 moveToFolder(pdf, archiveMethod.errorFolder); // MAYBE RETRY HERE
-                stats.error++
+                stats.error++;
                 await twhError("Error when trying to create elevmappe in p360", error, pdf);
                 continue; // moves to next pdf in listOfPdfs
             }
@@ -212,7 +212,7 @@ module.exports = async (archiveMethod, options, test=false) => {
                 p360metadata = await createMetadata(documentData);
                 if (archiveMethod.sendToParents && sendToParentsBool) { // Add parents to metadata
                     if (!missingDsfParents && !blockedAddress) {
-                        for (parent of documentData.parents) {
+                        for (const parent of documentData.parents) {
                             p360metadata.Contacts.push(
                                 {
                                     "ReferenceNumber": parent.birthnr,
@@ -236,12 +236,11 @@ module.exports = async (archiveMethod, options, test=false) => {
                 writeLog("  Error when trying create metadata, file moved to "+archiveMethod.errorFolder+": "+error);
                 await twhError("Error when trying to create metadata for archiving", error, pdf);
                 moveToFolder(pdf, archiveMethod.errorFolder);
-                stats.error++
+                stats.error++;
                 continue; // moves to next pdf in listOfPdfs
             }
 
             //archive document to p360
-            let archiveRes;
             const archiveOptions = {
                 url: p360url,
                 authkey: p360authkey,
@@ -251,17 +250,17 @@ module.exports = async (archiveMethod, options, test=false) => {
 
             try {
                 // Alle dokumenter til elever med hemmelig adresse arver tilgangsgruppe fra elevmappen
-                if (documentData.elevmappeAccessGroup && documentData.elevmappeAccessGroup.startsWith("SPERRET")){
-                    p360metadata.AccessGroup = documentData.elevmappeAccessGroup
+                if (documentData.elevmappeAccessGroup && documentData.elevmappeAccessGroup.startsWith("SPERRET")) {
+                    p360metadata.AccessGroup = documentData.elevmappeAccessGroup;
                 }
-                archiveRes = await p360(p360metadata, archiveOptions); // FEILIER IKKE NØDVENDIGVIS MED FEIL METADATA
+                const archiveRes = await p360(p360metadata, archiveOptions); // FEILIER IKKE NØDVENDIGVIS MED FEIL METADATA
                 if (archiveRes.Successful) {
                     documentNumber = archiveRes.DocumentNumber;
                     writeLog("  Document archived with documentNumber "+archiveRes.DocumentNumber);
                     //writeLog(JSON.stringify(p360metadata)); // uncomment when you need to see metadata, spams the log with base64 (maybe just delete base64 if this becomes a problem)
                     if (!archiveMethod.sendToStudent) {
                         moveToFolder(pdf, archiveMethod.importedFolder);
-                        stats.imported++
+                        stats.imported++;
                     }
                 }
                 else {
@@ -270,22 +269,21 @@ module.exports = async (archiveMethod, options, test=false) => {
             } catch (error) {
                 writeLog("  Error when trying to archive document to P360, file moved to "+archiveMethod.errorFolder+": "+error);
                 moveToFolder(pdf, archiveMethod.errorFolder); // MAYBE RETRY HERE?
-                stats.error++
+                stats.error++;
                 await twhError("Error when trying to archive document to p360", error, pdf);
                 //await twhError("Error when trying to archive document to p360", error, pdf);
                 continue; // moves to next pdf in listOfPdfs
             }
-        }else if (!archiveMethod.sendToStudent){
+        } else if (!archiveMethod.sendToStudent){
             moveToFolder(pdf, archiveMethod.importedFolder);
         }
 
         // Send document to student with SvarUT
         if (archiveMethod.sendToStudent && !blockedAddress && !archiveMethod.manualSendToStudent) {
-            const docNumber = archiveRes.DocumentNumber;
             const dispatchPayload = {
                 "Documents": [
                     {
-                        "DocumentNumber": docNumber
+                        "DocumentNumber": documentNumber
                     }
                 ]
             }
@@ -301,8 +299,8 @@ module.exports = async (archiveMethod, options, test=false) => {
                 if (dispatchRes.Successful) {
                     writeLog("  Document dispatch started - success! The rest is handled by public 360 and KS")
                     moveToFolder(pdf, archiveMethod.importedFolder);
-                    stats.imported++
-                    stats.dispatched++
+                    stats.imported++;
+                    stats.dispatched++;
                 }
                 else {
                     throw Error(dispatchRes.ErrorMessage);
@@ -336,7 +334,7 @@ module.exports = async (archiveMethod, options, test=false) => {
                 moveToFolder(pdf, archiveMethod.errorFolder);
                 writeLog("  Error when trying create internal note metadata, file moved to (prev document IS archived)"+archiveMethod.errorFolder+": "+error);
                 await twhError("Error when trying to create metadata for archiving internal note (prev document IS archived)", error, pdf);
-                stats.error++
+                stats.error++;
                 continue; // moves to next pdf in listOfPdfs
             }
             let internalNoteRes;
@@ -353,8 +351,8 @@ module.exports = async (archiveMethod, options, test=false) => {
                     writeLog("  Internal note archived with documentNumber "+internalNoteRes.DocumentNumber);
                     //writeLog(JSON.stringify(p360metadata));
                     moveToFolder(pdf, archiveMethod.importedFolder);
-                    stats.imported++
-                    stats.addressBlock++
+                    stats.imported++;
+                    stats.addressBlock++;
                 }
                 else {
                     throw Error(internalNoteRes.ErrorMessage)
@@ -362,7 +360,7 @@ module.exports = async (archiveMethod, options, test=false) => {
             } catch (error) {
                 writeLog("  Error when trying to archive internal note to P360 (document svarbrev IS archived), file moved to "+archiveMethod.errorFolder+": "+error);
                 moveToFolder(pdf, archiveMethod.errorFolder); // MAYBE RETRY HERE?
-                stats.error++
+                stats.error++;
                 await twhError("Error when trying to archive internal note to p360, document svarbrev IS archived", error, pdf);
                 continue; // moves to next pdf in listOfPdfs
             }
@@ -372,8 +370,8 @@ module.exports = async (archiveMethod, options, test=false) => {
             writeLog("  ManualSendToStudent is on - must be dispatched manually in p360");
             // Legg inn teams-varsel når noe skal ekspederes manuelt
             moveToFolder(pdf, archiveMethod.importedFolder);
-            stats.imported++
-            stats.manualDispatch++
+            stats.imported++;
+            stats.manualDispatch++;
             await twhInfo("Document "+documentNumber+" is ready for dispatching to SvarUT. Make sure it is handled. Geir or Jørgen is responsible for this.", ":)", pdf)
         }
     }
