@@ -1,11 +1,18 @@
-# pdf-til-elevmappe
-node script for reading pdfs, extracting student data, and archiving in p360 elevmappa
+# til-arkiv
 
 Start script med `npm start -- -?` eller `node index.js -?`  for å velge operasjon.
 
-* `-v` kjører skript for å hente dokumenter fra vigo-køen
-* `-o` kjører skript for å opprette kontakt og mappe i P360 gitt csv-fil med fødselsnummer
-* `-k` kjører skript for å lese karakterutskrift-pdfer fra lokal mappe
+* `-v` eller `--vigo` kjører skript for å hente dokumenter fra vigo-køen
+* `-o` eller `--opprettElevmapper` kjører skript for å opprette kontakt og mappe i P360 gitt csv-fil med fødselsnummer
+* `-k` kjører `--karakterutskrift` skript for å lese karakterutskrift-pdfer fra lokal mappe
+
+## .env
+Se `example.env` for liste av miljøvariabler. Disse settes i `.env` og leses inn ved kjøring.
+
+Lokale mapper for csv og pdf-filer, samt url og auth for Vigo og P360 defineres her.
+
+## Utvikling og test
+SoapUI er nyttig for å mocke Vigo. Eksempel på oppsett finnes i [./docs](./docs/utvikling.md).
 
 ## Løsningen inneholder
 
@@ -42,6 +49,12 @@ Maler kan konfigureres med følgende:
 * "alertTeams": true - *Varsler kanal i Teams ved feil.*
 
 I tillegg anngis hvilken mal-type for arkivering av dokument i P360 som skal brukes. Dette finnes i `modules/metadataGenerator/documentTypes.json`.
+
+### Vigo meldingskø
+* Henter _n_ antall melding fra Vigo webservice
+* Synk av kontakt + elevmappe
+* Arkivering av dokument
+* Oppdaterer vigo med arkivstatus
 
 ### Karakterutskrift
 * Tar i mot PDF med fødselsnummer, dokumentdato og skole.
