@@ -20,7 +20,7 @@ const vigoDocuments = require("./archiveMethods/vigoDocuments");
     if (argumenter.includes('-v') || argumenter.includes('--vigo')) {
         console.log("Kjører arkivering av dokumenter fra vigo-kø");
         try {
-            await vigoDocuments(options, TEST_ENV);
+            await vigoDocuments(options);
         } catch (error) {
             writeLog("Error when running vigoDocuments: " + error);
             await twhError("Error when running vigoDocuments", error, options.DISPATCH_FOLDER)
