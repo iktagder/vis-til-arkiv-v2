@@ -6,15 +6,15 @@ const syncPrivatePerson = require("../syncPrivatePerson/syncPrivatePerson");
 const twhError = require("../teamsWebhook/twhError");
 const writeLog = require("../writeLog/writeLog");
 
-module.exports = async (vigoData, options) => {
+module.exports = async (vigoData, config) => {
 
     const p360DefaultOptions = {
-        url: options.P360_URL,
-        authkey: options.P360_AUTHKEY
+        url: config.P360_URL,
+        authkey: config.P360_AUTHKEY
     }
 
     const arkiveringsresultat = [];
-    
+
     const stats = {
         imported: 0,
         addressBlock: 0,
@@ -26,7 +26,7 @@ module.exports = async (vigoData, options) => {
 
     for (const vigoMelding of vigoData) {
         writeLog("--- Ny melding: " + vigoMelding.Dokumentelement.DokumentId + " " + vigoMelding.Dokumentelement.Dokumenttype + " ---");
-        
+
         let createElevmappeBool = false; // For control of creating elevmappe
         let blockedAddress = false; // For control of students blocked address
 
@@ -40,7 +40,7 @@ module.exports = async (vigoData, options) => {
             studentBirthnr: vigoMelding.Fodselsnummer,
             documentType: vigoMelding.Dokumentelement.Dokumenttype,
             documentDate: formaterDokumentDato(vigoMelding.Dokumentelement.Dokumentdato),
-            schoolAccessGroup: options.P360_CASE_ACCESS_GROUP,
+            schoolAccessGroup: config.P360_CASE_ACCESS_GROUP,
             schoolOrgNr: "506" // Agder
         };
 
@@ -101,7 +101,7 @@ module.exports = async (vigoData, options) => {
         // Create elevmappe if needed
         if (createElevmappeBool) {
             writeLog("  Trying to create new elevmappe for student: " + documentData.studentBirthnr);
-            
+
             try {
                 documentData.elevmappeCaseNumber = await createElevmappe(studentData, p360DefaultOptions);
             } catch (error) {
@@ -143,6 +143,12 @@ module.exports = async (vigoData, options) => {
                 method: "CreateDocument"
             }
 
+            const signOffOptions = {
+                ...p360DefaultOptions,
+                service: "DocumentService",
+                method: "SignOffDocument"
+            }
+
             try {
                 // Alle dokumenter til elever med hemmelig adresse arver tilgangsgruppe fra elevmappen
                 if (documentData.elevmappeAccessGroup && documentData.elevmappeAccessGroup.startsWith("SPERRET")) {
@@ -152,6 +158,20 @@ module.exports = async (vigoData, options) => {
                 const archiveRes = await p360(p360metadata, archiveOptions); // FEILIER IKKE NØDVENDIGVIS MED FEIL METADATA
 
                 if (archiveRes.Successful) {
+                    const signOffData = {
+                        "Document": archiveRes.DocumentNumber,
+                        "Note": null,
+                        "NoteTitle": null,
+                        "ResponseCode": "TO"
+                    }
+
+                    p360(signOffData, signOffOptions)
+                        .then(() => {
+                            writeLog(`   ${signOffData.Document} avskrevet`);
+                        }).catch((error) => {
+                            writeLog(`   Error when signing of document ${signOffData.DocumentNumber}: ${error}`);
+                            twhError(`   Error when signing of document ${signOffData.DocumentNumber} `, error);
+                        });
                     writeLog(`  Document archived with documentNumber ${archiveRes.DocumentNumber}`);
                     arkiveringStatusData.arkiveringUtfort = true;
                     arkiveringStatusData.melding = `ARKIV-${archiveRes.DocumentNumber}`; // referanse til P360 arkiv slik at det kan verifiseres manuelt om nødvendig
@@ -168,6 +188,8 @@ module.exports = async (vigoData, options) => {
                 registrerFeilVedArkivering(arkiveringStatusData, arkiveringsresultat, feilmelding, error, stats)
                 continue; // gå til neste melding fra vigokøen
             }
+        } else {
+            arkiveringsresultat.push(arkiveringStatusData) // TODO: hva skal vi sette på Fagsystemnavn nå som vi ikke har P360-referanse 
         }
     }
     return arkiveringsresultat;
@@ -192,5 +214,5 @@ async function registrerFeilVedArkivering(arkiveringStatusData, arkiveringsresul
     arkiveringsresultat.push(arkiveringStatusData);
 
     writeLog(`${feilBeskrivelse} ${error}`);
-    await twhError(feilBeskrivelse, error); // TODO: sjekke resultat? Hvis ikke trenger vi ikke await
+    twhError(feilBeskrivelse, error);
 }
