@@ -1,8 +1,17 @@
 # Utviklingsoppsett
 
-## SopaUI
+Prosjektet bruker [eslint](https://eslint.org/) for linting. [vscode plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), eller [finn en for din favoritt-editor](https://eslint.org/docs/user-guide/integrations).
 
-[Et Nyttig verktøy](https://www.soapui.org/) når en jobber med Vigos webservice.
+Prosjektet bruker commonjs konvensjoner og er utviklet og testet med [nodejs 16](https://nodejs.org/dist/latest-v16.x/). 
+## .env
+Se `example.env` for liste av miljøvariabler. Disse settes i `.env` og leses inn ved kjøring.
+
+Rot-mappe for prosjektet, url og auth for Vigo og P360 defineres her. Sti til pdf og csv defineres i 
+`archiveMethods/opprettElevmapper.js` og `archiveMethods/opprettElevmapper.js`
+
+## SopaUI for Vigo
+
+Et [nyttig verktøy](https://www.soapui.org/) når en jobber med Vigos webservice.
 
 * Lag et nytt SOAP-prosjekt og les WDSL'en.
 
@@ -24,9 +33,6 @@
 * Sjekke request og response under kjøring ved å dobbelklikke på forespørsel loggen i bunnen av mock-vindu
 
 ![Examine request](./img/request-inspection.png)
-
-
-
 
 ## Typiske feil
 
