@@ -111,7 +111,13 @@ module.exports = async (vigoData, config) => {
             }
         }
 
-        if (vigoMelding.Dokumentelement.Dokumenttype !== "SOKERE_N") {
+        // Dokumenttypen tilsier ingen dokument
+        if ((vigoMelding.Dokumentelement.Dokumenttype === "SOKERE_N")) {
+            arkiveringStatusData.melding = `ARKIV-${documentData.elevmappeCaseNumber}`;
+            arkiveringStatusData.arkiveringUtfort = true;
+            arkiveringsresultat.push(arkiveringStatusData)
+        }
+        else { // Lager metadata og arkiverer dokument
             if (documentData.elevmappeStatus === 'Avsluttet') {
                 const feilmelding = `  Kan ikke arkivere dokument til avsluttet elevmappe: ${documentData.elevmappeCaseNumber}`;
                 const feil = `Elevmappe: ${documentData.elevmappeCaseNumber}`;
@@ -136,17 +142,16 @@ module.exports = async (vigoData, config) => {
                 continue; // gå til neste melding fra vigokøen
             }
 
-            //archive document to p360
             const archiveOptions = {
                 ...p360DefaultOptions,
                 service: "DocumentService",
-                method: "CreateDocument"
+                method: "CreateDocument" // arkiver
             }
 
             const signOffOptions = {
                 ...p360DefaultOptions,
                 service: "DocumentService",
-                method: "SignOffDocument"
+                method: "SignOffDocument" // avskriv 
             }
 
             try {
@@ -188,8 +193,6 @@ module.exports = async (vigoData, config) => {
                 registrerFeilVedArkivering(arkiveringStatusData, arkiveringsresultat, feilmelding, error, stats)
                 continue; // gå til neste melding fra vigokøen
             }
-        } else {
-            arkiveringsresultat.push(arkiveringStatusData) // TODO: hva skal vi sette på Fagsystemnavn nå som vi ikke har P360-referanse 
         }
     }
     return arkiveringsresultat;
