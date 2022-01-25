@@ -100,7 +100,6 @@ module.exports = async (archiveMethod, options, test=false) => {
                 blockedAddress = true
                 documentData.parents = []
             }
-            writeLog("  Updated or created privatePerson in 360 with fnr: "+documentData.studentBirthnr)
         } catch (error) {
             writeLog("  Error when trying create or update private person for student, file moved to "+archiveMethod.errorFolder+": "+error);
             moveToFolder(pdf, archiveMethod.errorFolder);
@@ -226,11 +225,6 @@ module.exports = async (archiveMethod, options, test=false) => {
                 }
                 if (archiveMethod.sendToStudent) {
                     p360metadata.Status = "R"
-                    //p360metadata.ResponsibleEnterpriseNumber = "15340"; // FOR TESTING
-                }
-                if (blockedAddress) {
-                    p360metadata.Status = "J"
-                    p360metadata.Contacts[1].DispatchChannel = "recno:2"
                 }
             } catch (error) {
                 writeLog("  Error when trying create metadata, file moved to "+archiveMethod.errorFolder+": "+error);
@@ -313,68 +307,6 @@ module.exports = async (archiveMethod, options, test=false) => {
                 stats.error++;
                 await twhError("Document dispatch failed, documentnumber: "+documentNumber, error, pdf);
             }
-        }
-        else if (blockedAddress) {
-            writeLog("  Found blocked address, must be handled manually, document is archived in p360")
-            // Send internt notat til skolen
-            let internalNotemetadata;
-            const base64InternalNotePdf = getBase64(options.P360_INTERNAL_NOTES.BLOCKED_ADDRESS); // convert internal note to base64
-            const userEmailAddress = getEmailFromFile(pdf);
-            const internalNoteData = {
-                documentType: "INTERNT_NOTAT_SVARBREV",
-                documentNumber: documentNumber,
-                studentName: documentData.studentName,
-                elevmappeCaseNumber: documentData.elevmappeCaseNumber,
-                schoolAccessGroup: documentData.schoolAccessGroup,
-                schoolOrgNr: documentData.schoolOrgNr, // HUSK Å SETTE DENNE TIL SKOLENS ORG.NR // Seksjon for arkiv er "15340"
-                userEmailAddress: userEmailAddress,
-                pdfFileBase64: base64InternalNotePdf
-            }
-            try {
-                internalNotemetadata = await createMetadata(internalNoteData);
-            } catch (error) {
-                moveToFolder(pdf, archiveMethod.errorFolder);
-                writeLog("  Error when trying create internal note metadata, file moved to (prev document IS archived)"+archiveMethod.errorFolder+": "+error);
-                await twhError("Error when trying to create metadata for archiving internal note (prev document IS archived)", error, pdf);
-                stats.error++
-                continue; // moves to next pdf in listOfPdfs
-            }
-            let internalNoteRes;
-            const internalNoteOptions = {
-                url: p360url,
-                authkey: p360authkey,
-                service: "DocumentService",
-                method: "CreateDocument"
-            }
-
-            try {
-                internalNoteRes = await p360(internalNotemetadata, internalNoteOptions);
-                if (internalNoteRes.Successful) {
-                    writeLog("  Internal note archived with documentNumber "+internalNoteRes.DocumentNumber);
-                    //writeLog(JSON.stringify(p360metadata));
-                    moveToFolder(pdf, archiveMethod.importedFolder);
-                    stats.imported++
-                    stats.addressBlock++
-                }
-                else {
-                    throw Error(internalNoteRes.ErrorMessage)
-                }
-            } catch (error) {
-                writeLog("  Error when trying to archive internal note to P360 (document svarbrev IS archived), file moved to "+archiveMethod.errorFolder+": "+error);
-                moveToFolder(pdf, archiveMethod.errorFolder); // MAYBE RETRY HERE?
-                stats.error++
-                await twhError("Error when trying to archive internal note to p360, document svarbrev IS archived", error, pdf);
-                continue; // moves to next pdf in listOfPdfs
-            }
-            // EMAIL USER ?? VIStilArkiv fant ikke adresse på eleven, dokument (dokumentnr) må skrives ut og sendes/leveres til elev manuelt
-        }
-        else if (archiveMethod.manualSendToStudent) {
-            writeLog("  ManualSendToStudent is on - must be dispatched manually in p360");
-            // Legg inn teams-varsel når noe skal ekspederes manuelt
-            moveToFolder(pdf, archiveMethod.importedFolder);
-            stats.imported++
-            stats.manualDispatch++
-            await twhInfo("Document "+documentNumber+" is ready for dispatching to SvarUT. Make sure it is handled. Geir or Jørgen is responsible for this.", ":)", pdf)
         }
     }
     // write statistics

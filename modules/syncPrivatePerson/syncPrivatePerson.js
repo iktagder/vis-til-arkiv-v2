@@ -1,4 +1,5 @@
 const p360 = require("../nodep360/p360");
+const writeLog = require("../writeLog/writeLog");
 
 // Check if person exists, if exist, use reference, if not create new private person
 
@@ -11,15 +12,6 @@ module.exports = async (student, options) => {
     }
     if (!student.birthnr) {
         throw Error("Missing required parameter: student.birthnr");
-    }
-    if (!student.streetAddress) {
-        throw Error("Missing required parameter: student.streetAddress");
-    }
-    if (!student.zipPlace) {
-        throw Error("Missing required parameter: student.zipPlace");
-    }
-    if (!student.zipCode) {
-        throw Error("Missing required parameter: student.zipCode");
     }
     if (!options.url) {
         throw Error("Missing required parameter: options.url");
@@ -62,6 +54,16 @@ module.exports = async (student, options) => {
         throw Error(privatePersonRes.ErrorMessage);
     }
     if (createNewPrivatePerson) {
+        if (!student.streetAddress) {
+            throw Error("Missing required parameter: student.streetAddress");
+        }
+        if (!student.zipPlace) {
+            throw Error("Missing required parameter: student.zipPlace");
+        }
+        if (!student.zipCode) {
+            throw Error("Missing required parameter: student.zipCode");
+        }
+        writeLog("  Created privatePerson in 360 with fnr:" + student.birthnr)
         const createPrivatePersonOptions = {
             url: options.url,
             authkey: options.authkey,
@@ -88,7 +90,8 @@ module.exports = async (student, options) => {
             throw Error(syncPrivatePersonRes.ErrorMessage);
         }
     }
-    if (updatePrivatePerson) {
+    if (updatePrivatePerson && student.streetAddress && student.zipCode && student.zipPlace) {
+        writeLog("  Updated privatePerson in 360 with fnr:" + student.birthnr)
         const updatePrivatePersonOptions = {
             url: options.url,
             authkey: options.authkey,
@@ -115,4 +118,5 @@ module.exports = async (student, options) => {
             throw Error(updatePrivatePersonRes.ErrorMessage);
         }
     }
+    return privatePersonRes.Recno;
 }
