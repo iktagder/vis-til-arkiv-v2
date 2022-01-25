@@ -1,6 +1,6 @@
 'use strict'
 
-const schools = require('./schools.json')
+const schools = require('./schools-prod.json')
 
 module.exports = options => {
   if (!options) {
