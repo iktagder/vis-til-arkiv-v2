@@ -1,0 +1,123 @@
+[
+  {
+    "organizationNumber360": "200047",
+    "fullName": "Arendal videregående skole",
+    "accessGroup": "Elev - Arendal videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200256",
+    "fullName": "Byremo videregående skole",
+    "accessGroup": "Elev - Byremo videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200260",
+    "fullName": "Dahlske videregående skole",
+    "accessGroup": "Elev - Dahlske videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200268",
+    "fullName": "Eilert Sundt videregående skole",
+    "accessGroup": "Elev - Eilert Sundt videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200278",
+    "fullName": "Flekkefjord videregående skole",
+    "accessGroup": "Elev - Flekkefjord videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200290",
+    "fullName": "Kristiansand katedralskole Gimle",
+    "accessGroup": "Elev - Kristiansand katedralskole Gimle - LAO"
+  },
+  {
+    "organizationNumber360": "200301",
+    "fullName": "Kvadraturen videregående skole",
+    "accessGroup": "Elev - Kvadraturen videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200312",
+    "fullName": "Lillesand videregående skole",
+    "accessGroup": "Elev - Lillesand videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200319",
+    "fullName": "Mandal videregående skole",
+    "accessGroup": "Elev - Mandal videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200331",
+    "fullName": "Risør videregående skole",
+    "accessGroup": "Elev - Risør videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200336",
+    "fullName": "Sam Eyde videregående skole",
+    "accessGroup": "Elev - Sam Eyde videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200356",
+    "fullName": "Setesdal vidaregåande skule",
+    "accessGroup": "Elev - Setesdal videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200361",
+    "fullName": "Sirdal videregående skole",
+    "accessGroup": "Elev - Sirdal videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200363",
+    "fullName": "Søgne videregående skole",
+    "accessGroup": "Elev - Søgne videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200368",
+    "fullName": "Tangen videregående skole",
+    "accessGroup": "Elev - Tangen videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200377",
+    "fullName": "Tvedestrand videregående skole",
+    "accessGroup": "Elev - Tvedestrand videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200386",
+    "fullName": "Vennesla videregående skole",
+    "accessGroup": "Elev - Vennesla videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200400",
+    "fullName": "Vågsbygd videregående skole",
+    "accessGroup": "Elev - Vågsbygd videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200239",
+    "fullName": "Eksamenskontoret i Agder",
+    "accessGroup": "Eksamen og dokumentasjon"
+  },
+  {
+    "organizationNumber360": "200240",
+    "fullName": "Fagskolen i Agder",
+    "accessGroup": "Elev - Fagskolen i Agder"
+  },
+  {
+    "organizationNumber360": "200237", 
+    "fullName": "Karriere Agder",
+    "accessGroup": "Elev - Karriere - Kristiansand"
+  },
+  {
+    "organizationNumber360": "200406",
+    "fullName": "SMI-skolen i Agder (Arendal)",
+    "accessGroup": "SMI-skolen i Arendal"
+  },
+  {
+    "organizationNumber360": "200410",
+    "fullName": "SMI-skolen i Agder (Kristiansand)",
+    "accessGroup": "SMI-skolen i Kristiansand"
+  },
+  {
+    "organizationNumber360": "0",
+    "fullName": "Dummy",
+    "accessGroup": "Elev - LAO (NB! brukes kun av arkivar og integrasjon)"
+  }
+]
+  
