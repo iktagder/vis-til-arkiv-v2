@@ -28,7 +28,6 @@ module.exports = async (vigoData, config) => {
         writeLog("--- Ny melding: " + vigoMelding.Dokumentelement.DokumentId + " " + vigoMelding.Dokumentelement.Dokumenttype + " ---");
 
         let createElevmappeBool = false; // For control of creating elevmappe
-        let blockedAddress = false; // For control of students blocked address
 
         const arkiveringStatusData = {
             vigoMelding: vigoMelding,
@@ -66,13 +65,7 @@ module.exports = async (vigoData, config) => {
         }
 
         try {
-            const privatePersonRecno = await syncPrivatePerson(studentData, p360DefaultOptions);
-            // TODO: Bruker vi blokkerte adresser i P360?
-            if (privatePersonRecno == "hemmelig") { // Check if address is blocked in 360
-                blockedAddress = true;
-                documentData.parents = [];
-            }
-            writeLog(`  Updated or created privatePerson in 360 with fnr: ${documentData.studentBirthnr}`);
+            await syncPrivatePerson(studentData, p360DefaultOptions); // returnerer recno for person, "hemmelig" dersom hemmelig adresse
         } catch (error) {
             const feilmelding = `   Error when trying create or update private person for student for documentid ${vigoMelding.Dokumentelement.DokumentId}`;
             registrerFeilVedArkivering(arkiveringStatusData, arkiveringsresultat, feilmelding, error, stats);
@@ -131,11 +124,6 @@ module.exports = async (vigoData, config) => {
             let p360metadata;
             try {
                 p360metadata = await createMetadata(documentData);
-
-                if (blockedAddress) {
-                    p360metadata.Status = "J"
-                    p360metadata.Contacts[1].DispatchChannel = "recno:2"
-                }
             } catch (error) {
                 const feilmelding = `Error when trying create metadata for documentid ${vigoMelding.Dokumentelement.DokumentId}`;
                 registrerFeilVedArkivering(arkiveringStatusData, arkiveringsresultat, feilmelding, error, stats);
