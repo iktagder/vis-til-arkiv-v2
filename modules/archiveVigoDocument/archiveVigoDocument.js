@@ -105,7 +105,7 @@ module.exports = async (vigoData, config) => {
         }
 
         // Dokumenttypen tilsier ingen dokument
-        if ((vigoMelding.Dokumentelement.Dokumenttype === "SOKERE_N")) {
+        if ((vigoMelding.Dokumentelement.Dokumenttype === "SOKER_N")) {
             arkiveringStatusData.melding = `ARKIV-${documentData.elevmappeCaseNumber}`;
             arkiveringStatusData.arkiveringUtfort = true;
             arkiveringsresultat.push(arkiveringStatusData)
