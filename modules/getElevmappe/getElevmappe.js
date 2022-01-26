@@ -19,7 +19,7 @@ module.exports = async (birthnr, options) => {
         }
         else {
             let activeCases = [];
-            for (elevmappe of elevmappeRes.Cases) {
+            for (const elevmappe of elevmappeRes.Cases) {
                 if (elevmappe.Status !== "Utgår") {
                     activeCases.push(elevmappe);
                 }
@@ -31,7 +31,7 @@ module.exports = async (birthnr, options) => {
                 return false; // Has only deactived elevmapper
             }
             else {
-                throw Error("Student has several active elevmapper");
+                throw Error(`Student (${birthnr}) has several active elevmapper`);
             }
         }
     }
