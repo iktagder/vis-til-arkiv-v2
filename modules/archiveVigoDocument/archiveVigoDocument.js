@@ -150,7 +150,7 @@ module.exports = async (vigoData, config) => {
 
                 const archiveRes = await p360(p360metadata, archiveOptions); // FEILIER IKKE NØDVENDIGVIS MED FEIL METADATA
 
-                if (archiveRes.Successful && documentData.documentType !== "PROTOKOLL") { //Ikke skriv av PROTOKOL
+                if (archiveRes.Successful && documentData.documentType !== "PROTOKOLL") { // unntak for avskriving
                     const signOffData = {
                         "Document": archiveRes.DocumentNumber,
                         "Note": null,
