@@ -109,3 +109,5 @@ soknadFotballEM.js
 # Internal notes for handling manual dispatching of documents
 blockedAddress.pdf
 .vscode/launch.json
+
+pdf-til-elevmappe/

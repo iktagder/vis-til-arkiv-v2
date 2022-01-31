@@ -1,5 +1,291 @@
 {
-
+    "FORMIDL": {
+        "name": "Formidl",
+        "owner": "",
+        "author": "",
+        "p360metadata": {
+            "Title": "Formidling av læreplass skoleåret 2021/2022",
+            "UnofficialTitle": "Formidling av læreplass skoleåret 2021/2022",
+            "DocumentDate": "<<<documentDate>>>",
+            "Archive": "Saksdokument",
+            "Category": "Dokument inn",
+            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+            "Status": "J",
+            "CaseNumber": "<<<elevmappeCaseNumber>>>",
+            "AccessGroup": "<<<schoolAccessGroup>>>",
+            "AccessCode": "UO",
+            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "Contacts": [
+                {
+                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+                    "Role": "Mottaker",
+                    "IsUnofficial": false
+                },
+                {
+                    "ReferenceNumber": "<<<studentBirthnr>>>",
+                    "Role": "Avsender",
+                    "IsUnofficial": true
+                }
+            ],
+            "Files": [
+                {
+                    "Base64Data": "<<<pdfFileBase64>>>",
+                    "Category": "1",
+                    "Format": "pdf",
+                    "Status": "F",
+                    "Title": "Formidling av læreplass skoleåret 2021/2022",
+                    "VersionFormat": "A"
+                }
+            ]
+        }
+    },
+    "KONTRAKT": {
+        "name": "Kontrakt",
+        "owner": "",
+        "author": "",
+        "p360metadata": {
+            "Title": "Elektronisk signert lærekontrakt/opplæringskontrakt",
+            "UnofficialTitle": "Elektronisk signert lærekontrakt/opplæringskontrakt",
+            "DocumentDate": "<<<documentDate>>>",
+            "Archive": "Saksdokument",
+            "Category": "Dokument inn",
+            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+            "Status": "J",
+            "CaseNumber": "<<<elevmappeCaseNumber>>>",
+            "AccessGroup": "<<<schoolAccessGroup>>>",
+            "AccessCode": "UO",
+            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "Contacts": [
+                {
+                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+                    "Role": "Mottaker",
+                    "IsUnofficial": false
+                },
+                {
+                    "ReferenceNumber": "<<<studentBirthnr>>>",
+                    "Role": "Avsender",
+                    "IsUnofficial": true
+                }
+            ],
+            "Files": [
+                {
+                    "Base64Data": "<<<pdfFileBase64>>>",
+                    "Category": "1",
+                    "Format": "pdf",
+                    "Status": "F",
+                    "Title": "Elektronisk signert lærekontrakt/opplæringskontrakt",
+                    "VersionFormat": "A"
+                }
+            ]
+        }
+    }, 
+    "PROTOKOLL": {
+        "name": "Protokoll",
+        "owner": "",
+        "author": "",
+        "p360metadata": {
+            "Title": "Elektronisk signert prøveprotokoll",
+            "UnofficialTitle": "Elektronisk signert prøveprotokoll",
+            "DocumentDate": "<<<documentDate>>>",
+            "Archive": "Saksdokument",
+            "Category": "Dokument inn",
+            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+            "Status": "J",
+            "CaseNumber": "<<<elevmappeCaseNumber>>>",
+            "AccessGroup": "<<<schoolAccessGroup>>>",
+            "AccessCode": "UO",
+            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "Contacts": [
+                {
+                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+                    "Role": "Mottaker",
+                    "IsUnofficial": false
+                },
+                {
+                    "ReferenceNumber": "<<<studentBirthnr>>>",
+                    "Role": "Avsender",
+                    "IsUnofficial": true
+                }
+            ],
+            "Files": [
+                {
+                    "Base64Data": "<<<pdfFileBase64>>>",
+                    "Category": "1",
+                    "Format": "pdf",
+                    "Status": "F",
+                    "Title": "Elektronisk signert prøveprotokoll",
+                    "VersionFormat": "A"
+                }
+            ]
+        }
+    },  
+    "SOKNAD": {
+        "name": "Soknad",
+        "owner": "",
+        "author": "",
+        "p360metadata": {
+            "Title": "Vigosøknad videregående opplæring skoleåret 2021/2022",
+            "UnofficialTitle": "Vigosøknad videregående opplæring skoleåret 2021/2022",
+            "DocumentDate": "<<<documentDate>>>",
+            "Archive": "Saksdokument",
+            "Category": "Dokument inn",
+            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+            "Status": "J",
+            "CaseNumber": "<<<elevmappeCaseNumber>>>",
+            "AccessGroup": "<<<schoolAccessGroup>>>",
+            "AccessCode": "UO",
+            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "Contacts": [
+                {
+                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+                    "Role": "Mottaker",
+                    "IsUnofficial": false
+                },
+                {
+                    "ReferenceNumber": "<<<studentBirthnr>>>",
+                    "Role": "Avsender",
+                    "IsUnofficial": true
+                }
+            ],
+            "Files": [
+                {
+                    "Base64Data": "<<<pdfFileBase64>>>",
+                    "Category": "1",
+                    "Format": "pdf",
+                    "Status": "F",
+                    "Title": "Vigosøknad videregående opplæring skoleåret 2021/2022",
+                    "VersionFormat": "A"
+                }
+            ]
+        }
+    },   
+    "SVAR": {
+        "name": "Svar",
+        "owner": "",
+        "author": "",
+        "p360metadata": {
+            "Title": "Søkers svar på tilbud om videregående opplæring skoleåret 2021/2022",
+            "UnofficialTitle": "Søkers svar på tilbud om videregående opplæring skoleåret 2021/2022",
+            "DocumentDate": "<<<documentDate>>>",
+            "Archive": "Saksdokument",
+            "Category": "Dokument inn",
+            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+            "Status": "J",
+            "CaseNumber": "<<<elevmappeCaseNumber>>>",
+            "AccessGroup": "<<<schoolAccessGroup>>>",
+            "AccessCode": "UO",
+            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "Contacts": [
+                {
+                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+                    "Role": "Mottaker",
+                    "IsUnofficial": false
+                },
+                {
+                    "ReferenceNumber": "<<<studentBirthnr>>>",
+                    "Role": "Avsender",
+                    "IsUnofficial": true
+                }
+            ],
+            "Files": [
+                {
+                    "Base64Data": "<<<pdfFileBase64>>>",
+                    "Category": "1",
+                    "Format": "pdf",
+                    "Status": "F",
+                    "Title": "Søkers svar på tilbud om videregående opplæring skoleåret 2021/2022",
+                    "VersionFormat": "A"
+                }
+            ]
+        }
+    },    
+    "TILBUD": {
+        "name": "Tilbud",
+        "owner": "",
+        "author": "",
+        "p360metadata": {
+            "Title": "Tilbud om videregående opplæring skoleåret 2021/2022",
+            "UnofficialTitle": "Tilbud om videregående opplæring skoleåret 2021/2022",
+            "DocumentDate": "<<<documentDate>>>",
+            "Archive": "Saksdokument",
+            "Category": "Dokument ut",
+            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+            "Status": "J",
+            "CaseNumber": "<<<elevmappeCaseNumber>>>",
+            "AccessGroup": "<<<schoolAccessGroup>>>",
+            "AccessCode": "UO",
+            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "Contacts": [
+                {
+                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+                    "Role": "Avsender",
+                    "IsUnofficial": false
+                },
+                {
+                    "ReferenceNumber": "<<<studentBirthnr>>>",
+                    "Role": "Mottaker",
+                    "IsUnofficial": true
+                }
+            ],
+            "Files": [
+                {
+                    "Base64Data": "<<<pdfFileBase64>>>",
+                    "Category": "1",
+                    "Format": "pdf",
+                    "Status": "F",
+                    "Title": "Tilbud om videregående opplæring skoleåret 2021/2022",
+                    "VersionFormat": "A"
+                }
+            ]
+        }
+    },
+    "OPPNEMND": {
+        "name": "Oppnemnd",
+        "owner": "",
+        "author": "",
+        "p360metadata": {
+            "Title": "Elektronisk prøveoppmelding sendt til prøvenemnd",
+            "UnofficialTitle": "Elektronisk prøveoppmelding sendt til prøvenemnd",
+            "DocumentDate": "<<<documentDate>>>",
+            "Archive": "Saksdokument",
+            "Category": "Dokument ut",
+            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+            "Status": "J",
+            "CaseNumber": "<<<elevmappeCaseNumber>>>",
+            "AccessGroup": "<<<schoolAccessGroup>>>",
+            "AccessCode": "UO",
+            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "Contacts": [
+                {
+                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+                    "Role": "Avsender",
+                    "IsUnofficial": false
+                },
+                {
+                    "ReferenceNumber": "<<<studentBirthnr>>>",
+                    "Role": "Mottaker",
+                    "IsUnofficial": true
+                }
+            ],
+            "Files": [
+                {
+                    "Base64Data": "<<<pdfFileBase64>>>",
+                    "Category": "1",
+                    "Format": "pdf",
+                    "Status": "F",
+                    "Title": "Elektronisk prøveoppmelding sendt til prøvenemnd",
+                    "VersionFormat": "A"
+                }
+            ]
+        }
+    },
     "KARAKTERUTSKRIFT": {
         "name": "Karakterutskrift",
         "owner": "oleanders",

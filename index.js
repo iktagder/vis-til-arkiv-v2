@@ -1,121 +1,47 @@
-const options = require("./config");
+const config = require("./config");
 const writeLog = require("./modules/writeLog/writeLog");
 const twhError = require("./modules/teamsWebhook/twhError");
 
-const dispatchDocuments = require("./modules/dispatchDocuments/dispatchDocuments");
-const createPdfFromCsv = require("./modules/createPdfFromCsv/createPdfFromCsv");
-//const svarUTtest = require("./archiveMethods/example/svarUTtest");
-const fritakKarakterKroppsoving = require("./archiveMethods/soknader/fritakKarakterKroppsoving");
-const fritakOpplaringKroppsoving = require("./archiveMethods/soknader/fritakOpplaringKroppsoving");
-const fritakKarakterSidemal = require("./archiveMethods/soknader/fritakKarakterNorskSidemal");
-const fritakOpplaringSidemal = require("./archiveMethods/soknader/fritakOpplaringSidemal");
-const godkjenningTidligereFag = require("./archiveMethods/soknader/godkjenningTidligereFag");
-const tilretteleggingEksamen = require("./archiveMethods/soknader/tilretteleggingEksamen");
-const tilretteleggingPrivatistEksamen = require("./archiveMethods/soknader/tilretteleggingPrivatistEksamen");
-const VOgodkjenningTidligereFag = require("./archiveMethods/soknader/VOgodkjenningTidligereFag");
-const varselVO = require("./archiveMethods/varselVO");
 const karakterutskrift = require("./archiveMethods/karakterutskrift");
 const opprettElevmapper = require("./archiveMethods/opprettElevmapper");
-const { ROOT_FOLDER, TEST_ENV } = require("./config");
-
+const { TEST_ENV } = require("./config");
+const vigoDocuments = require("./archiveMethods/vigoDocuments");
 
 //run main program
 (async () => {
-    // Dispatch documents
     writeLog(" - - - STARTING SCRIPT - - - ");
-    
-    /*try {
-        await dispatchDocuments(options.DISPATCH_FOLDER, options.TYPE_FOLDERS);
-    } catch (error) {
-        writeLog("Error when dispatching documents: "+error)
-        await twhError("Error when dispatching documents", error, options.DISPATCH_FOLDER)
-    }*/
 
-    /*
-    try { // CSV-fil med fodselsnummer i mappa, synkroniserer kontakt/elevmappe
-        const folder = ROOT_FOLDER + '/_ElevmappeSync'
-        await createPdfFromCsv(folder);
-    } catch (error) {
-        writeLog("Error when createPdfFromCsv: "+error)
-        await twhError("Error when createPdfFromCsv", error, folder)
-    }
-    */
-/*
-    try { // Synkroniserer kun kontakt og elevmappe. Arkiverer ikke dokument. Leser fnr, navn, adresse fra CSV-fil.
-        await opprettElevmapper(options, TEST_ENV);
-    } catch (error) {
-        writeLog("Error when running opprettElevmapper: "+error);
-        await twhError("Error when running opprettElevmapper", error, options.DISPATCH_FOLDER)
-    } 
-*/
-    try {
-        await karakterutskrift(options, TEST_ENV);
-    } catch (error) {
-        writeLog("Error when running karakterutskrift: "+error);
-        await twhError("Error when running karakterutskrift", error, options.DISPATCH_FOLDER)
+    const argumenter = process.argv.slice(2);
+    if (argumenter.length === 0) {
+        console.log("Ingen argumenter gitt. Mulige valg:\n'-v': kjører arkivering av vigo-dokumenter\n'-k': arkiverer pdf-karakterutskrifter\n'-o': oppretter elevmappe og kontakt basert på innhold i csv-mappe");
+        return;
     }
 
-    /*
-    try {
-        await svarUTtest(options, test=true);
-    } catch (error) {
-        writeLog("Error error yada yada: "+error);
-        await twhError("Error yadayada", error, options.DISPATCH_FOLDER)
-    }*/
-    /*
-    try {
-        await fritakKarakterKroppsoving(options, test=true);
-    } catch (error) {
-        writeLog("Error when running fritakKarakterKroppsoving: "+error);
-        await twhError("Error when running fritakKarakterKroppsoving", error, options.DISPATCH_FOLDER)
+    if (argumenter.includes('-v') || argumenter.includes('--vigo')) {
+        console.log("Kjører arkivering av dokumenter fra vigo-kø");
+        try {
+            await vigoDocuments(config);
+        } catch (error) {
+            writeLog("Error when running vigoDocuments: " + error);
+            await twhError("Error when running vigoDocuments", error, config.DISPATCH_FOLDER)
+        }
     }
-    try {
-        await fritakOpplaringKroppsoving(options, test=true);
-    } catch (error) {
-        writeLog("Error when running fritakOpplaringKroppsoving: "+error);
-        await twhError("Error when running fritakOpplaringKroppsoving", error, options.DISPATCH_FOLDER)
+    if (argumenter.includes('-k' || argumenter.includes('--karakterutskrift'))) {
+        writeLog("Kjører karakterutskrift");
+        try {
+            await karakterutskrift(config, TEST_ENV);
+        } catch (error) {
+            writeLog("Error when running karakterutskrift: " + error);
+            await twhError("Error when running karakterutskrift", error, config.DISPATCH_FOLDER)
+        }
     }
-    try {
-        await fritakKarakterSidemal(options, test=true);
-    } catch (error) {
-        writeLog("Error when running fritakKarakterSidemal: "+error);
-        await twhError("Error when running fritakKarakterSidemal", error, options.DISPATCH_FOLDER)
+    if (argumenter.includes('-o') || argumenter.includes('--opprettElevmapper')) {
+        console.log("Oppretter kontakt og elevmappe");
+        try { // Synkroniserer kun kontakt og elevmappe. Arkiverer ikke dokument. Leser fnr, navn, adresse fra CSV-fil.
+            await opprettElevmapper(config, TEST_ENV);
+        } catch (error) {
+            writeLog("Error when running opprettElevmapper: " + error);
+            await twhError("Error when running opprettElevmapper", error, config.DISPATCH_FOLDER)
+        }
     }
-    try {
-        await fritakOpplaringSidemal(options, test=true);
-    } catch (error) {
-        writeLog("Error when running fritakOpplaringSidemal: "+error);
-        await twhError("Error when running fritakOpplaringSidemal", error, options.DISPATCH_FOLDER)
-    }
-    try {
-        await godkjenningTidligereFag(options, test=true);
-    } catch (error) {
-        writeLog("Error when running godkjenningTidligereFag: "+error);
-        await twhError("Error when running godkjenningTidligereFag", error, options.DISPATCH_FOLDER)
-    }
-    try {
-        await tilretteleggingEksamen(options, test=true);
-    } catch (error) {
-        writeLog("Error when running tilretteleggingEksamen: "+error);
-        await twhError("Error when running tilretteleggingEksamen", error, options.DISPATCH_FOLDER)
-    }
-    try {
-        await tilretteleggingPrivatistEksamen(options, test=true);
-    } catch (error) {
-        writeLog("Error when running tilretteleggingEksamenPrivatist: "+error);
-        await twhError("Error when running tilretteleggingEksamenPrivatist", error, options.DISPATCH_FOLDER)
-    }
-    try {
-        await VOgodkjenningTidligereFag(options, test=true);
-    } catch (error) {
-        writeLog("Error when running VOgodkjenningTidligereFag: "+error);
-        await twhError("Error when running VOgodkjenningTidligereFag", error, options.DISPATCH_FOLDER)
-    }
-    
-    try {
-        await varselVO(options, test=true);
-    } catch (error) {
-        writeLog("Error when running varselVO: "+error);
-        await twhError("Error when running varselVO", error, options.DISPATCH_FOLDER)
-    }*/
 })();

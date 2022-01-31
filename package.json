@@ -1,26 +1,27 @@
 {
-  "name": "vis-til-arkiv",
-  "version": "1.0.0",
-  "description": "archiving pdfs created in VIS",
+  "name": "til-arkiv",
+  "version": "2.0.0",
+  "description": "arkiver karakterutskrifter (pdf) lagd i VIS, lagre dokumenter for agder fylkeskommunes vigo-kø, oppretter mappe og kontakt i P360 for studenter.",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
-    "test": "-test"
+    "start": "node ./index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vtfk/vis-til-arkiv.git"
+    "url": "git+https://github.com/iktagder/pdf-til-elevmappe"
   },
   "keywords": [
     "vis",
+    "vigo",
+    "karakterutskrift",
     "arkiv"
   ],
   "author": "jorgen.thorsnes@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vtfk/vis-til-arkiv/issues"
+    "url": "https://github.com/iktagder/pdf-til-elevmappe/issues"
   },
-  "homepage": "https://github.com/vtfk/vis-til-arkiv#readme",
+  "homepage": "https://github.com/iktagder/pdf-til-elevmappe#readme",
   "dependencies": {
     "axios": "^0.24.0",
     "birthdate-from-id": "^2.0.2",
@@ -31,8 +32,12 @@
     "nodemailer": "^6.6.3",
     "pdfjs-dist": "^2.8.335",
     "pdfmake": "^0.2.4",
+    "strong-soap": "^3.3.1",
     "vtfk-schools-info": "^3.0.2",
     "webpack": "^5.40.0",
     "worker-loader": "^3.0.8"
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0"
   }
 }

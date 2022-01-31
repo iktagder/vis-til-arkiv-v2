@@ -37,5 +37,11 @@ module.exports = {
         username: process.env.FINT_USERNAME,
         password: process.env.FINT_PASSWORD
     },
-    FINT_DOMAIN: process.env.FINT_DOMAIN
+    FINT_DOMAIN: process.env.FINT_DOMAIN,
+    VIGO_URL: process.env.VIGO_URL,
+    VIDO_FYLKESKODE: process.env.VIGO_FYLKESKODE,
+    VIGO_AUTH: {
+        uname: process.env.VIGO_WSSECURITY_USERNAME,
+        pwd: process.env.VIGO_WSSECURITY_PASSWORD
+    }
 }
