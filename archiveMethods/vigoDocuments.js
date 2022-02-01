@@ -30,13 +30,16 @@ module.exports = async (config) => {
             try {
                 const { err, result } = await hentData(hentDataArgumenter);
                 if (err) { throw Error(err) }
-                if (result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype === "INGEN DATA") { break; }
+                if (!result.HentDataForArkiveringResponseElm ||
+                    result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype === "INGEN DATA") {
+                    break;
+                }
 
                 await archiveVigoDocument(result.HentDataForArkiveringResponseElm.Elevelement, config)
                     .then((arkiveringsresultat) => {
                         oppdaterVigoArkiveringsstatus(arkiveringsresultat, oppdaterStatus);
                     })
-                    .catch((error) => { 
+                    .catch((error) => {
                         twhError('   Unhandled error in archiveVigoDocument', error)
                     });
             } catch (err) {
@@ -54,12 +57,12 @@ function oppdaterVigoArkiveringsstatus(arkiveringsresultat, oppdaterStatus) {
             Fodselsnummer: melding.vigoMelding.Fodselsnummer,
             ArkiveringUtfort: melding.arkiveringUtfort
         }
-        oppdaterStatus(oppdaterStatusArgumenter, (err, result/*, envelop, soapHeader*/) => { 
-            if (err) { 
+        oppdaterStatus(oppdaterStatusArgumenter, (err, result/*, envelop, soapHeader*/) => {
+            if (err) {
                 writeLog(`   Error update status for vigo docId ${oppdaterStatusArgumenter.DokumentId} p360 docId: ${oppdaterStatusArgumenter.Fagsystemnavn}.`);
                 throw Error(err); // TODO: twh?
             }
-            const {ArkiveringUtfort, DokumentId, Fagsystemnavn} = result.LagreStatusArkiverteDataResponseElm;
+            const { ArkiveringUtfort, DokumentId, Fagsystemnavn } = result.LagreStatusArkiverteDataResponseElm;
             writeLog(`  Archived Status set to ${ArkiveringUtfort} for vigo docId ${DokumentId} p360 docId: ${Fagsystemnavn}`);
         })
     }
