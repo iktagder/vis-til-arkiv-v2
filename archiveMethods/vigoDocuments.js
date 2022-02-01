@@ -36,7 +36,7 @@ module.exports = async (config) => {
                     .then((arkiveringsresultat) => {
                         oppdaterVigoArkiveringsstatus(arkiveringsresultat, oppdaterStatus);
                     })
-                    .catch((error) => { 
+                    .catch((error) => {
                         twhError('   Unhandled error in archiveVigoDocument', error)
                     });
             } catch (err) {
@@ -49,18 +49,18 @@ module.exports = async (config) => {
 function oppdaterVigoArkiveringsstatus(arkiveringsresultat, oppdaterStatus) {
     for (const melding of arkiveringsresultat) { // TODO: hva synes vigo om å få mange requester på rappen
         const oppdaterStatusArgumenter = {
-            Fagsystemnavn: melding.melding, // TODO: Lagrer arkiv-referanse ved vellykket arkivering for å kunne se i vigo hvor i P360 meldingen er lagret, men hva med meldinger uten dokuemnt?
+            Fagsystemnavn: melding.melding,
             DokumentId: melding.vigoMelding.Dokumentelement.DokumentId, // dokumnetid vigo
             Fodselsnummer: melding.vigoMelding.Fodselsnummer,
             ArkiveringUtfort: melding.arkiveringUtfort
         }
-        oppdaterStatus(oppdaterStatusArgumenter, (err, result/*, envelop, soapHeader*/) => { 
-            if (err) { 
-                writeLog(`   Error update status for vigo docId ${oppdaterStatusArgumenter.DokumentId} p360 docId: ${oppdaterStatusArgumenter.Fagsystemnavn}.`);
-                throw Error(err); // TODO: twh?
+        oppdaterStatus(oppdaterStatusArgumenter, (err, result/*, envelop, soapHeader*/) => {
+            if (err) {
+                writeLog(`=${DokumentId}=\tError during status update. p360 ref: ${oppdaterStatusArgumenter.Fagsystemnavn}.`);
+                throw Error(err); // TODO: twh eller kast feil? Tell antall feil og avbryt? Avvent og prøv på nytt?
             }
-            const {ArkiveringUtfort, DokumentId, Fagsystemnavn} = result.LagreStatusArkiverteDataResponseElm;
-            writeLog(`  Archived Status set to ${ArkiveringUtfort} for vigo docId ${DokumentId} p360 docId: ${Fagsystemnavn}`);
+            const { ArkiveringUtfort, DokumentId, Fagsystemnavn } = result.LagreStatusArkiverteDataResponseElm;
+            writeLog(`=${DokumentId}=\tArchived Status set to ${ArkiveringUtfort} for p360: ${Fagsystemnavn}`);
         })
     }
 }
