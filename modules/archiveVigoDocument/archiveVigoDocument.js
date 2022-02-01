@@ -150,7 +150,8 @@ module.exports = async (vigoData, config) => {
 
                 const archiveRes = await p360(p360metadata, archiveOptions); // FEILIER IKKE NØDVENDIGVIS MED FEIL METADATA
 
-                if (archiveRes.Successful && documentData.documentType !== "PROTOKOLL") { // unntak for avskriving
+                if (archiveRes.Successful) {
+
                     const signOffData = {
                         "Document": archiveRes.DocumentNumber,
                         "Note": null,
@@ -158,20 +159,23 @@ module.exports = async (vigoData, config) => {
                         "ResponseCode": "TO"
                     }
 
-                    p360(signOffData, signOffOptions)
-                        .then(() => {
-                            writeLog(`   ${signOffData.Document} avskrevet`);
-                        }).catch((error) => {
-                            writeLog(`   Error when signing of document ${signOffData.DocumentNumber}: ${error}`);
-                            twhError(`   Error when signing of document ${signOffData.DocumentNumber} `, error);
-                        });
+                    if (documentData.documentType !== "PROTOKOLL") {
+                        p360(signOffData, signOffOptions)
+                            .then(() => {
+                                writeLog(`   ${signOffData.Document} avskrevet`);
+                            }).catch((error) => {
+                                writeLog(`   Error when signing of document ${signOffData.DocumentNumber}: ${error}`);
+                                twhError(`   Error when signing of document ${signOffData.DocumentNumber} `, error);
+                            });
+                    }
+
                     writeLog(`  Document archived with documentNumber ${archiveRes.DocumentNumber}`);
                     arkiveringStatusData.arkiveringUtfort = true;
                     arkiveringStatusData.melding = `ARKIV-${archiveRes.DocumentNumber}`; // referanse til P360 arkiv slik at det kan verifiseres manuelt om nødvendig
                     stats.imported++;
                     arkiveringsresultat.push(arkiveringStatusData);
                 }
-                else if (!archiveRes.Successful) {
+                else {
                     const feilmelding = `   Error returned from archive for dockumentid ${vigoMelding.Dokumentelement.DokumentId}`;
                     registrerFeilVedArkivering(arkiveringStatusData, arkiveringsresultat, feilmelding, archiveRes.ErrorMessage, stats);
                     continue;
