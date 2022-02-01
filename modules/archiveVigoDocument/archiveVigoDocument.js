@@ -150,26 +150,29 @@ module.exports = async (vigoData, config) => {
 
                 const archiveRes = await p360(p360metadata, archiveOptions); // FEILIER IKKE NØDVENDIGVIS MED FEIL METADATA
 
-                if (archiveRes.Successful && documentData.documentType !== "PROTOKOLL") { //Ikke skriv av PROTOKOLL
-                    const signOffData = {
-                        "Document": archiveRes.DocumentNumber,
-                        "Note": null,
-                        "NoteTitle": null,
-                        "ResponseCode": "TO"
-                    }
-
-                    p360(signOffData, signOffOptions)
-                        .then(() => {
-                            writeLog(`   ${signOffData.Document} avskrevet`);
-                        }).catch((error) => {
-                            writeLog(`   Error when signing of document ${signOffData.DocumentNumber}: ${error}`);
-                            twhError(`   Error when signing of document ${signOffData.DocumentNumber} `, error);
-                        });
+                if (archiveRes.Successful) {
                     writeLog(`  Document archived with documentNumber ${archiveRes.DocumentNumber}`);
                     arkiveringStatusData.arkiveringUtfort = true;
                     arkiveringStatusData.melding = `ARKIV-${archiveRes.DocumentNumber}`; // referanse til P360 arkiv slik at det kan verifiseres manuelt om nødvendig
                     stats.imported++;
                     arkiveringsresultat.push(arkiveringStatusData);
+
+                    if (documentData.documentType !== "PROTOKOLL") {
+                        const signOffData = {
+                            "Document": archiveRes.DocumentNumber,
+                            "Note": null,
+                            "NoteTitle": null,
+                            "ResponseCode": "TO"
+                        };
+
+                        p360(signOffData, signOffOptions)
+                            .then(() => {
+                                writeLog(`   ${signOffData.Document} signed off`);
+                            }).catch((error) => {
+                                writeLog(`   Error when signing of document ${signOffData.DocumentNumber}: ${error}`);
+                                twhError(`   Error when signing of document ${signOffData.DocumentNumber} `, error);
+                            });
+                    }
                 }
                 else {
                     const feilmelding = `   Error returned from archive for dockumentid ${vigoMelding.Dokumentelement.DokumentId}`;

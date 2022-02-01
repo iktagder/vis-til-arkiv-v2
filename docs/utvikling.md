@@ -9,9 +9,20 @@ Se `example.env` for liste av miljøvariabler. Disse settes i `.env` og leses in
 Rot-mappe for prosjektet, url og auth for Vigo og P360 defineres her. Sti til pdf og csv defineres i 
 `archiveMethods/opprettElevmapper.js` og `archiveMethods/opprettElevmapper.js`
 
-## SopaUI for Vigo
+## Deployment
+Det som skiller "prod" og "test" er konfigurasjon, altså hvilke instanser av P360, Vigo og andre eksterne miljøer og hvilke kataloger som benyttes for å importere karakterutskrift-pdfer eller csv-filer.
 
-Et [nyttig verktøy](https://www.soapui.org/) når en jobber med Vigos webservice.
+### Test
+Azure devops benyttes for å deploye til "test"-miljø. Dette utføres når en commit gjøres til `main`-grenen. Se `azure-pipelines.yml` for nøyaktig plassering av kode.
+
+### Prod
+Etter at test er verifisert flyttes script over til prod-mappe. Påse at config (`.env`) ikke overskrives. Kopier av oppsett ligger i mappen over.
+
+Task scheduler settes opp for de oppgavene som gjøres jevnlig.
+
+## SopaUI for Vigo dokumenter
+
+Et [nyttig verktøy](https://www.soapui.org/) når en jobber med Vigos webservice. Her kan en mocke respons og sjekke at requester er i henhold til wdsl.
 
 * Lag et nytt SOAP-prosjekt og les WDSL'en.
 
