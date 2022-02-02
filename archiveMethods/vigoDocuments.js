@@ -28,22 +28,23 @@ module.exports = async (config) => {
 
         while (lesVidere) {
             try {
-                const { err, result } = await hentData(hentDataArgumenter);
-                if (err) { throw Error(err) }
-                if (!result.HentDataForArkiveringResponseElm ||
-                    result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype === "INGEN DATA") {
+                const { errorResponse, resultResponse } = await hentData(hentDataArgumenter);
+                if (errorResponse) { throw Error(err) }
+                if (!resultResponse.HentDataForArkiveringResponseElm ||
+                    resultResponse.HentDataForArkiveringResponseElm.Feilmelding.Feiltype === "INGEN DATA") {
                     break;
                 }
 
-                await archiveVigoDocument(result.HentDataForArkiveringResponseElm.Elevelement, config)
+                await archiveVigoDocument(resultResponse.HentDataForArkiveringResponseElm.Elevelement, config)
                     .then((arkiveringsresultat) => {
                         oppdaterVigoArkiveringsstatus(arkiveringsresultat, oppdaterStatus);
                     })
-                    .catch((error) => {
-                        twhError('   Unhandled error in archiveVigoDocument', error)
+                    .catch((errorFromArchiveVigoDocument) => {
+                        twhError('Unhandled error in archiveVigoDocument', errorFromArchiveVigoDocument)
                     });
-            } catch (err) {
-                twhError('   Unhandled error in hentData WS-call', err);
+            } catch (errorFromHentData) {
+                writeLog(`ERROR:\tGot error response from hentData at ${url}`);
+                twhError('Unhandled error in hentData WS-call. Check Vigo WS status, application url and credentials.', errorFromHentData);
             }
         }
     });
@@ -59,7 +60,7 @@ function oppdaterVigoArkiveringsstatus(arkiveringsresultat, oppdaterStatus) {
         }
         oppdaterStatus(oppdaterStatusArgumenter, (err, result/*, envelop, soapHeader*/) => {
             if (err) {
-                writeLog(`=${DokumentId}=\tError during status update. p360 ref: ${oppdaterStatusArgumenter.Fagsystemnavn}.`);
+                writeLog(`ERROR: =${DokumentId}=\tError during status update. p360 ref: ${oppdaterStatusArgumenter.Fagsystemnavn}.`);
                 throw Error(err); // TODO: twh eller kast feil? Tell antall feil og avbryt? Avvent og prøv på nytt?
             }
             const { ArkiveringUtfort, DokumentId, Fagsystemnavn } = result.LagreStatusArkiverteDataResponseElm;
