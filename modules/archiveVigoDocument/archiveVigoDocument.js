@@ -83,7 +83,7 @@ module.exports = async (vigoData, config) => {
                 documentData.elevmappeCaseNumber = studentFolderRes.CaseNumber; // Found elevmappe for student
                 documentData.elevmappeAccessGroup = studentFolderRes.AccessGroup
                 documentData.elevmappeStatus = studentFolderRes.Status
-                writeLog(`=${vigoId}=\tFound elevmappe with case number: " ${studentFolderRes.CaseNumber}`);
+                writeLog(`=${vigoId}=\tFound elevmappe with case number: ${studentFolderRes.CaseNumber}`);
             }
         } catch (error) {
             // maybe implement retry function or something here
@@ -210,6 +210,6 @@ async function registrerFeilVedArkivering(arkiveringStatusData, arkiveringsresul
 
     arkiveringsresultat.push(arkiveringStatusData);
 
-    writeLog(`ERROR: =${arkiveringStatusData.vigoMelding.vigoId}= ${feilBeskrivelse} ${error}`);
+    writeLog(`ERROR: =${arkiveringStatusData.vigoMelding.vigoId}= ${feilBeskrivelse} ... ${error}`);
     twhError(feilBeskrivelse, error);
 }

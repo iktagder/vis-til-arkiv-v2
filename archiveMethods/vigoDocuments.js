@@ -30,7 +30,7 @@ module.exports = async (config) => {
             try {
                 const { err, result } = await hentData(hentDataArgumenter);
                 if (err) { throw Error(err) }
-                if (!result.HentDataForArkiveringResponseElm ||
+                if (!result || !result.HentDataForArkiveringResponseElm ||
                     result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype === "INGEN DATA") {
                     break;
                 }
@@ -64,7 +64,7 @@ function oppdaterVigoArkiveringsstatus(arkiveringsresultat, oppdaterStatus) {
                 throw Error(err); // TODO: twh eller kast feil? Tell antall feil og avbryt? Avvent og prøv på nytt?
             }
             const { ArkiveringUtfort, DokumentId, Fagsystemnavn } = result.LagreStatusArkiverteDataResponseElm;
-            writeLog(`=${DokumentId}=\tArchived Status set to ${ArkiveringUtfort} for p360: ${Fagsystemnavn}`);
+            writeLog(`=${DokumentId}=\tArchived Status set to ${ArkiveringUtfort} in Vigo for p360 document ${Fagsystemnavn}`);
         })
     }
 }
