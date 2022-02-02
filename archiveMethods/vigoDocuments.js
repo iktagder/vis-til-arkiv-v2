@@ -30,7 +30,10 @@ module.exports = async (config) => {
             try {
                 const { err, result } = await hentData(hentDataArgumenter);
                 if (err) { throw Error(err) }
-                if (result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype === "INGEN DATA") { break; }
+                if (!result.HentDataForArkiveringResponseElm ||
+                    result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype === "INGEN DATA") {
+                    break;
+                }
 
                 await archiveVigoDocument(result.HentDataForArkiveringResponseElm.Elevelement, config)
                     .then((arkiveringsresultat) => {
