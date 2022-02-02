@@ -26,7 +26,7 @@ module.exports = async (vigoData, config) => {
 
     for (const vigoMelding of vigoData) {
         const vigoId = vigoMelding.Dokumentelement.DokumentId;
-        writeLog(`--- New message! vigo id: ${vigoId} - document type: ${vigoMelding.Dokumentelement.Dokumenttype} ---`);
+        writeLog(`--- New message!\tvigo id: =${vigoId}= - document type: ${vigoMelding.Dokumentelement.Dokumenttype} ---`);
 
         let createElevmappeBool = false; // For control of creating elevmappe
 
@@ -41,7 +41,7 @@ module.exports = async (vigoData, config) => {
             documentType: vigoMelding.Dokumentelement.Dokumenttype,
             documentDate: formaterDokumentDato(vigoMelding.Dokumentelement.Dokumentdato),
             schoolAccessGroup: config.P360_CASE_ACCESS_GROUP,
-            schoolOrgNr: "506" // Agder
+            schoolOrgNr: "506" // Agder FK recno
         };
 
         // TODO: Dersom adresse ikke er med i vigo-dokument, finn i vis
@@ -172,8 +172,8 @@ module.exports = async (vigoData, config) => {
                             .then(() => {
                                 writeLog(`=${vigoId}=\t${signOffData.Document} signed off`);
                             }).catch((error) => {
-                                writeLog(`=${vigoId}=\tError when signing of document: ${error}`);
-                                twhError(`Error when signing of document ${signOffData.DocumentNumber} `, error);
+                                writeLog(`ERROR: =${vigoId}=\tError when signing of for document ${archiveRes.DocumentNumber}: ${error}`);
+                                twhError(`Error when signing of document ${signOffData.DocumentNumber} creted for vigo document ${vigoId}.`, error);
                             });
                     }
                 }
@@ -210,6 +210,6 @@ async function registrerFeilVedArkivering(arkiveringStatusData, arkiveringsresul
 
     arkiveringsresultat.push(arkiveringStatusData);
 
-    writeLog(`${feilBeskrivelse} ${error}`);
+    writeLog(`ERROR: =${arkiveringStatusData.vigoMelding.vigoId}= ${feilBeskrivelse} ${error}`);
     twhError(feilBeskrivelse, error);
 }
