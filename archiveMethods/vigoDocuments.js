@@ -28,14 +28,14 @@ module.exports = async (config) => {
 
         while (lesVidere) {
             try {
-                const { errorResponse, resultResponse } = await hentData(hentDataArgumenter);
-                if (errorResponse) { throw Error(err) }
-                if (!resultResponse.HentDataForArkiveringResponseElm ||
-                    resultResponse.HentDataForArkiveringResponseElm.Feilmelding.Feiltype === "INGEN DATA") {
+                const { err, result } = await hentData(hentDataArgumenter);
+                if (err) { throw Error(err) }
+                if (!result.HentDataForArkiveringResponseElm ||
+                    result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype === "INGEN DATA") {
                     break;
                 }
 
-                await archiveVigoDocument(resultResponse.HentDataForArkiveringResponseElm.Elevelement, config)
+                await archiveVigoDocument(result.HentDataForArkiveringResponseElm.Elevelement, config)
                     .then((arkiveringsresultat) => {
                         oppdaterVigoArkiveringsstatus(arkiveringsresultat, oppdaterStatus);
                     })
