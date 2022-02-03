@@ -16,6 +16,7 @@
             "AccessGroup": "<<<schoolAccessGroup>>>",
             "AccessCode": "UO",
             "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "ResponsiblePersonRecno": 200148,
             "Contacts": [
                 {
                     "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
@@ -57,6 +58,7 @@
             "AccessGroup": "<<<schoolAccessGroup>>>",
             "AccessCode": "UO",
             "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "ResponsiblePersonRecno": 200148,
             "Contacts": [
                 {
                     "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
@@ -80,7 +82,7 @@
                 }
             ]
         }
-    }, 
+    },
     "PROTOKOLL": {
         "name": "Protokoll",
         "owner": "",
@@ -98,6 +100,7 @@
             "AccessGroup": "<<<schoolAccessGroup>>>",
             "AccessCode": "UO",
             "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "ResponsiblePersonRecno": 200148,
             "Contacts": [
                 {
                     "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
@@ -121,7 +124,7 @@
                 }
             ]
         }
-    },  
+    },
     "SOKNAD": {
         "name": "Soknad",
         "owner": "",
@@ -139,6 +142,7 @@
             "AccessGroup": "<<<schoolAccessGroup>>>",
             "AccessCode": "UO",
             "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "ResponsiblePersonRecno": 200148,
             "Contacts": [
                 {
                     "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
@@ -162,7 +166,7 @@
                 }
             ]
         }
-    },   
+    },
     "SVAR": {
         "name": "Svar",
         "owner": "",
@@ -180,6 +184,7 @@
             "AccessGroup": "<<<schoolAccessGroup>>>",
             "AccessCode": "UO",
             "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "ResponsiblePersonRecno": 200148,
             "Contacts": [
                 {
                     "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
@@ -203,7 +208,7 @@
                 }
             ]
         }
-    },    
+    },
     "TILBUD": {
         "name": "Tilbud",
         "owner": "",
@@ -221,6 +226,7 @@
             "AccessGroup": "<<<schoolAccessGroup>>>",
             "AccessCode": "UO",
             "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "ResponsiblePersonRecno": 200148,
             "Contacts": [
                 {
                     "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
@@ -262,6 +268,7 @@
             "AccessGroup": "<<<schoolAccessGroup>>>",
             "AccessCode": "UO",
             "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "ResponsiblePersonRecno": 200148,
             "Contacts": [
                 {
                     "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
@@ -303,6 +310,7 @@
             "AccessGroup": "<<<schoolAccessGroup>>>",
             "AccessCode": "UO",
             "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+            "ResponsiblePersonRecno": 200148,
             "Contacts": [
                 {
                     "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
@@ -408,7 +416,7 @@
                 }
             ]
         }
-    }, 
+    },
     "VIS002": {
         "name": "Fritak for vurdering med karakter i kroppsøving",
         "owner": "Geir",
