@@ -31,7 +31,7 @@ module.exports = {
         clientId: process.env.FINT_CLIENTID,
         clientSecret: process.env.FINT_OPENIDSECRET,
         accessTokenUri: process.env.OAUTH_IDP_URL,
-        scopes: process.env.FINT_SCOPE 
+        scopes: process.env.FINT_SCOPE
     },
     TOKEN_PARAMS: {
         username: process.env.FINT_USERNAME,
@@ -39,7 +39,7 @@ module.exports = {
     },
     FINT_DOMAIN: process.env.FINT_DOMAIN,
     VIGO_URL: process.env.VIGO_URL,
-    VIDO_FYLKESKODE: process.env.VIGO_FYLKESKODE,
+    VIGO_FYLKESKODE: process.env.VIGO_FYLKESKODE,
     VIGO_AUTH: {
         uname: process.env.VIGO_WSSECURITY_USERNAME,
         pwd: process.env.VIGO_WSSECURITY_PASSWORD
