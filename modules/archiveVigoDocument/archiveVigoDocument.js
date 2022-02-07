@@ -165,8 +165,8 @@ module.exports = async (vigoData, config) => {
                         Dokument ut skal ikke avskrives pga åpenbare årsaker
                         Basert på Konfigurasjon av dokumenttyper.xlsx som finnes i RIM2022-teams
                     */
-                    if (documentData.documentType !== "PROTOKOLL" ||// krever oppfølging
-                        documentData.documentType !== "OPPNEMD" ||  // utgående dokument
+                    if (documentData.documentType !== "PROTOKOLL" &&// krever oppfølging
+                        documentData.documentType !== "OPPNEMND" && // utgående dokument
                         documentData.documentType !== "TILBUD") {   // utgående dokument
                         const signOffData = {
                             "Document": archiveRes.DocumentNumber,
