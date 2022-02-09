@@ -10,7 +10,7 @@ module.exports = async (config) => {
 
     const hentDataArgumenter = {
         HentDataForArkiveringRequestElm: {
-            AntallElevDokument: 20,
+            AntallElevDokument: config.ANTALL_ELEV_DOKUMENTER,
             Fylke: config.VIGO_FYLKESKODE
         }
     };
@@ -24,28 +24,30 @@ module.exports = async (config) => {
 
         const hentData = client['HentDataForArkivering'];
         const oppdaterStatus = client['LagreStatusArkiverteData'];
-        let lesVidere = true;
 
-        while (lesVidere) {
-            try {
-                const { err, result } = await hentData(hentDataArgumenter);
-                if (err) { throw Error(err) }
-                if (!result || !result.HentDataForArkiveringResponseElm ||
-                    result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype === "INGEN DATA") {
-                    break;
-                }
-
-                await archiveVigoDocument(result.HentDataForArkiveringResponseElm.Elevelement, config)
-                    .then((arkiveringsresultat) => {
-                        oppdaterVigoArkiveringsstatus(arkiveringsresultat, oppdaterStatus);
-                    })
-                    .catch((errorFromArchiveVigoDocument) => {
-                        twhError('Unhandled error in archiveVigoDocument', errorFromArchiveVigoDocument)
-                    });
-            } catch (errorFromHentData) {
-                writeLog(`ERROR:\tGot error response from hentData at ${url}`);
-                twhError('Unhandled error in hentData WS-call. Check Vigo WS status, application url and credentials.', errorFromHentData);
+        try {
+            const { err, result } = await hentData(hentDataArgumenter);
+            if (err) { throw Error(err) }
+            if (!result || !result.HentDataForArkiveringResponseElm ||
+                result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype === "INGEN DATA") { // sjekk hvorvidt det finnes _noe_ data og arkiver de
+                writeLog(`No more data from hentData at ${url}`);
+                return;
+            } if (!!result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype &&
+                result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype.length > 0) {
+                writeLog(`ERROR: unknown Feiltype from hentData: ${result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype}`);
+                twhError('ERROR: unknown Feiltype from hentData', result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype);
             }
+
+            await archiveVigoDocument(result.HentDataForArkiveringResponseElm.Elevelement, config)
+                .then((arkiveringsresultat) => {
+                    oppdaterVigoArkiveringsstatus(arkiveringsresultat, oppdaterStatus);
+                })
+                .catch((errorFromArchiveVigoDocument) => {
+                    twhError('Unhandled error in archiveVigoDocument', errorFromArchiveVigoDocument)
+                });
+        } catch (errorFromHentData) {
+            writeLog(`ERROR:\tGot error response from hentData at ${url}`);
+            twhError('Unhandled error in hentData WS-call. Check Vigo WS status, application url and credentials.', errorFromHentData);
         }
     });
 }

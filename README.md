@@ -13,13 +13,13 @@ Tips, oppsett og triks for utviklere finnes [./docs](./docs/utvikling.md).
 
 ## Vigo integrasjon -løsningsbeskrivelse
 1. Henter _n_ antall melding fra Vigo webservice
-    * antall meldinger mottatt == 0: vi er ferdig for nå
+    * _n_ settes i `config.js` (ANTALL_ELEV_DOKUMENTER)
 2. for hver melding
     1. Synk av kontakt + elevmappe
     2. Opprett metadata for P360 (unntak for enkelte dokumenttyper)
     3. Arkivering av dokument
     4. Oppdaterer vigo med arkivstatus
-3. Da capo til køen er tom
+3. Scriptet kan kjøres på nytt. Settes opp med Task Scheduler eller manuelt
 
 ## karakterutskrift - løsningsbeskrivelse
 

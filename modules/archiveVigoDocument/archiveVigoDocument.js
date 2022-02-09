@@ -25,7 +25,7 @@ module.exports = async (vigoData, config) => {
     }
 
     for (const vigoMelding of vigoData) {
-        const vigoId = vigoMelding.Dokumentelement.DokumentId;
+        const vigoId = vigoMelding.Dokumentelement.DokumentId; // TODO: Ta høyde for tomt elevdokument!!
         writeLog(`--- New message!\tvigo id: =${vigoId}= - document type: ${vigoMelding.Dokumentelement.Dokumenttype} ---`);
 
         let createElevmappeBool = false; // For control of creating elevmappe
