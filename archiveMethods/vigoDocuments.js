@@ -50,13 +50,15 @@ module.exports = async (config) => {
     });
 }
 
-function oppdaterVigoArkiveringsstatus(arkiveringsresultat, oppdaterStatus) {
-    for (const melding of arkiveringsresultat) { // TODO: hva synes vigo om å få mange requester på rappen
+function oppdaterVigoArkiveringsstatus(arkiveringsresultater, oppdaterStatus) {
+    for (const arkiveringsresultat of arkiveringsresultater) { // TODO: hva synes vigo om å få mange requester på rappen
         const oppdaterStatusArgumenter = {
-            Fagsystemnavn: melding.melding,
-            DokumentId: melding.vigoMelding.Dokumentelement.DokumentId, // dokumnetid vigo
-            Fodselsnummer: melding.vigoMelding.Fodselsnummer,
-            ArkiveringUtfort: melding.arkiveringUtfort
+            LagreStatusArkiverteDataRequestElm: {
+                Fagsystemnavn: arkiveringsresultat.melding,
+                Fodselsnummer: arkiveringsresultat.vigoMelding.Fodselsnummer,
+                DokumentId: arkiveringsresultat.vigoMelding.Dokumentelement.DokumentId, // dokumnetid vigo
+                ArkiveringUtfort: arkiveringsresultat.arkiveringUtfort,
+            }
         }
         oppdaterStatus(oppdaterStatusArgumenter, (err, result/*, envelop, soapHeader*/) => {
             if (err) {
