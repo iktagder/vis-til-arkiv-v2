@@ -20,7 +20,7 @@ module.exports = async (birthnr, options) => {
         else {
             let activeCases = [];
             for (const elevmappe of elevmappeRes.Cases) {
-                if (elevmappe.Status !== "Utgår") {
+                if (elevmappe.Status !== "Utgår" || elevmappe.Status !== "Avsluttet") {
                     activeCases.push(elevmappe);
                 }
             }

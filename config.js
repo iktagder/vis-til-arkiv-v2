@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 module.exports = {
-    ANTALL_ELEV_DOKUMENTER: 20,
+    ANTALL_ELEV_DOKUMENTER: 10,
 
     TEST_ENV: process.env.TEST_ENV === "true",
     P360_URL: process.env.P360_URL,
