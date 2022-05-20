@@ -57,8 +57,8 @@ module.exports = async (vigoData, config) => {
 
         // Update or create private person in p360
         const studentData = {
-            lastName: vigoMelding.Etternavn,
-            firstName: vigoMelding.Fornavn,
+            lastName: vigoMelding.Etternavn.trim(),
+            firstName: vigoMelding.Fornavn.trim(),
             streetAddress: settSammenAdresse(vigoMelding.FolkeRegisterAdresse),
             zipCode: vigoMelding.FolkeRegisterAdresse.Postnummmer,
             zipPlace: vigoMelding.FolkeRegisterAdresse.Poststed,
