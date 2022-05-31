@@ -1,21 +1,22 @@
 const standardPageSizes = require("pdfmake/src/standardPageSizes");
+const getPdfsInFolder = require("../getPdfsInFolder/getPdfsInFolder");
 
 const hentSkolenavn = (pdfs) => {
   const skolenavn = pdfs.map((pdf) => {
     // fjern ./input/Kompetansebevis/, ta alt som ligger mellom / og -
-    const skoleMedSti = pdf.split("-")[0].split("/"); // fjerner navn/fødselsnummer og splitter på
+    const skoleMedSti = pdf.split(" - ")[0].split("/"); // fjerner navn/fødselsnummer og splitter på
     return skoleMedSti[skoleMedSti.length - 1].trim(); // ta siste element
   });
   unikeSkolenavn = [
     ...new Set(skolenavn), // bruker Set for å fjerne duplikater
   ];
-
-  return unikeSkolenavn.forEach((skole) => {
+  const dokumentOversiktPrSkole = unikeSkolenavn.map((skole) => {
     return {
       navn: skole,
-      antallDokumenter: skolenavn.filter((s) => s === skole).count(),
+      antallDokumenter: skolenavn.filter((s) => s === skole).length,
     };
   });
+  return dokumentOversiktPrSkole;
 };
 
 module.exports = async (archiveMethod, config) => {
@@ -31,7 +32,7 @@ module.exports = async (archiveMethod, config) => {
   const listOfPdfs = getPdfsInFolder(archiveMethod.inputFolder);
   const unikeSkolenavn = hentSkolenavn(listOfPdfs);
   unikeSkolenavn.forEach((skole, index) =>
-    console.log(
+    console.table(
       `${index} ${skole.navn} - Antall dokuemnter ${skole.antallDokumenter}`
     )
   );

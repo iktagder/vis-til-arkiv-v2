@@ -75,7 +75,7 @@ Ingen argumenter gitt. Mulige valg:
     writeLog("Kjører arkivering av Kompetansebevis");
 
     try {
-      await kompetansebevis();
+      await kompetansebevis(config);
     } catch (error) {
       writeLog("Error when running kompetansebevis: " + error);
       await twhError(

@@ -1,4 +1,5 @@
 const { ROOT_FOLDER } = require("../config");
+const archiveKompetansebevisDocument = require("../modules/archiveKompetansebevisDocument/archiveKompetansebevisDocument");
 
 const archiveMethod = {
   // Variables for this archive method - fill in all fields
@@ -19,6 +20,6 @@ const archiveMethod = {
 };
 
 // archiving method
-module.exports = async (options, test = false) => {
-  await archiveKompetansebevisDocument(archiveMethod, options, test);
+module.exports = async (options) => {
+  await archiveKompetansebevisDocument(archiveMethod, options);
 };
