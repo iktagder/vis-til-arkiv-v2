@@ -17,10 +17,11 @@ module.exports = (archiveMethod, pdfContent) => {
   // avdekke dårlig input (altså at et dokument har to forskjellige fnr, dato eller skole)
   for (i = 0; i < pdfStrings.length; i++) {
     if (pdfStrings[i].startsWith("Sted og dato")) {
-      documentData.documentDate = konverterDatoTilP360(
-        pdfStrings[i].split(", ")[1]
-      );
+      const datoString = pdfStrings[i].split(", ")[1];
+      documentData.documentDate = konverterDatoTilP360(datoString);
     } else if (pdfStrings[i].startsWith("Fødselsnummer")) {
+      // TODO: robustifisere... kan det skje
+      //at dokumenter genereres hvor det ikke følger linjeskift etter "Fødselsnummer:"?
       documentData.studentBirthnr = pdfStrings[i + 2].replace(" ", "");
     } else if (pdfStrings[i].startsWith("Skole")) {
       documentData.school = pdfStrings[i].split(": ")[1];
@@ -28,12 +29,10 @@ module.exports = (archiveMethod, pdfContent) => {
   }
 
   // Check if we found all the values we need
-  for (const [_, value] of Object.entries(pdfFieldDesc)) {
+  for (const [key, value] of Object.entries(pdfFieldDesc)) {
     if (!documentData[value] || documentData[value].trim().length === 0) {
       throw Error(
-        "Could not find value for " +
-          value +
-          " in the pdf document, check document"
+        `Could not find value for "${key}" (${value}) in the pdf, check document"`
       );
     }
   }
