@@ -16,7 +16,7 @@ const archiveMethod = {
   manualSendToStudent: false,
   sendToParents: false,
   manualSendToParents: false,
-  alertTeams: true,
+  alertTeams: false,
 };
 
 // archiving method
