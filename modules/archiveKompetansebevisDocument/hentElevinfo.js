@@ -4,11 +4,14 @@ const meldFeil = require("./meldFeil");
 
 async function hentElevinfo(fnr, archiveMethod, pdf) {
   try {
-    student = await getElevinfo(fnr);
+    elevRespons = await getElevinfo(fnr);
+    if (elevRespons.response.status === 404) {
+      throw elevRespons.message;
+    }
     writeLog(
-      `Fant elev i FINT: ${student.data.navn.fornavn} ${student.data.navn.etternavn}`
+      `Fant elev i FINT: ${elevRespons.data.navn.fornavn} ${elevRespons.data.navn.etternavn}`
     );
-    return student;
+    return elevRespons.data;
   } catch (error) {
     meldFeil(
       error,
