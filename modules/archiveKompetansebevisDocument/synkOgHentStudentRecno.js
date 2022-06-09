@@ -11,10 +11,10 @@ async function synkOgHentStudentRecno(
   const studentData = {
     lastName: studentInfo.navn.etternavn,
     firstName: studentInfo.navn.fornavn,
-    streetAddress: studentInfo.bostedsadresse.adresselinje[0],
+    streetAddress: settSammenAdresse(studentInfo.bostedsadresse.adresselinje),
     zipCode: studentInfo.bostedsadresse.postnummer,
     zipPlace: studentInfo.bostedsadresse.poststed,
-    birthnr: studentBirthnr, // TODO: hent fra student-objektet!
+    birthnr: studentBirthnr, // TODO: hent fra student-objektet?
   };
 
   try {
@@ -24,4 +24,11 @@ async function synkOgHentStudentRecno(
     return null;
   }
 }
+
+function settSammenAdresse(adresselinjer) {
+  return adresselinjer.reduce(
+    (akkumulator, linje) => akkumulator + "\n" + linje
+  );
+}
+
 exports.synkOgHentStudentRecno = synkOgHentStudentRecno;
