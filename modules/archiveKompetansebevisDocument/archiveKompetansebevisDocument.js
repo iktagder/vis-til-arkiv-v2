@@ -27,26 +27,47 @@ module.exports = async (archiveMethod, config) => {
   try {
     const listOfPdfs = getPdfsInFolder(archiveMethod.inputFolder);
     if (listOfPdfs.length === 0) {
-      writeLog(
-        `Ingen kompetansebevis i import-mappen ${archiveMethod.inputFolder}`
+      meldFeil(
+        "Feil ved lesing av inputmappe",
+        `Ingen kompetansebevis i import-mappen ${archiveMethod.inputFolder}`,
+        archiveVisDocument,
+        null
       );
       return;
     }
     // TODO: velge skole og/eller begrense innlesing til n dokumenter
     const unikeSkolenavn = hentSkolenavn(listOfPdfs);
+    if (
+      unikeSkolenavn.filter((skole) => skole.navn === archiveMethod.skolenavn)
+        .length === 0
+    ) {
+      meldFeil(
+        "Feil ved filtrering av pdf",
+        `Finner ikke skolenavnet "${archiveMethod.skolenavn}" i importmappen "${archiveMethod.inputFolder}"`,
+        archiveMethod,
+        null
+      );
+      return;
+    }
 
     //mainLoop -- alle funksjonskall returnerer null ved feil
     for (const pdf of listOfPdfs) {
       writeLog("--- Kompetansebevis, ny fil: " + pdf + " ---");
 
       const pdfContent = await lesPdfInnhold(pdf, archiveMethod);
-      if (!pdfContent) continue;
+      if (!pdfContent) {
+        stats.error++;
+        continue;
+      }
 
       const documentData = await strukturerPdfInnhold(
         pdfContent,
         archiveMethod
       );
-      if (!documentData) continue;
+      if (!documentData) {
+        stats.error++;
+        continue;
+      }
 
       // Finn student i FINT
       const studentInfo = await hentElevinfo(
@@ -54,8 +75,10 @@ module.exports = async (archiveMethod, config) => {
         archiveMethod,
         pdf
       );
-      if (!studentInfo) continue;
-      else {
+      if (!studentInfo) {
+        stats.error++;
+        continue;
+      } else {
         documentData.studentName = `${studentInfo.navn.fornavn} ${studentInfo.navn.etternavn}`;
       }
 
@@ -68,7 +91,10 @@ module.exports = async (archiveMethod, config) => {
         pdf,
         baseP360Options
       );
-      if (!studentRecno) continue;
+      if (!studentRecno) {
+        stats.error++;
+        continue;
+      }
 
       // get elevmappe and add caseNumber to documentData
       const elevmappe = await hentEllerOpprettElevmappe(
@@ -79,6 +105,7 @@ module.exports = async (archiveMethod, config) => {
         baseP360Options
       );
       if (!elevmappe) {
+        stats.error++;
         continue;
       } else {
         documentData.elevmappeCaseNumber = elevmappe.elevmappeCaseNumber;
@@ -93,10 +120,14 @@ module.exports = async (archiveMethod, config) => {
           archiveMethod,
           pdf
         );
+        stats.error++;
         continue;
       } else {
         const metadata = genererMetadata(documentData, pdf, archiveMethod);
-        if (!metadata) continue;
+        if (!metadata) {
+          stats.error++;
+          rcontinue;
+        }
         const arkivnummer = arkiverDokument(
           metadata,
           archiveMethod,
@@ -107,6 +138,8 @@ module.exports = async (archiveMethod, config) => {
           writeLog(
             `Document archived with documentNumber ${archiveRes.DocumentNumber}`
           );
+        } else {
+          stats.error++;
         }
       }
     } // end main loop

@@ -17,6 +17,8 @@ const archiveMethod = {
   sendToParents: false,
   manualSendToParents: false,
   alertTeams: false,
+  skolenavn: "Kristiansand katedralskole Gimle",
+  maksAntallDokumenter: 1,
 };
 
 // archiving method

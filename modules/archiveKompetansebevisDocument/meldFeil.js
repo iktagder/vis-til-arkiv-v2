@@ -4,8 +4,11 @@ const twhError = require("../teamsWebhook/twhError");
 
 async function meldFeil(error, errorMsg, archiveMethod, pdf) {
   if (archiveMethod.alertTeams) await twhError(errorMsg, error, pdf);
-  writeLog(errorMsg + archiveMethod.errorFolder + ": " + error);
-  moveToFolder(pdf, archiveMethod.errorFolder);
-  //stats.error++;
+  writeLog(`${error}:
+  ${errorMsg}`);
+  if (pdf) {
+    moveToFolder(pdf, archiveMethod.errorFolder);
+  }
+  stats.error++;
 }
 module.exports = meldFeil;

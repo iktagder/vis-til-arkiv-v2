@@ -2,8 +2,6 @@ const pdfReader = require("../pdfReader/pdfReader");
 const writeLog = require("../writeLog/writeLog");
 const meldFeil = require("./meldFeil");
 
-/*=========== Util-funksjoner ===============*/
-
 async function lesPdfInnhold(pdf, archiveMethod) {
   try {
     writeLog("  Leser pdf");
