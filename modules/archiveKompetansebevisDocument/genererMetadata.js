@@ -10,7 +10,7 @@ async function genererMetadata(documentData, pdf, archiveMethod) {
       documentData.elevmappeAccessGroup &&
       documentData.elevmappeAccessGroup.startsWith("SPERRET")
     ) {
-      p360metadata.AccessGroup = documentData.elevmappeAccessGroup;
+      p360metadata.AccessGroup = documentData.elevmappeAccessGroup; // skriv over default accessGroup
     }
     if (archiveMethod.sendToStudent) {
       p360metadata.Status = "R";

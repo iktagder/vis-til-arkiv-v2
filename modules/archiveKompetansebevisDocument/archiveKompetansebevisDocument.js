@@ -5,7 +5,7 @@ const { lesPdfInnhold } = require("./lesPdfInnhold");
 const { strukturerPdfInnhold } = require("./strukturerPdfInnhold");
 const { hentElevinfo } = require("./hentElevinfo");
 const { synkOgHentStudentRecno } = require("./synkOgHentStudentRecno");
-const { hentElevmappe } = require("./hentElevmappe");
+const { hentEllerOpprettElevmappe } = require("./hentEllerOpprettElevmappe");
 const { genererMetadata } = require("./genererMetadata");
 const { arkiverDokument } = require("./arkiverDokument");
 const { hentSkolenavn } = require("./hentSkolenavn");
@@ -60,6 +60,7 @@ module.exports = async (archiveMethod, config) => {
       }
 
       // syncPrivatePerson -> privatePersonRecno (oppdaterer og verifiserer at personen er registrert i p360)
+      // TODO: skal adresse i p360 oppdateres med den vi får fra FINT?
       const studentRecno = await synkOgHentStudentRecno(
         studentInfo,
         documentData.studentBirthnr,
@@ -70,29 +71,30 @@ module.exports = async (archiveMethod, config) => {
       if (!studentRecno) continue;
 
       // get elevmappe and add caseNumber to documentData
-      const elevmappe = await hentElevmappe(
+      const elevmappe = await hentEllerOpprettElevmappe(
+        studentInfo,
         documentData.studentBirthnr,
         archiveMethod,
         pdf,
         baseP360Options
       );
-      if (!elevmappe) continue; // TODO: opprette mappe om aktuelt
+      if (!elevmappe) {
+        continue;
+      } else {
+        documentData.elevmappeCaseNumber = elevmappe.elevmappeCaseNumber;
+        documentData.elevmappeAccessGroup = elevmappe.elevmappeAccessGroup;
+        documentData.elevmappeStatus = elevmappeAccessGroup.elevmappeStatus;
+      }
 
-      documentData.elevmappeCaseNumber = elevmappe.elevmappeCaseNumber;
-      documentData.elevmappeAccessGroup = elevmappe.elevmappeAccessGroup;
-      documentData.elevmappeStatus = elevmappeAccessGroup.elevmappeStatus;
-
-      if (archiveMethod.createDocument) {
-        if (documentData.elevmappeStatus === "Avsluttet") {
-          meldFeil(
-            {},
-            `Kan ikke lagre til avsluttet mappe nr ${documentData.elevmappeCaseNumber}`,
-            archiveMethod,
-            pdf
-          );
-          continue;
-        }
-
+      if (documentData.elevmappeStatus === "Avsluttet") {
+        meldFeil(
+          {},
+          `Kan ikke lagre til avsluttet mappe nr ${documentData.elevmappeCaseNumber}`,
+          archiveMethod,
+          pdf
+        );
+        continue;
+      } else {
         const metadata = genererMetadata(documentData, pdf, archiveMethod);
         if (!metadata) continue;
         const arkivnummer = arkiverDokument(
@@ -107,7 +109,7 @@ module.exports = async (archiveMethod, config) => {
           );
         }
       }
-    } //
+    } // end main loop
     // write statistics
   } catch (error) {
     writeLog(error);
