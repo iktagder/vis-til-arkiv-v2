@@ -1,15 +1,21 @@
 const getPdfsInFolder = require("../getPdfsInFolder/getPdfsInFolder");
 const writeLog = require("../writeLog/writeLog");
 const writeStat = require("../writeLog/writeStat");
-const { lesPdfInnhold } = require("./lesPdfInnhold");
-const { strukturerPdfInnhold } = require("./strukturerPdfInnhold");
-const { hentElevinfo } = require("./hentElevinfo");
-const { synkOgHentStudentRecno } = require("./synkOgHentStudentRecno");
-const { hentEllerOpprettElevmappe } = require("./hentEllerOpprettElevmappe");
-const { genererMetadata } = require("./genererMetadata");
-const { arkiverDokument } = require("./arkiverDokument");
-const { hentSkolenavn } = require("./hentSkolenavn");
-const meldFeil = require("./meldFeil");
+const { lesPdfInnhold } = require("../archiveFunctions/lesPdfInnhold");
+const {
+  strukturerPdfInnhold,
+} = require("../archiveFunctions/strukturerPdfInnhold");
+const { hentElevinfo } = require("../archiveFunctions/hentElevinfo");
+const {
+  synkOgHentStudentRecno,
+} = require("../archiveFunctions/synkOgHentStudentRecno");
+const {
+  hentEllerOpprettElevmappe,
+} = require("../archiveFunctions/hentEllerOpprettElevmappe");
+const { genererMetadata } = require("../archiveFunctions/genererMetadata");
+const { arkiverDokument } = require("../archiveFunctions/arkiverDokument");
+const { hentSkolenavn } = require("../archiveFunctions/hentSkolenavn");
+const meldFeil = require("../archiveFunctions/meldFeil");
 
 module.exports = async (archiveMethod, config) => {
   const baseP360Options = {
@@ -91,6 +97,7 @@ module.exports = async (archiveMethod, config) => {
         pdf,
         baseP360Options
       );
+
       if (!studentRecno) {
         stats.error++;
         continue;
@@ -126,7 +133,7 @@ module.exports = async (archiveMethod, config) => {
         const metadata = genererMetadata(documentData, pdf, archiveMethod);
         if (!metadata) {
           stats.error++;
-          rcontinue;
+          continue;
         }
         const arkivnummer = arkiverDokument(
           metadata,
@@ -142,8 +149,7 @@ module.exports = async (archiveMethod, config) => {
           stats.error++;
         }
       }
-    } // end main loop
-    // write statistics
+    }
   } catch (error) {
     writeLog(error);
   } finally {

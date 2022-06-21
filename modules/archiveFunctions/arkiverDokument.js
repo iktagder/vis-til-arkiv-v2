@@ -1,5 +1,5 @@
 const moveToFolder = require("../moveToFolder/moveToFolder");
-const meldFeil = require("./meldFeil");
+const meldFeil = require("../archiveKompetansebevisDocument/meldFeil");
 
 async function arkiverDokument(p360metadata, archiveMethod, pdf, p360Options) {
   const archiveOptions = {

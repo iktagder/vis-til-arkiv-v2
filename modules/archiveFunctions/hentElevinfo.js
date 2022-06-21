@@ -4,6 +4,19 @@ const meldFeil = require("./meldFeil");
 
 async function hentElevinfo(fnr, archiveMethod, pdf) {
   try {
+    return {
+      // TODO: hardkodet for test
+      navn: {
+        etternavn: "etter",
+        fornavn: "for",
+      },
+      bostedsadresse: {
+        adresselinje: ["her", "bor"],
+        postnummer: "8080",
+        poststed: "localhost",
+      },
+    };
+    /*
     elevRespons = await getElevinfo(fnr);
     if (elevRespons.response.status === 404) {
       throw elevRespons.message;
@@ -11,7 +24,7 @@ async function hentElevinfo(fnr, archiveMethod, pdf) {
     writeLog(
       `Fant elev i FINT: ${elevRespons.data.navn.fornavn} ${elevRespons.data.navn.etternavn}`
     );
-    return elevRespons.data;
+    return elevRespons.data;*/
   } catch (error) {
     meldFeil(
       error,
