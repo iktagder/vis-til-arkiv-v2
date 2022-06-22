@@ -8,7 +8,7 @@ Start script med `npm start -- -?` eller `node index.js -?` for å velge operasj
 - `-o` eller `--opprettElevmapper` kjører skript for å opprette kontakt og mappe i P360 gitt csv-fil med fødselsnummer
 - `-k` kjører `--karakterutskrift` skript for å lese karakterutskrift-pdfer fra lokal mappe
 - `--kompetansebevis` kjører innlesing og arkivering av kompetansebevis-pdfer
-- `--kompetansebevis` kjører innlesing og arkivering av vitnemål-pdfer
+- `--vitnemål` kjører innlesing og arkivering av vitnemål-pdfer
 
 ## Utvikling og test
 
@@ -25,7 +25,7 @@ Tips, oppsett og triks for utviklere finnes [./docs](./docs/utvikling.md).
    4. Oppdaterer vigo med arkivstatus
 3. Scriptet kan kjøres på nytt. Settes opp med Task Scheduler eller manuelt
 
-## karakterutskrift - løsningsbeskrivelse
+## Karakterutskrift (VIS dokumenter) - løsningsbeskrivelse
 
 1. Tar i mot pdf-dokumenter via `input-folder` (se `archiveMethods/karakterutskrift.js`).
 2. Leser ut fødselsnummer, skole, dokumentdato fra PDF`n.
@@ -47,22 +47,29 @@ Må inneholde følgende tekstelementer:
 
 - `Fødselsnummer: 11111111111` - fødselsnummer til elev
 - `Dato: 11.11.2021` - dette er dokumentdato
-  - `Skole: Tvedestrand videregående skole` - for å kunne sette riktig tilgangsgruppe/ansvarlig enhet på skole
+  - `Skole: Tvedestrand videregående skole` - for å kunne sette riktig tilgangsgruppe/ansvarlig
+    enhet på skole
 
-Om dokumentet skal dispatches til riktig mappe/mal, må `VIS MAL TYPE: MAL001` også være med. Men om man legger dokumentene direkte i mal-mappen, trenger man ikke dette.
+Om dokumentet skal dispatches til riktig mappe/mal, må `VIS MAL TYPE: MAL001` også være med.
+Men om man legger dokumentene direkte i mal-mappen, trenger man ikke dette.
 
-## kompetansebevis og vitnemål - løsningsbeskrivelse
+## Kompetansebevis og Vitnemål - løsningsbeskrivelse
+
+Utviklet for kjøring sommer 2022.
 
 Bygger på karkaterutskrift med noen forenklinger og endringer i selve koden for å tilpasse
 struktur i pdf.
 
 ### Krav til pdf-dokumentene
 
+PDF'er generes med [pdf-splitter](https://github.com/iktagder/pdf-splitter-karakterutsk)-skriptet
+som setter bruker navnekonvensjonen `navn på skole - navn på elev.pdf`.
+
 Må inneholde følgende tekstelementer:
 
-- `Fødselsnummer: \n\n11111111111` - fødselsnummer til elev (dette leses som to separate linjer)
-- `Sted og dato: Kristiansand S, 29.03.2022, 11.11.2021` - dette er dokumentdato med dato fraskilt med ','
-- `Skole: Tvedestrand videregående skole` - for å kunne sette riktig tilgangsgruppe/ansvarlig enhet på skole
+- `Fødselsnummer: 11111111111` - elevens fnr
+- `Sted og dato: Sted, 11.11.2021` - sted ignoreres, dato fraskilt med ','
+- `Skole: Navn på skole` - for å kunne sette riktig tilgangsgruppe/ansvarlig enhet på skole
 
 ### PDFCreator Server
 
