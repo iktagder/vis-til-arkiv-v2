@@ -9,6 +9,5 @@ async function meldFeil(error, errorMsg, archiveMethod, pdf) {
   if (pdf) {
     moveToFolder(pdf, archiveMethod.errorFolder);
   }
-  stats.error++;
 }
 module.exports = meldFeil;

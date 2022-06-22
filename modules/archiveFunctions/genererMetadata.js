@@ -1,5 +1,6 @@
 const createMetadata = require("../metadataGenerator/createMetadata");
 const meldFeil = require("./meldFeil");
+const getBase64 = require("../getBase64/getBase64");
 
 async function genererMetadata(documentData, pdf, archiveMethod) {
   const base64Pdf = getBase64(pdf);

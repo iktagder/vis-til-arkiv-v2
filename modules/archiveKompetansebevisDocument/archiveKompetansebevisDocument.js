@@ -56,6 +56,7 @@ module.exports = async (archiveMethod, config) => {
       return;
     }
 
+    // TODO, legg til teller og ta i bruk archiveMethod.maksAntallDokumenter
     //mainLoop -- alle funksjonskall returnerer null ved feil
     for (const pdf of listOfPdfs) {
       writeLog("--- Kompetansebevis, ny fil: " + pdf + " ---");
@@ -117,7 +118,7 @@ module.exports = async (archiveMethod, config) => {
       } else {
         documentData.elevmappeCaseNumber = elevmappe.elevmappeCaseNumber;
         documentData.elevmappeAccessGroup = elevmappe.elevmappeAccessGroup;
-        documentData.elevmappeStatus = elevmappeAccessGroup.elevmappeStatus;
+        documentData.elevmappeStatus = elevmappe.elevmappeStatus;
       }
 
       if (documentData.elevmappeStatus === "Avsluttet") {
@@ -130,18 +131,23 @@ module.exports = async (archiveMethod, config) => {
         stats.error++;
         continue;
       } else {
-        const metadata = genererMetadata(documentData, pdf, archiveMethod);
+        const metadata = await genererMetadata(
+          documentData,
+          pdf,
+          archiveMethod
+        );
         if (!metadata) {
           stats.error++;
           continue;
         }
-        const arkivnummer = arkiverDokument(
+        const arkivnummer = await arkiverDokument(
           metadata,
           archiveMethod,
           pdf,
           baseP360Options
         );
         if (arkivnummer) {
+          stats.imported++;
           writeLog(
             `Document archived with documentNumber ${archiveRes.DocumentNumber}`
           );

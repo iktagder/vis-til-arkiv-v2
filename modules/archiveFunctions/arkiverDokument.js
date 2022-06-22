@@ -1,5 +1,6 @@
 const moveToFolder = require("../moveToFolder/moveToFolder");
-const meldFeil = require("../archiveKompetansebevisDocument/meldFeil");
+const meldFeil = require("./meldFeil");
+const p360 = require("../nodep360/p360");
 
 async function arkiverDokument(p360metadata, archiveMethod, pdf, p360Options) {
   const archiveOptions = {
@@ -15,7 +16,6 @@ async function arkiverDokument(p360metadata, archiveMethod, pdf, p360Options) {
       //writeLog(JSON.stringify(p360metadata)); // uncomment when you need to see metadata, spams the log with base64 (maybe just delete base64 if this becomes a problem)
       if (!archiveMethod.sendToStudent) {
         moveToFolder(pdf, archiveMethod.importedFolder);
-        stats.imported++;
         return archiveRes.DocumentNumber;
       }
     } else {
