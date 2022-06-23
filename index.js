@@ -7,6 +7,7 @@ const opprettElevmapper = require("./archiveMethods/opprettElevmapper");
 const { TEST_ENV } = require("./config");
 const vigoDocuments = require("./archiveMethods/vigoDocuments");
 const kompetansebevis = require("./archiveMethods/kompetansebevis");
+const vitnemål = require("./archiveMethods/vitnemål");
 
 //run main program
 (async () => {
@@ -80,6 +81,20 @@ Ingen argumenter gitt. Mulige valg:
       writeLog("Error when running kompetansebevis: " + error);
       await twhError(
         "Error when running Kompetansebevis",
+        error,
+        config.DISPATCH_FOLDER
+      );
+    }
+  }
+  if (argumenter.includes("--vitnemål")) {
+    writeLog("Kjører arkivering av vitnemål");
+
+    try {
+      await vitnemål(config);
+    } catch (error) {
+      writeLog("Error when running vitnemål: " + error);
+      await twhError(
+        "Error when running vitnemål",
         error,
         config.DISPATCH_FOLDER
       );

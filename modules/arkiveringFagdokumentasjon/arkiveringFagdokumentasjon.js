@@ -35,7 +35,7 @@ module.exports = async (archiveMethod, config) => {
     if (listOfPdfs.length === 0) {
       meldFeil(
         "Feil ved lesing av inputmappe",
-        `Ingen kompetansebevis i import-mappen ${archiveMethod.inputFolder}`,
+        `Ingen ${archiveMethod.name} i import-mappen ${archiveMethod.inputFolder}`,
         archiveVisDocument,
         null
       );
@@ -59,7 +59,7 @@ module.exports = async (archiveMethod, config) => {
     // TODO, legg til teller og ta i bruk archiveMethod.maksAntallDokumenter
     //mainLoop -- alle funksjonskall returnerer null ved feil
     for (const pdf of listOfPdfs) {
-      writeLog("--- Kompetansebevis, ny fil: " + pdf + " ---");
+      writeLog(`--- ${archiveMethod.name}, ny fil: " + pdf + " ---`);
 
       const pdfContent = await lesPdfInnhold(pdf, archiveMethod);
       if (!pdfContent) {
