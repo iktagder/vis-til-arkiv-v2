@@ -23,7 +23,11 @@ module.exports = (archiveMethod, pdfContent) => {
       // TODO: robustifisere... kan det skje
       //at dokumenter genereres hvor det ikke følger linjeskift etter "Fødselsnummer:"?
       documentData.studentBirthnr = pdfStrings[i + 2].replace(" ", "");
-    } else if (pdfStrings[i].startsWith("Skole")) {
+    } else if (
+      // sjekk at vi får forventet resultat slutt å let om det ser bra ut
+      pdfStrings[i].startsWith("Skole:") ||
+      pdfStrings[i].startsWith("Skule:")
+    ) {
       documentData.school = pdfStrings[i].split(": ")[1];
     }
   }

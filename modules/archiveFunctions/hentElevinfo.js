@@ -5,7 +5,7 @@ const meldFeil = require("./meldFeil");
 async function hentElevinfo(fnr, archiveMethod, pdf) {
   try {
     elevRespons = await getElevinfo(fnr);
-    if (elevRespons.response.status === 404) {
+    if (elevRespons.status === 404) {
       throw elevRespons.message;
     }
     writeLog(

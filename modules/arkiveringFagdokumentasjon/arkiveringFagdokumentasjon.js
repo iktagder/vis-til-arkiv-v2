@@ -59,7 +59,7 @@ module.exports = async (archiveMethod, config) => {
     // TODO, legg til teller og ta i bruk archiveMethod.maksAntallDokumenter
     //mainLoop -- alle funksjonskall returnerer null ved feil
     for (const pdf of listOfPdfs) {
-      writeLog(`--- ${archiveMethod.name}, ny fil: " + pdf + " ---`);
+      writeLog(`--- ${archiveMethod.name}, ny fil: "${pdf}" ---`);
       if (stats.imported + stats.error >= archiveMethod.maksAntallDokumenter) {
         return; // finally vil fremdeles kjøre, så stats blir skrevet til disk
       }
@@ -124,7 +124,10 @@ module.exports = async (archiveMethod, config) => {
         documentData.elevmappeStatus = elevmappe.elevmappeStatus;
       }
 
-      if (documentData.elevmappeStatus === "Avsluttet") {
+      if (
+        documentData.elevmappeStatus === "Avsluttet" ||
+        documentData.elevmappeStatus === "Utgår"
+      ) {
         meldFeil(
           {},
           `Kan ikke lagre til avsluttet mappe nr ${documentData.elevmappeCaseNumber}`,
@@ -151,9 +154,7 @@ module.exports = async (archiveMethod, config) => {
         );
         if (arkivnummer) {
           stats.imported++;
-          writeLog(
-            `Document archived with documentNumber ${archiveRes.DocumentNumber}`
-          );
+          writeLog(`Document archived with documentNumber ${arkivnummer}`);
         } else {
           stats.error++;
         }
