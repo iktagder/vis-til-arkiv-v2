@@ -4,7 +4,7 @@ const arkiveringFagdokumentasjon = require("../modules/arkiveringFagdokumentasjo
 const archiveMethod = {
   // Variables for this archive method - fill in all fields
   name: "Vitnemål",
-  createdBy: "oleanders",
+  createdBy: "rim2022",
   metadataSchema: "VITNEMÅL", // Remember to create a metadata schema for this archive method
   inputFolder: ROOT_FOLDER + "/Vitnemål",
   importedFolder: ROOT_FOLDER + "/Vitnemål/Imported",
