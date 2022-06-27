@@ -34,15 +34,15 @@ module.exports = async (archiveMethod, config) => {
     const listOfPdfs = getPdfsInFolder(archiveMethod.inputFolder);
     if (listOfPdfs.length === 0) {
       meldFeil(
-        "Feil ved lesing av inputmappe",
+        "Feil ved lesing av input-mappe",
         `Ingen ${archiveMethod.name} i import-mappen ${archiveMethod.inputFolder}`,
         archiveVisDocument,
         null
       );
       return;
     }
-    // TODO: velge skole og/eller begrense innlesing til n dokumenter
-    const unikeSkolenavn = hentSkolenavn(listOfPdfs);
+    // Hopper over filtrering av skolenavn. Tar alle dokumenter i input-mappe
+    /*const unikeSkolenavn = hentSkolenavn(listOfPdfs);
     if (
       unikeSkolenavn.filter((skole) => skole.navn === archiveMethod.skolenavn)
         .length === 0
@@ -54,7 +54,7 @@ module.exports = async (archiveMethod, config) => {
         null
       );
       return;
-    }
+    }*/
 
     // TODO, legg til teller og ta i bruk archiveMethod.maksAntallDokumenter
     //mainLoop -- alle funksjonskall returnerer null ved feil
