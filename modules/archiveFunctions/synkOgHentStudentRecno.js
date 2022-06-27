@@ -8,9 +8,13 @@ async function synkOgHentStudentRecno(
   pdf,
   p360Options
 ) {
+  const fornavnInkludertMellomnavn =
+    studentInfo.navn.mellomnavn.length > 0
+      ? `${studentInfo.navn.fornavn} ${studentInfo.navn.mellomnavn}`
+      : studentInfo.navn.fornavn;
   const studentData = {
     lastName: studentInfo.navn.etternavn,
-    firstName: studentInfo.navn.fornavn,
+    firstName: fornavnInkludertMellomnavn,
     streetAddress: settSammenAdresse(studentInfo.bostedsadresse.adresselinje),
     zipCode: studentInfo.bostedsadresse.postnummer,
     zipPlace: studentInfo.bostedsadresse.poststed,
