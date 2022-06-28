@@ -59,10 +59,11 @@ module.exports = async (archiveMethod, config) => {
     // TODO, legg til teller og ta i bruk archiveMethod.maksAntallDokumenter
     //mainLoop -- alle funksjonskall returnerer null ved feil
     for (const pdf of listOfPdfs) {
-      writeLog(`--- ${archiveMethod.name}, ny fil: "${pdf}" ---`);
       if (stats.imported + stats.error >= archiveMethod.maksAntallDokumenter) {
         return; // finally vil fremdeles kjøre, så stats blir skrevet til disk
       }
+
+      writeLog(`--- ${archiveMethod.name}, ny fil: "${pdf}" ---`);
 
       const pdfContent = await lesPdfInnhold(pdf, archiveMethod);
       if (!pdfContent) {
