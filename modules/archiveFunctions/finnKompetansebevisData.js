@@ -16,7 +16,7 @@ module.exports = (archiveMethod, pdfContent) => {
   // TODO: legg til sjekk for å se om eksisterende verdi er det samme som ny verdi for å
   // avdekke dårlig input (altså at et dokument har to forskjellige fnr, dato eller skole)
   for (i = 0; i < pdfStrings.length; i++) {
-    if (pdfStrings[i].startsWith("Sted og dato")) {
+    if (pdfStrings[i].startsWith("Sted og dato") || pdfStrings[i].startsWith("Stad og dato")) {
       const datoString = pdfStrings[i].split(", ")[1];
       documentData.documentDate = konverterDatoTilP360(datoString);
     } else if (pdfStrings[i].startsWith("Fødselsnummer")) {
@@ -24,7 +24,6 @@ module.exports = (archiveMethod, pdfContent) => {
       //at dokumenter genereres hvor det ikke følger linjeskift etter "Fødselsnummer:"?
       documentData.studentBirthnr = pdfStrings[i + 2].replace(" ", "");
     } else if (
-      // sjekk at vi får forventet resultat slutt å let om det ser bra ut
       pdfStrings[i].startsWith("Skole:") ||
       pdfStrings[i].startsWith("Skule:")
     ) {
