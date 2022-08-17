@@ -8,6 +8,7 @@ const { TEST_ENV } = require("./config");
 const vigoDocuments = require("./archiveMethods/vigoDocuments");
 const kompetansebevis = require("./archiveMethods/kompetansebevis");
 const vitnemål = require("./archiveMethods/vitnemål");
+const ufint = require("./archiveMethods/ufint");
 
 //run main program
 (async () => {
@@ -95,6 +96,19 @@ Ingen argumenter gitt. Mulige valg:
       writeLog("Error when running vitnemål: " + error);
       await twhError(
         "Error when running vitnemål",
+        error,
+        config.DISPATCH_FOLDER
+      );
+    }
+  }
+  if (argumenter.includes("--ufint")) {
+    writeLog("Kjører arkivering av kompetansebevis uten data fra FINT");
+    try {
+      await ufint(config);
+    } catch (error) {
+      writeLog("Error when running arkivering av kompetansebevis uten data fra FINT: " + error);
+      await twhError(
+        "Feil ved arkivering av kompetansebevis uten data fra FINT",
         error,
         config.DISPATCH_FOLDER
       );

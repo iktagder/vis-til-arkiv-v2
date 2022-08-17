@@ -972,6 +972,7 @@
       "AccessGroup": "<<<schoolAccessGroup>>>",
       "AccessCode": "UO",
       "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+
       "Contacts": [
         {
           "ReferenceNumber": "<<<studentBirthnr>>>",
