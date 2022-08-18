@@ -27,6 +27,15 @@ async function hentElevinfoP360(fnr, archiveMethod, options) {
         );
         return null; 
     }
+    if (privatePersonRes.ErrorMessage !== null) {
+        meldFeil(
+            privatePersonRes.ErrorMessage,
+            privatePersonRes.ErrorDetails,
+            archiveMethod,
+            pdf
+            );
+            return null; 
+    }
 
     const student = privatePersonRes.PrivatePersons[0];
 
