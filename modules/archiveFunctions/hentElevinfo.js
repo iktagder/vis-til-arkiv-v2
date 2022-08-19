@@ -6,7 +6,13 @@ async function hentElevinfo(fnr, archiveMethod, pdf) {
   try {
     elevRespons = await getElevinfo(fnr);
     if (elevRespons.status === 404) {
-      throw elevRespons.message;
+      meldFeil(
+        error,
+        "Fant ikke elev i FINT.",
+        archiveMethod,
+        pdf
+      );
+      return null;
     }
     writeLog(
       `Fant elev i FINT: ${elevRespons.data.navn.fornavn} ${elevRespons.data.navn.etternavn}`
