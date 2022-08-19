@@ -24,6 +24,7 @@ module.exports = {
   ROOT_FOLDER: process.env.ROOT_FOLDER,
   LOG_FILE: process.env.LOG_FILE,
   STAT_FILE: process.env.STAT_FILE ?? "stats.txt",
+  MISSING_ADDRESS_LOG: process.env.MISSING_ADDRESS_LOG,
   P360_INTERNAL_NOTES: {
     BLOCKED_ADDRESS:
       "C:/gitRepositories/vis-til-arkiv/data/internalNote/blockedAddress.pdf",

@@ -30,6 +30,7 @@ async function synkOgHentStudentRecno(
 }
 
 function settSammenAdresse(adresselinjer) {
+  if (adresselinjer === null) {return adresselinjer}
   return adresselinjer.reduce(
     (akkumulator, linje) => akkumulator + "\n" + linje
   );
