@@ -9,6 +9,7 @@ Start script med `npm start -- -?` eller `node index.js -?` for å velge operasj
 - `-k` kjører `--karakterutskrift` skript for å lese karakterutskrift-pdfer fra lokal mappe
 - `--kompetansebevis` kjører innlesing og arkivering av kompetansebevis-pdfer
 - `--vitnemål` kjører innlesing og arkivering av vitnemål-pdfer
+- `--ufint` kjører innlesing og arkivering av kompetansebevis med data fra P360 isteden for FINT 
 
 ## Utvikling og test
 
