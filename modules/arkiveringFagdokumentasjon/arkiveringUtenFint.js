@@ -71,6 +71,7 @@ module.exports = async (archiveMethod, config) => {
       
       if (!studentInfo) {
         stats.error++;
+        continue;
       } else {
         documentData.studentName = `${studentInfo.navn.fornavn} ${studentInfo.navn.etternavn}`;
       }
