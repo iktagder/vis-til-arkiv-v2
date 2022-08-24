@@ -1,922 +1,995 @@
 {
-    "FORMIDL": {
-        "name": "Formidl",
-        "owner": "",
-        "author": "",
-        "p360metadata": {
-            "Title": "Formidling av læreplass skoleåret 2021/2022",
-            "UnofficialTitle": "Formidling av læreplass skoleåret 2021/2022",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument inn",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "UO",
-            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
-            "ResponsiblePersonRecno": 200148,
-            "Contacts": [
-                {
-                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Formidling av læreplass skoleåret 2021/2022",
-                    "VersionFormat": "A"
-                }
-            ]
+  "FORMIDL": {
+    "name": "Formidl",
+    "owner": "",
+    "author": "",
+    "p360metadata": {
+      "Title": "Formidling av læreplass skoleåret 2022/2023",
+      "UnofficialTitle": "Formidling av læreplass skoleåret 2022/2023",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument inn",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "UO",
+      "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+      "ResponsiblePersonRecno": 200148,
+      "Contacts": [
+        {
+          "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": true
         }
-    },
-    "KONTRAKT": {
-        "name": "Kontrakt",
-        "owner": "",
-        "author": "",
-        "p360metadata": {
-            "Title": "Elektronisk signert lærekontrakt/opplæringskontrakt",
-            "UnofficialTitle": "Elektronisk signert lærekontrakt/opplæringskontrakt",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument inn",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "UO",
-            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
-            "ResponsiblePersonRecno": 200148,
-            "Contacts": [
-                {
-                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Elektronisk signert lærekontrakt/opplæringskontrakt",
-                    "VersionFormat": "A"
-                }
-            ]
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Formidling av læreplass skoleåret 2022/2023",
+          "VersionFormat": "A"
         }
-    },
-    "PROTOKOLL": {
-        "name": "Protokoll",
-        "owner": "",
-        "author": "",
-        "p360metadata": {
-            "Title": "Elektronisk signert prøveprotokoll",
-            "UnofficialTitle": "Elektronisk signert prøveprotokoll",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument inn",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "UO",
-            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
-            "ResponsiblePersonRecno": 200148,
-            "Contacts": [
-                {
-                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Elektronisk signert prøveprotokoll",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "SOKNAD": {
-        "name": "Soknad",
-        "owner": "",
-        "author": "",
-        "p360metadata": {
-            "Title": "Vigosøknad videregående opplæring skoleåret 2021/2022",
-            "UnofficialTitle": "Vigosøknad videregående opplæring skoleåret 2021/2022",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument inn",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "UO",
-            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
-            "ResponsiblePersonRecno": 200148,
-            "Contacts": [
-                {
-                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Vigosøknad videregående opplæring skoleåret 2021/2022",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "SVAR": {
-        "name": "Svar",
-        "owner": "",
-        "author": "",
-        "p360metadata": {
-            "Title": "Søkers svar på tilbud om videregående opplæring skoleåret 2021/2022",
-            "UnofficialTitle": "Søkers svar på tilbud om videregående opplæring skoleåret 2021/2022",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument inn",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "UO",
-            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
-            "ResponsiblePersonRecno": 200148,
-            "Contacts": [
-                {
-                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Søkers svar på tilbud om videregående opplæring skoleåret 2021/2022",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "TILBUD": {
-        "name": "Tilbud",
-        "owner": "",
-        "author": "",
-        "p360metadata": {
-            "Title": "Tilbud om videregående opplæring skoleåret 2021/2022",
-            "UnofficialTitle": "Tilbud om videregående opplæring skoleåret 2021/2022",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument ut",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "UO",
-            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
-            "ResponsiblePersonRecno": 200148,
-            "Contacts": [
-                {
-                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Tilbud om videregående opplæring skoleåret 2021/2022",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "OPPNEMND": {
-        "name": "Oppnemnd",
-        "owner": "",
-        "author": "",
-        "p360metadata": {
-            "Title": "Elektronisk prøveoppmelding sendt til prøvenemnd",
-            "UnofficialTitle": "Elektronisk prøveoppmelding sendt til prøvenemnd",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument ut",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "UO",
-            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
-            "ResponsiblePersonRecno": 200148,
-            "Contacts": [
-                {
-                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Elektronisk prøveoppmelding sendt til prøvenemnd",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "KARAKTERUTSKRIFT": {
-        "name": "Karakterutskrift",
-        "owner": "oleanders",
-        "author": "oleanders",
-        "p360metadata": {
-            "Title": "Karakterutskrift",
-            "UnofficialTitle": "Karakterutskrift - <<<studentName>>>",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument ut",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "UO",
-            "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
-            "ResponsiblePersonRecno": 200148,
-            "Contacts": [
-                {
-                    "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Karakterutskrift",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "VISFOTBALL": {
-        "name": "Fotball EM",
-        "owner": "Jørgen T",
-        "author": "Jørgen T",
-        "p360metadata": {
-            "Title": "Svar på søknad om fotball EM",
-            "UnofficialTitle": "Svar på søknad om fotball EM - <<<studentName>>>",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument ut",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "13",
-            "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
-            "Contacts": [
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Svar på søknad om fotball EM",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "VISTEST": {
-        "name": "TIL TESTING",
-        "owner": "Jørgen T",
-        "author": "Jørgen T",
-        "p360metadata": {
-            "Title": "Svar på generell søknad",
-            "UnofficialTitle": "Svar på generell søknad - <<<studentName>>>",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument ut",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "13",
-            "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
-            "Contacts": [
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Svar på generell søknad",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "VIS002": {
-        "name": "Fritak for vurdering med karakter i kroppsøving",
-        "owner": "Geir",
-        "author": "Geir",
-        "p360metadata": {
-            "Title": "Svar på søknad om fritak for vurdering med karakter i kroppsøving",
-            "UnofficialTitle": "Svar på søknad om fritak for vurdering med karakter i kroppsøving - <<<studentName>>>",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument ut",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "13",
-            "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
-            "Contacts": [
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Svar på søknad om fritak for vurdering med karakter i kroppsøving",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "VIS001": {
-        "name": "Fritak for opplæring i kroppsøving",
-        "owner": "Geir",
-        "author": "Geir",
-        "p360metadata": {
-            "Title": "Svar på søknad om fritak for opplæring i kroppsøving",
-            "UnofficialTitle": "Svar på søknad om fritak for opplæring i kroppsøving - <<<studentName>>>",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument ut",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "13",
-            "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
-            "Contacts": [
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Svar på søknad om fritak for opplæring i kroppsøving",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "VIS004": {
-        "name": "Fritak for vurdering med karakter i sidemål",
-        "owner": "Geir",
-        "author": "Geir",
-        "p360metadata": {
-            "Title": "Svar på søknad om fritak for vurdering med karakter i sidemål",
-            "UnofficialTitle": "Svar på søknad om fritak for vurdering med karakter i sidemål - <<<studentName>>>",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument ut",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "13",
-            "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
-            "Contacts": [
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Svar på søknad om fritak for vurdering med karakter i sidemål",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "VIS003": {
-        "name": "Fritak for opplæring i sidemål",
-        "owner": "Geir",
-        "author": "Geir",
-        "p360metadata": {
-            "Title": "Svar på søknad om fritak for opplæring i sidemål",
-            "UnofficialTitle": "Svar på søknad om fritak for opplæring i sidemål - <<<studentName>>>",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument ut",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "13",
-            "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
-            "Contacts": [
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Svar på søknad om fritak for opplæring i sidemål",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "VIS010": {
-        "name": "Forespørsel om NUS-eksamen",
-        "owner": "Geir",
-        "author": "Geir",
-        "p360metadata": {
-            "Title": "Svar på søknad om oppmelding til NUS-eksamen",
-            "UnofficialTitle": "Svar på søknad om oppmelding til NUS-eksamen - <<<studentName>>>",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument ut",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "13",
-            "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
-            "Contacts": [
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Svar på søknad om oppmelding til NUS-eksamen",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "VIS005": {
-        "name": "Godkjenning av tidligere beståtte fag",
-        "owner": "Geir",
-        "author": "Geir",
-        "p360metadata": {
-            "Title": "Svar på søknad om godkjenning av tidligere beståtte fag",
-            "UnofficialTitle": "Svar på søknad om godkjenning av tidligere beståtte fag - <<<studentName>>>",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument ut",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "13",
-            "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
-            "Contacts": [
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Svar på søknad om godkjenning av tidligere beståtte fag",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "VIS006": {
-        "name": "Tilrettelegging ved eksamen og prøver",
-        "owner": "Geir",
-        "author": "Geir",
-        "p360metadata": {
-            "Title": "Svar på søknad om tilrettelegging ved eksamen og prøver",
-            "UnofficialTitle": "Svar på søknad om tilrettelegging ved eksamen og prøver - <<<studentName>>>",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument ut",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "13",
-            "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
-            "Contacts": [
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Svar på søknad om tilrettelegging ved eksamen og prøver",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "VIS007": {
-        "name": "Tilrettelegging ved privatisteksamen",
-        "owner": "Geir",
-        "author": "Geir",
-        "p360metadata": {
-            "Title": "Svar på søknad om tilrettelegging ved privatisteksamen",
-            "UnofficialTitle": "Svar på søknad om tilrettelegging ved privatisteksamen - <<<studentName>>>",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument ut",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "13",
-            "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
-            "Contacts": [
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Svar på søknad om tilrettelegging ved eksamen og prøver",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "VIS009": {
-        "name": "Godkjenning av tidligere beståtte fag VO",
-        "owner": "Geir",
-        "author": "Geir",
-        "p360metadata": {
-            "Title": "Svar på søknad om godkjenning av tidligere beståtte fag",
-            "UnofficialTitle": "Svar på søknad om godkjenning av tidligere beståtte fag - <<<studentName>>>",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument ut",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "13",
-            "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
-            "Contacts": [
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Svar på søknad om godkjenning av tidligere beståtte fag",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "VISVarsel": {
-        "name": "Varsel om fare for manglende vurderingsgrunnlag VO",
-        "owner": "Jørgen",
-        "author": "Jørgen",
-        "p360metadata": {
-            "Title": "Varsel om fare for manglende vurderingsgrunnlag i fag <<<course>>>",
-            "UnofficialTitle": "Varsel om fare for manglende vurderingsgrunnlag i fag <<<course>>> - <<<studentName>>>",
-            "DocumentDate": "<<<documentDate>>>",
-            "Archive": "Saksdokument",
-            "Category": "Dokument ut",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "13",
-            "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
-            "Contacts": [
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<studentBirthnr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": true
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Varsel om fare for manglende vurderingsgrunnlag i fag <<<course>>>",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "INTERNT_NOTAT_SVARBREV": {
-        "name": "Svarbrev på søknad må skrives ut og leveres til elev",
-        "owner": "Jørgen T",
-        "author": "Jørgen T",
-        "p360metadata": {
-            "Title": "Svarbrev på VIS-søknad <<<documentNumber>>>, må skrives ut og leveres til elev",
-            "UnofficialTitle": "Svarbrev på VIS-søknad <<<documentNumber>>>, må skrives ut og leveres til elev - <<<studentName>>>",
-            "Archive": "Saksdokument",
-            "Category": "Internt notat / e-post MED oppfølging",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "13",
-            "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
-            "Contacts": [
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": false
-                }
-            ],
-            "UnregisteredContacts": [
-                {
-                    "ContactName": "<<<userEmailAddress>>>",
-                    "Role": "Saksbehandler"
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Svarbrev på VIS-søknad <<<documentNumber>>>, må skrives ut og leveres til elev",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
-    },
-    "INTERNT_NOTAT_VARSEL": {
-        "name": "Varsel må skrives ut og leveres til elev",
-        "owner": "Jørgen T",
-        "author": "Jørgen T",
-        "p360metadata": {
-            "Title": "Varsel i fag - <<<documentNumber>>>, må skrives ut og leveres til elev",
-            "UnofficialTitle": "Varsel i fag - <<<documentNumber>>>, må skrives ut og leveres til elev - <<<studentName>>>",
-            "Archive": "Saksdokument",
-            "Category": "Internt notat / e-post MED oppfølging",
-            "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
-            "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
-            "Status": "J",
-            "CaseNumber": "<<<elevmappeCaseNumber>>>",
-            "AccessGroup": "<<<schoolAccessGroup>>>",
-            "AccessCode": "13",
-            "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
-            "Contacts": [
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Avsender",
-                    "IsUnofficial": false
-                },
-                {
-                    "ReferenceNumber": "<<<schoolOrgNr>>>",
-                    "Role": "Mottaker",
-                    "IsUnofficial": false
-                }
-            ],
-            "UnregisteredContacts": [
-                {
-                    "ContactName": "<<<userEmailAddress>>>",
-                    "Role": "Saksbehandler"
-                }
-            ],
-            "Files": [
-                {
-                    "Base64Data": "<<<pdfFileBase64>>>",
-                    "Category": "1",
-                    "Format": "pdf",
-                    "Status": "F",
-                    "Title": "Varsel i fag - <<<documentNumber>>>, må skrives ut og leveres til elev",
-                    "VersionFormat": "A"
-                }
-            ]
-        }
+      ]
     }
+  },
+  "INTERNT_NOTAT_SVARBREV": {
+    "name": "Svarbrev på søknad må skrives ut og leveres til elev",
+    "owner": "Jørgen T",
+    "author": "Jørgen T",
+    "p360metadata": {
+      "Title": "Svarbrev på VIS-søknad <<<documentNumber>>>, må skrives ut og leveres til elev",
+      "UnofficialTitle": "Svarbrev på VIS-søknad <<<documentNumber>>>, må skrives ut og leveres til elev - <<<studentName>>>",
+      "Archive": "Saksdokument",
+      "Category": "Internt notat / e-post MED oppfølging",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "13",
+      "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": false
+        }
+      ],
+      "UnregisteredContacts": [
+        {
+          "ContactName": "<<<userEmailAddress>>>",
+          "Role": "Saksbehandler"
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Svarbrev på VIS-søknad <<<documentNumber>>>, må skrives ut og leveres til elev",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "INTERNT_NOTAT_VARSEL": {
+    "name": "Varsel må skrives ut og leveres til elev",
+    "owner": "Jørgen T",
+    "author": "Jørgen T",
+    "p360metadata": {
+      "Title": "Varsel i fag - <<<documentNumber>>>, må skrives ut og leveres til elev",
+      "UnofficialTitle": "Varsel i fag - <<<documentNumber>>>, må skrives ut og leveres til elev - <<<studentName>>>",
+      "Archive": "Saksdokument",
+      "Category": "Internt notat / e-post MED oppfølging",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "13",
+      "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": false
+        }
+      ],
+      "UnregisteredContacts": [
+        {
+          "ContactName": "<<<userEmailAddress>>>",
+          "Role": "Saksbehandler"
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Varsel i fag - <<<documentNumber>>>, må skrives ut og leveres til elev",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "KARAKTERUTSKRIFT": {
+    "name": "Karakterutskrift",
+    "owner": "oleanders",
+    "author": "oleanders",
+    "p360metadata": {
+      "Title": "Karakterutskrift",
+      "UnofficialTitle": "Karakterutskrift - <<<studentName>>>",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "UO",
+      "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+      "ResponsiblePersonRecno": 200148,
+      "Contacts": [
+        {
+          "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Karakterutskrift",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "KOMPETANSEBEVIS": {
+    "name": "Kompetansebevis",
+    "owner": "rimrim",
+    "author": "rimrim",
+    "p360metadata": {
+      "Title": "Kompetansebevis",
+      "UnofficialTitle": "Kompetansebevis - <<<studentName>>>",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "UO",
+      "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Kompetansebevis",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "KONTRAKT": {
+    "name": "Kontrakt",
+    "owner": "",
+    "author": "",
+    "p360metadata": {
+      "Title": "Elektronisk signert lærekontrakt/opplæringskontrakt",
+      "UnofficialTitle": "Elektronisk signert lærekontrakt/opplæringskontrakt",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument inn",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "UO",
+      "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+      "ResponsiblePersonRecno": 200148,
+      "Contacts": [
+        {
+          "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Elektronisk signert lærekontrakt/opplæringskontrakt",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "OPPNEMND": {
+    "name": "Oppnemnd",
+    "owner": "",
+    "author": "",
+    "p360metadata": {
+      "Title": "Elektronisk prøveoppmelding sendt til prøvenemnd",
+      "UnofficialTitle": "Elektronisk prøveoppmelding sendt til prøvenemnd",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "UO",
+      "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+      "ResponsiblePersonRecno": 200148,
+      "Contacts": [
+        {
+          "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Elektronisk prøveoppmelding sendt til prøvenemnd",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "PROTOKOLL": {
+    "name": "Protokoll",
+    "owner": "",
+    "author": "",
+    "p360metadata": {
+      "Title": "Elektronisk signert prøveprotokoll",
+      "UnofficialTitle": "Elektronisk signert prøveprotokoll",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument inn",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "UO",
+      "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+      "ResponsiblePersonRecno": 200148,
+      "Contacts": [
+        {
+          "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Elektronisk signert prøveprotokoll",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "SOKNAD": {
+    "name": "Soknad",
+    "owner": "",
+    "author": "",
+    "p360metadata": {
+      "Title": "Vigosøknad videregående opplæring skoleåret 2022/2023",
+      "UnofficialTitle": "Vigosøknad videregående opplæring skoleåret 2022/2023",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument inn",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "UO",
+      "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+      "ResponsiblePersonRecno": 200148,
+      "Contacts": [
+        {
+          "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Vigosøknad videregående opplæring skoleåret 2022/2023",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "SVAR": {
+    "name": "Svar",
+    "owner": "",
+    "author": "",
+    "p360metadata": {
+      "Title": "Søkers svar på tilbud om videregående opplæring skoleåret 2022/2023",
+      "UnofficialTitle": "Søkers svar på tilbud om videregående opplæring skoleåret 2022/2023",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument inn",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "UO",
+      "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+      "ResponsiblePersonRecno": 200148,
+      "Contacts": [
+        {
+          "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Søkers svar på tilbud om videregående opplæring skoleåret 2022/2023",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "TILBUD": {
+    "name": "Tilbud",
+    "owner": "",
+    "author": "",
+    "p360metadata": {
+      "Title": "Tilbud om videregående opplæring skoleåret 2022/2023",
+      "UnofficialTitle": "Tilbud om videregående opplæring skoleåret 2022/2023",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "UO",
+      "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+      "ResponsiblePersonRecno": 200148,
+      "Contacts": [
+        {
+          "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Tilbud om videregående opplæring skoleåret 2022/2023",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "VIS001": {
+    "name": "Fritak for opplæring i kroppsøving",
+    "owner": "Geir",
+    "author": "Geir",
+    "p360metadata": {
+      "Title": "Svar på søknad om fritak for opplæring i kroppsøving",
+      "UnofficialTitle": "Svar på søknad om fritak for opplæring i kroppsøving - <<<studentName>>>",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "13",
+      "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Svar på søknad om fritak for opplæring i kroppsøving",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "VIS002": {
+    "name": "Fritak for vurdering med karakter i kroppsøving",
+    "owner": "Geir",
+    "author": "Geir",
+    "p360metadata": {
+      "Title": "Svar på søknad om fritak for vurdering med karakter i kroppsøving",
+      "UnofficialTitle": "Svar på søknad om fritak for vurdering med karakter i kroppsøving - <<<studentName>>>",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "13",
+      "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Svar på søknad om fritak for vurdering med karakter i kroppsøving",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "VIS003": {
+    "name": "Fritak for opplæring i sidemål",
+    "owner": "Geir",
+    "author": "Geir",
+    "p360metadata": {
+      "Title": "Svar på søknad om fritak for opplæring i sidemål",
+      "UnofficialTitle": "Svar på søknad om fritak for opplæring i sidemål - <<<studentName>>>",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "13",
+      "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Svar på søknad om fritak for opplæring i sidemål",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "VIS004": {
+    "name": "Fritak for vurdering med karakter i sidemål",
+    "owner": "Geir",
+    "author": "Geir",
+    "p360metadata": {
+      "Title": "Svar på søknad om fritak for vurdering med karakter i sidemål",
+      "UnofficialTitle": "Svar på søknad om fritak for vurdering med karakter i sidemål - <<<studentName>>>",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "13",
+      "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Svar på søknad om fritak for vurdering med karakter i sidemål",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "VIS005": {
+    "name": "Godkjenning av tidligere beståtte fag",
+    "owner": "Geir",
+    "author": "Geir",
+    "p360metadata": {
+      "Title": "Svar på søknad om godkjenning av tidligere beståtte fag",
+      "UnofficialTitle": "Svar på søknad om godkjenning av tidligere beståtte fag - <<<studentName>>>",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "13",
+      "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Svar på søknad om godkjenning av tidligere beståtte fag",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "VIS006": {
+    "name": "Tilrettelegging ved eksamen og prøver",
+    "owner": "Geir",
+    "author": "Geir",
+    "p360metadata": {
+      "Title": "Svar på søknad om tilrettelegging ved eksamen og prøver",
+      "UnofficialTitle": "Svar på søknad om tilrettelegging ved eksamen og prøver - <<<studentName>>>",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "13",
+      "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Svar på søknad om tilrettelegging ved eksamen og prøver",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "VIS007": {
+    "name": "Tilrettelegging ved privatisteksamen",
+    "owner": "Geir",
+    "author": "Geir",
+    "p360metadata": {
+      "Title": "Svar på søknad om tilrettelegging ved privatisteksamen",
+      "UnofficialTitle": "Svar på søknad om tilrettelegging ved privatisteksamen - <<<studentName>>>",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "13",
+      "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Svar på søknad om tilrettelegging ved eksamen og prøver",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "VIS009": {
+    "name": "Godkjenning av tidligere beståtte fag VO",
+    "owner": "Geir",
+    "author": "Geir",
+    "p360metadata": {
+      "Title": "Svar på søknad om godkjenning av tidligere beståtte fag",
+      "UnofficialTitle": "Svar på søknad om godkjenning av tidligere beståtte fag - <<<studentName>>>",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "13",
+      "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Svar på søknad om godkjenning av tidligere beståtte fag",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "VIS010": {
+    "name": "Forespørsel om NUS-eksamen",
+    "owner": "Geir",
+    "author": "Geir",
+    "p360metadata": {
+      "Title": "Svar på søknad om oppmelding til NUS-eksamen",
+      "UnofficialTitle": "Svar på søknad om oppmelding til NUS-eksamen - <<<studentName>>>",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "13",
+      "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Svar på søknad om oppmelding til NUS-eksamen",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "VISFOTBALL": {
+    "name": "Fotball EM",
+    "owner": "Jørgen T",
+    "author": "Jørgen T",
+    "p360metadata": {
+      "Title": "Svar på søknad om fotball EM",
+      "UnofficialTitle": "Svar på søknad om fotball EM - <<<studentName>>>",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "13",
+      "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Svar på søknad om fotball EM",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "VISTEST": {
+    "name": "TIL TESTING",
+    "owner": "Jørgen T",
+    "author": "Jørgen T",
+    "p360metadata": {
+      "Title": "Svar på generell søknad",
+      "UnofficialTitle": "Svar på generell søknad - <<<studentName>>>",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "13",
+      "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Svar på generell søknad",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "VISVarsel": {
+    "name": "Varsel om fare for manglende vurderingsgrunnlag VO",
+    "owner": "Jørgen",
+    "author": "Jørgen",
+    "p360metadata": {
+      "Title": "Varsel om fare for manglende vurderingsgrunnlag i fag <<<course>>>",
+      "UnofficialTitle": "Varsel om fare for manglende vurderingsgrunnlag i fag <<<course>>> - <<<studentName>>>",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "13",
+      "ResponsibleEnterpriseNumber": "<<<schoolOrgNr>>>",
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<schoolOrgNr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Varsel om fare for manglende vurderingsgrunnlag i fag <<<course>>>",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "VITNEMÅL": {
+    "name": "Vitnemål",
+    "owner": "oleanders",
+    "author": "oleanders",
+    "p360metadata": {
+      "Title": "Vitnemål",
+      "UnofficialTitle": "Vitnemål - <<<studentName>>>",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument ut",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "UO",
+      "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+
+      "Contacts": [
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Vitnemål",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  }
 }

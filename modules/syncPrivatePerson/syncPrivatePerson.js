@@ -1,5 +1,34 @@
 const p360 = require("../nodep360/p360");
 const writeLog = require("../writeLog/writeLog");
+const fs = require('fs');
+const options = require("../../config");
+
+
+function generatePayload(student) {
+    return !!student.streetAddress ? {
+        "FirstName": student.firstName,
+        "LastName": student.lastName,
+        "PersonalIdNumber": student.birthnr,
+        "Active": "true",
+        "PrivateAddress": {
+            "StreetAddress": student.streetAddress,
+            "ZipCode": student.zipCode,
+            "ZipPlace": student.zipPlace,
+            "Country": "NOR"
+        }
+    } : {
+        "FirstName": student.firstName,
+        "LastName": student.lastName,
+        "PersonalIdNumber": student.birthnr,
+        "Active": "true"
+    }
+}
+
+function logMissingAddress(recno) {
+    fs.appendFileSync(options.MISSING_ADDRESS_LOG, recno + "\n", (err) => {
+        if (err) console.log(err);
+    });
+}
 
 // Check if person exists, if exist, use reference, if not create new private person
 
@@ -47,43 +76,28 @@ module.exports = async (student, options) => {
             }
         }
         else {
-            throw Error("Found more than one private person with birthnr :"+student.birthnr);
+            throw Error("Found more than one private person with birthnr :" + student.birthnr);
         }
     }
     else {
         throw Error(privatePersonRes.ErrorMessage);
     }
     if (createNewPrivatePerson) {
-        if (!student.streetAddress) {
-            throw Error("Missing required parameter: student.streetAddress");
-        }
-        if (!student.zipPlace) {
-            throw Error("Missing required parameter: student.zipPlace");
-        }
-        if (!student.zipCode) {
-            throw Error("Missing required parameter: student.zipCode");
-        }
-        writeLog("  Created privatePerson in 360 with fnr:" + student.birthnr)
+
+        const payload = generatePayload(student);
+        
         const createPrivatePersonOptions = {
             url: options.url,
             authkey: options.authkey,
             service: "ContactService",
             method: "SynchronizePrivatePerson"
         }
-        const payload = {
-            "FirstName": student.firstName,
-		    "LastName": student.lastName,
-		    "PersonalIdNumber": student.birthnr,
-		    "Active":"true",
-			"PrivateAddress": {
-				"StreetAddress": student.streetAddress,
-    				"ZipCode": student.zipCode,
-    				"ZipPlace": student.zipPlace,
-    				"Country": "NOR"
-    		}
-	    }
         const syncPrivatePersonRes = await p360(payload, createPrivatePersonOptions);
         if (syncPrivatePersonRes.Successful) {
+            if (!student.streetAddress) {
+                logMissingAddress(syncPrivatePersonRes.Recno); 
+            }
+            writeLog("  Created privatePerson in 360 with fnr:" + student.birthnr + ", recno: " + syncPrivatePersonRes.Recno)
             return syncPrivatePersonRes.Recno;
         }
         else {
@@ -101,15 +115,15 @@ module.exports = async (student, options) => {
         const payload = {
             "Recno": privatePersonRecno,
             "FirstName": student.firstName,
-		    "LastName": student.lastName,
-		    "Active":"true",
-			"PrivateAddress": {
-				"StreetAddress": student.streetAddress,
-    				"ZipCode": student.zipCode,
-    				"ZipPlace": student.zipPlace,
-    				"Country": "NOR"
-    		}
-	    }
+            "LastName": student.lastName,
+            "Active": "true",
+            "PrivateAddress": {
+                "StreetAddress": student.streetAddress,
+                "ZipCode": student.zipCode,
+                "ZipPlace": student.zipPlace,
+                "Country": "NOR"
+            }
+        }
         const updatePrivatePersonRes = await p360(payload, updatePrivatePersonOptions);
         if (updatePrivatePersonRes.Successful) {
             return updatePrivatePersonRes.Recno;

@@ -33,8 +33,12 @@
     "organizationNumber360": "200301",
     "fullName": "Kvadraturen videregående skole",
     "accessGroup": "Elev - Kvadraturen videregående skole - LAO"
+  },  {
+    "organizationNumber360": "200301",
+    "fullName": "Storhamar videregående skole",
+    "accessGroup": "Elev - Kvadraturen videregående skole - LAO"
   },
-  {
+    {
     "organizationNumber360": "200312",
     "fullName": "Lillesand videregående skole",
     "accessGroup": "Elev - Lillesand videregående skole - LAO"
@@ -52,6 +56,21 @@
   {
     "organizationNumber360": "200336",
     "fullName": "Sam Eyde videregående skole",
+    "accessGroup": "Elev - Sam Eyde videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200336",
+    "fullName": "Sam Eyde videregående skole Bedrift",
+    "accessGroup": "Elev - Sam Eyde videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200336",
+    "fullName": "Sam Eyde videregående skole, Boots Apotek Harebakken, Arendal",
+    "accessGroup": "Elev - Sam Eyde videregående skole - LAO"
+  },
+  {
+    "organizationNumber360": "200336",
+    "fullName": "Sam Eyde videregående skole, Vitus apotek, Alti -Arendal",
     "accessGroup": "Elev - Sam Eyde videregående skole - LAO"
   },
   {
@@ -95,6 +114,12 @@
     "accessGroup": "Eksamen og dokumentasjon"
   },
   {
+    "organizationNumber360": "200239",
+    "fullName": "Eksamenskontoret i Agder fylkeskommune",
+    "accessGroup": "Eksamen og dokumentasjon"
+  },
+  
+  {
     "organizationNumber360": "200240",
     "fullName": "Fagskolen i Agder",
     "accessGroup": "Elev - Fagskolen i Agder"
@@ -104,6 +129,12 @@
     "fullName": "Karriere Agder",
     "accessGroup": "Elev - Karriere - Kristiansand"
   },
+  {
+    "organizationNumber360": "200237", 
+    "fullName": "Karriere Agder Kristiansand",
+    "accessGroup": "Elev - Karriere - Kristiansand"
+  },
+  
   {
     "organizationNumber360": "200406",
     "fullName": "SMI-skolen i Agder (Arendal)",
