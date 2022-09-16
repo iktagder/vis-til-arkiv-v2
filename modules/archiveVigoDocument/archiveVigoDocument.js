@@ -62,7 +62,7 @@ module.exports = async (vigoData, config) => {
             streetAddress: settSammenAdresse(vigoMelding.FolkeRegisterAdresse),
             zipCode: vigoMelding.FolkeRegisterAdresse.Postnummmer,
             zipPlace: vigoMelding.FolkeRegisterAdresse.Poststed,
-            birthnr: documentData.studentBirthnr.trim()
+            birthnr: documentData.studentBirthnr
         }
 
         try {

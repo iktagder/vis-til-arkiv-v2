@@ -1,4 +1,10 @@
+# input/output project specific
+Kompetansebevis/**
+Vitnemål/**
+
+
 # Logs
+_Logs/
 logs
 *.log
 npm-debug.log*
