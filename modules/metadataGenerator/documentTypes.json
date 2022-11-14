@@ -991,5 +991,89 @@
         }
       ]
     }
+  },
+  "VEDLEGG_PROV": {
+    "name": "Vedlegg_prov",
+    "owner": "jahnroger",
+    "author": "jahnroger",
+    "p360metadata": {
+      "Title": "Tilleggsdokument til prøveoppmelding og protokoll",
+      "UnofficialTitle": "Tilleggsdokument til prøveoppmelding og protokoll",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument inn",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "UO",
+      "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+      "ResponsiblePersonRecno": 200148,
+      "Contacts": [
+        {
+          "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Tilleggsdokument til prøveoppmelding og protokoll",
+          "VersionFormat": "A"
+        }
+      ]
+    }
+  },
+  "VEDLEGG_KON": {
+    "name": "Vedlegg_kon",
+    "owner": "jahnroger",
+    "author": "jahnroger",
+    "p360metadata": {
+      "Title": "Tilleggsdokument til kontrakt",
+      "UnofficialTitle": "Tilleggsdokument til kontrakt",
+      "DocumentDate": "<<<documentDate>>>",
+      "Archive": "Saksdokument",
+      "Category": "Dokument inn",
+      "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
+      "AccessCodeDescription": "Offl §13 jf. fvl §13 første ledd pkt. 1 - taushetsplikt om personlige forhold",
+      "Status": "J",
+      "CaseNumber": "<<<elevmappeCaseNumber>>>",
+      "AccessGroup": "<<<schoolAccessGroup>>>",
+      "AccessCode": "UO",
+      "ResponsibleEnterpriseRecno": "<<<schoolOrgNr>>>",
+      "ResponsiblePersonRecno": 200148,
+      "Contacts": [
+        {
+          "ReferenceNumber": "recno:<<<schoolOrgNr>>>",
+          "Role": "Mottaker",
+          "IsUnofficial": false
+        },
+        {
+          "ReferenceNumber": "<<<studentBirthnr>>>",
+          "Role": "Avsender",
+          "IsUnofficial": true
+        }
+      ],
+      "Files": [
+        {
+          "Base64Data": "<<<pdfFileBase64>>>",
+          "Category": "1",
+          "Format": "pdf",
+          "Status": "F",
+          "Title": "Tilleggsdokument til kontrakt",
+          "VersionFormat": "A"
+        }
+      ]
+    }
   }
 }
