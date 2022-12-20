@@ -16,8 +16,10 @@ const getEmailFromFile = require("../../modules/getEmailFromFile/getEmailFromFil
 const getElevinfo = require("../fint/getElevinfo");
 
 module.exports = async (archiveMethod, options, test = false) => {
-
-    let p360url = options.P360_URL;
+    // RUNAR: Why is the URL passed as env, then into options all over the place?
+    // RUNAR: For this file its only purpose is to unpack it for then to add to other options.
+    // RUNAR: Just feel that this obfuscates an overcomplicates the code. (auth key, is neccesary but might have better/other options)
+    let p360url = options.P360_URL;  
     let p360authkey = options.P360_AUTHKEY;
 
     const stats = {
@@ -31,7 +33,7 @@ module.exports = async (archiveMethod, options, test = false) => {
 
     const listOfPdfs = getPdfsInFolder(archiveMethod.inputFolder)
 
-    for (const pdf of listOfPdfs) {
+    for (const pdf of listOfPdfs) { // RUNAR: Gigagntic for, that goes next for any error. be AWARE of this
         let createElevmappeBool = false; // For control of creating elevmappe
         let sendToParentsBool = false;  // For control of student under 18 years
         let blockedAddress = false; // For control of students blocked address
@@ -39,10 +41,10 @@ module.exports = async (archiveMethod, options, test = false) => {
         let documentNumber; // If we need to create internal note - store documentnumber in this variable
         let pdfContent;
         writeLog("--- New file: " + pdf + " ---");
-        try {
+        try { // RUNAR: Technically read the content of the pdf
             pdfContent = await pdfReader(pdf); //read pdf
             writeLog("  Read pdf")
-        } catch (error) {
+        } catch (error) { // RUNAR: if pdf is malformed or something, move it to a error dir, for manual handling.
             writeLog("  Error when trying to read pdf, file moved to " + archiveMethod.errorFolder + ": " + error);
             moveToFolder(pdf, archiveMethod.errorFolder);
             stats.error++;
@@ -51,7 +53,7 @@ module.exports = async (archiveMethod, options, test = false) => {
         }
 
         let documentData = {};
-        try {
+        try { // RUNAR: Locate the interesting content in the pdf
             documentData = findDocumentData(archiveMethod, pdfContent);
             writeLog("  Found documentdata");
         } catch (error) {
@@ -65,7 +67,7 @@ module.exports = async (archiveMethod, options, test = false) => {
 
         // Finn student i VIS
         let visStudent
-        try {
+        try { // contact https://api.felleskomponent.no asking for birthNr of students 
             visStudent = await getElevinfo(documentData.studentBirthnr);
             writeLog("  Fant elev i VIS: " + visStudent.data.navn.fornavn + " " + visStudent.data.navn.etternavn);
         } catch (error) {
@@ -86,6 +88,7 @@ module.exports = async (archiveMethod, options, test = false) => {
         }
         let studentData = {}
         //let nameList = dsfStudent.studentName.split(" ");
+        // RUNAR: extracting of student data here (json object or something, no accoisiated to any type). 
         studentData.lastName = visStudent.data.navn.etternavn;
         studentData.firstName = visStudent.data.navn.fornavn;
         studentData.streetAddress = visStudent.data.bostedsadresse.adresselinje[0];
@@ -210,7 +213,7 @@ module.exports = async (archiveMethod, options, test = false) => {
             try {
                 p360metadata = await createMetadata(documentData);
                 if (archiveMethod.sendToParents && sendToParentsBool) { // Add parents to metadata
-                    if (!missingDsfParents && !blockedAddress) {
+                    if (!missingDsfParents && !blockedAddress) { // RUNAR: Remeber this
                         for (const parent of documentData.parents) {
                             p360metadata.Contacts.push(
                                 {

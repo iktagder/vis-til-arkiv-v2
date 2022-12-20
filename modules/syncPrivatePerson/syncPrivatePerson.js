@@ -4,6 +4,7 @@ const writeLog = require("../writeLog/writeLog");
 // Check if person exists, if exist, use reference, if not create new private person
 
 module.exports = async (student, options) => {
+    // RUNAR: Checking paramaters for missing fields
     if (!student.firstName) {
         throw Error("Missing required parameter: student.firstName");
     }
@@ -32,22 +33,22 @@ module.exports = async (student, options) => {
         "PersonalIdNumber": String(student.birthnr),
         "Active": "true"
     }
-    const privatePersonRes = await p360(payload, getPrivatePersonOptions);
+    const privatePersonRes = await p360(payload, getPrivatePersonOptions); // RUNAR: Make request into p360 
     if (privatePersonRes.Successful) {
         if (privatePersonRes.TotalCount === 0) {
             createNewPrivatePerson = true;
         }
-        else if (privatePersonRes.TotalCount === 1) {
+        else if (privatePersonRes.TotalCount === 1) { 
             privatePersonRecno = privatePersonRes.PrivatePersons[0].Recno;
             if (privatePersonRes.PrivatePersons[0].PrivateAddress.StreetAddress.toLowerCase().includes("sperret adresse") || privatePersonRes.PrivatePersons[0].PrivateAddress.StreetAddress.toLowerCase().includes("klientadresse")) { // address is blocked in 360 - do NOT update, even though not blocked in DSF
-                return "hemmelig"
+                return "hemmelig" // RUNAR question: returns "Hemmelig" here instead of record number (recno). Does this mean that a person with secret address does not have an entity in p360 at all? (ref comment on line above)
             }
             else {
                 updatePrivatePerson = true
             }
         }
         else {
-            throw Error("Found more than one private person with birthnr :"+student.birthnr);
+            throw Error("Found more than one private person with birthnr :"+student.birthnr); // # RUNAR: This results in someone needing to update p360 so that there is just one person with BirthNr
         }
     }
     else {
@@ -91,7 +92,7 @@ module.exports = async (student, options) => {
         }
     }
     if (updatePrivatePerson && student.streetAddress && student.zipCode && student.zipPlace) {
-        writeLog("  Updated privatePerson in 360 with fnr:" + student.birthnr)
+        writeLog("  Updated privatePerson in 360 with fnr: " + student.birthnr)
         const updatePrivatePersonOptions = {
             url: options.url,
             authkey: options.authkey,

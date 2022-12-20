@@ -39,7 +39,7 @@ module.exports = async (vigoData, config) => {
         const documentData = {
             studentBirthnr: vigoMelding.Fodselsnummer,
             documentType: vigoMelding.Dokumentelement.Dokumenttype,
-            documentDate: formaterDokumentDato(vigoMelding.Dokumentelement.Dokumentdato),
+            documentDate: dateTo_yyyy_MM_dd(vigoMelding.Dokumentelement.Dokumentdato),
             schoolAccessGroup: config.P360_CASE_ACCESS_GROUP,
             schoolOrgNr: "506" // Agder FK recno
         };
@@ -180,7 +180,7 @@ module.exports = async (vigoData, config) => {
                                 writeLog(`=${vigoId}=\t${signOffData.Document} signed off`);
                             }).catch((error) => {
                                 writeLog(`ERROR: =${vigoId}=\tError when signing of for document ${archiveRes.DocumentNumber}: ${error}`);
-                                twhError(`Error when signing of document ${signOffData.DocumentNumber} creted for vigo document ${vigoId}.`, error);
+                                twhError(`Error when signing of document ${signOffData.DocumentNumber} created for vigo document ${vigoId}.`, error);
                             });
                     }
                 }
@@ -200,7 +200,7 @@ module.exports = async (vigoData, config) => {
 }
 
 // P360 vil ha YYYY-MM-DD
-function formaterDokumentDato(datostreng) {
+function dateTo_yyyy_MM_dd(datostreng) {
     const d = new Date(Date.parse(datostreng));
     return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
 }

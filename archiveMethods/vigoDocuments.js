@@ -3,6 +3,21 @@ const archiveVigoDocument = require("../modules/archiveVigoDocument/archiveVigoD
 const twhError = require("../modules/teamsWebhook/twhError");
 const writeLog = require("../modules/writeLog/writeLog");
 
+
+function dataExist(err, result) {
+    if (err) { throw Error(err) }
+    if (!result || !result.HentDataForArkiveringResponseElm ||
+        result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype === "INGEN DATA") { // sjekk hvorvidt det finnes _noe_ data og arkiver de
+        writeLog(`No more data from hentData at ${url}`);
+        return false;
+    } if (!!result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype &&
+        result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype.length > 0) {
+        writeLog(`ERROR: unknown Feiltype from hentData: ${result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype}`);
+        twhError('ERROR: unknown Feiltype from hentData', result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype);
+        return false;
+    }
+    return true;
+}
 module.exports = async (config) => {
 
     // wsdl of the web service this client is going to invoke. For local wsdl you can use, url = './wsdls/stockquote.wsdl'
@@ -27,24 +42,17 @@ module.exports = async (config) => {
 
         try {
             const { err, result } = await hentData(hentDataArgumenter);
-            if (err) { throw Error(err) }
-            if (!result || !result.HentDataForArkiveringResponseElm ||
-                result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype === "INGEN DATA") { // sjekk hvorvidt det finnes _noe_ data og arkiver de
-                writeLog(`No more data from hentData at ${url}`);
-                return;
-            } if (!!result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype &&
-                result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype.length > 0) {
-                writeLog(`ERROR: unknown Feiltype from hentData: ${result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype}`);
-                twhError('ERROR: unknown Feiltype from hentData', result.HentDataForArkiveringResponseElm.Feilmelding.Feiltype);
+            
+            if (dataExist(err, result))
+            {
+                await archiveVigoDocument(result.HentDataForArkiveringResponseElm.Elevelement, config)
+                    .then((arkiveringsresultat) => {
+                        oppdaterVigoArkiveringsstatus(arkiveringsresultat, oppdaterStatus);
+                    })
+                    .catch((errorFromArchiveVigoDocument) => {
+                        twhError('Unhandled error in archiveVigoDocument', errorFromArchiveVigoDocument)
+                    });
             }
-
-            await archiveVigoDocument(result.HentDataForArkiveringResponseElm.Elevelement, config)
-                .then((arkiveringsresultat) => {
-                    oppdaterVigoArkiveringsstatus(arkiveringsresultat, oppdaterStatus);
-                })
-                .catch((errorFromArchiveVigoDocument) => {
-                    twhError('Unhandled error in archiveVigoDocument', errorFromArchiveVigoDocument)
-                });
         } catch (errorFromHentData) {
             writeLog(`ERROR:\tGot error response from hentData at ${url}`);
             twhError('Unhandled error in hentData WS-call. Check Vigo WS status, application url and credentials.', errorFromHentData);

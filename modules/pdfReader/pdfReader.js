@@ -9,9 +9,10 @@ module.exports = async (pdfPath) => {
     }
     const loadingTask = await pdfjsLib.getDocument(pdfPath);
     const doc = await loadingTask.promise;
-    pdfData.metadata = await doc.getMetadata();
     const numPages = doc.numPages;
-    for (let i=1; i<= numPages; i++) {
+    pdfData.metadata = await doc.getMetadata();
+
+    for (let i=1; i<= numPages; i++) { // RUNAR: unwrap pdf into pdfData dict. 
         let page = await doc.getPage(i);
         let txtContent = await page.getTextContent();
         pdfData.textContent = pdfData.textContent.concat(txtContent.items);

@@ -50,7 +50,7 @@ module.exports = async (student, options) => {
         "Paragraph": "Offl. § 13 jf. fvl. § 13 (1) nr.1",
         "AccessGroup": P360_CASE_ACCESS_GROUP,
         "ResponsibleEnterpriseRecno": 506, // Agder fylkeskommune
-        "ResponsiblePersonRecno": 200148, // RIM RIM - lik recno i test og prod
+        "ResponsiblePersonRecno": 200148, // RIM RIM - lik recno i test og prod   RUNAR: QUESTION: Is this a code for the RIM project? ref comment before RUNAR
         "Contacts":[
             {
                 "Role": "Sakspart",

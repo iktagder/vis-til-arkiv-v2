@@ -12,7 +12,7 @@ module.exports = (archiveMethod, pdfContent) => {
     };
     // TIP: chek out pdfContent to see the structure of the pdf content
     let pdfStringsX = pdfContent.textContent.map(ele => ele.str);
-    
+    // RUNAR Husk denne! Kjent problem som er i filene, må overføres.
     // Fiks for mal som inneholder "Description: Value" i forskjellige tekstelement som ligger etterhverandre.
     let pdfStrings = pdfStringsX.map(function (value, index, elements) {
         if (value.endsWith(": ")) {
